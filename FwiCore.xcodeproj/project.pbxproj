@@ -22,6 +22,10 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		BE142F131A6502B000C731EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE142F111A6502B000C731EF /* InfoPlist.strings */; };
+		BE142F151A6502B000C731EF /* FwiCoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE142F141A6502B000C731EF /* FwiCoreTests.m */; };
+		BE142F1D1A6502CF00C731EF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142F1C1A6502CF00C731EF /* XCTest.framework */; };
+		BE142F581A65064900C731EF /* libFwiCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208B5D16E9B091004E0F54 /* libFwiCore.a */; };
 		BE208B6116E9B091004E0F54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208B6016E9B091004E0F54 /* Foundation.framework */; };
 		BE208BF816E9B8A0004E0F54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BF716E9B8A0004E0F54 /* UIKit.framework */; };
 		BE208BFA16E9B8AC004E0F54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BF916E9B8AC004E0F54 /* CoreGraphics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -61,6 +65,16 @@
 		BEB1967D1907B16E003CBFD6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB1967C1907B16E003CBFD6 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BE142F241A6503EA00C731EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE208B5516E9B091004E0F54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE208B5C16E9B091004E0F54;
+			remoteInfo = FwiCore;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		BE208B5B16E9B091004E0F54 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -99,6 +113,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BE142F091A6502B000C731EF /* FwiCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FwiCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE142F101A6502B000C731EF /* FwiCoreTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FwiCoreTests-Info.plist"; sourceTree = "<group>"; };
+		BE142F121A6502B000C731EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BE142F141A6502B000C731EF /* FwiCoreTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FwiCoreTests.m; sourceTree = "<group>"; };
+		BE142F1C1A6502CF00C731EF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		BE142F221A6503D300C731EF /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		BE208B5D16E9B091004E0F54 /* libFwiCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFwiCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE208B6016E9B091004E0F54 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE208B6416E9B091004E0F54 /* FwiCore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FwiCore-Prefix.pch"; sourceTree = "<group>"; };
@@ -106,6 +126,7 @@
 		BE208BF916E9B8AC004E0F54 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BE208BFB16E9B8B4004E0F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BE59FCB41817856A00A4FC6E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		BE5BF0DC1A6509C200F99FFA /* FwiCoreTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FwiCoreTests-Prefix.pch"; sourceTree = "<group>"; };
 		BE65415719F99925004572CF /* NSData+FwiBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+FwiBase64.h"; sourceTree = "<group>"; };
 		BE65415819F99925004572CF /* NSData+FwiBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+FwiBase64.m"; sourceTree = "<group>"; };
 		BE65415919F99925004572CF /* NSData+FwiHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+FwiHex.h"; sourceTree = "<group>"; };
@@ -141,6 +162,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		BE142F061A6502B000C731EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE142F581A65064900C731EF /* libFwiCore.a in Frameworks */,
+				BE142F1D1A6502CF00C731EF /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE208B5A16E9B091004E0F54 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -157,12 +187,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE142F0E1A6502B000C731EF /* FwiCoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				BE142F141A6502B000C731EF /* FwiCoreTests.m */,
+				BE142F0F1A6502B000C731EF /* Supporting Files */,
+			);
+			path = FwiCoreTests;
+			sourceTree = "<group>";
+		};
+		BE142F0F1A6502B000C731EF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE142F101A6502B000C731EF /* FwiCoreTests-Info.plist */,
+				BE142F111A6502B000C731EF /* InfoPlist.strings */,
+				BE5BF0DC1A6509C200F99FFA /* FwiCoreTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		BE208B5416E9B091004E0F54 = {
 			isa = PBXGroup;
 			children = (
 				BE208B6216E9B091004E0F54 /* FwiCore */,
 				BE208B5E16E9B091004E0F54 /* Products */,
 				BE208B5F16E9B091004E0F54 /* Frameworks */,
+				BE142F0E1A6502B000C731EF /* FwiCoreTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				BE208B5D16E9B091004E0F54 /* libFwiCore.a */,
+				BE142F091A6502B000C731EF /* FwiCoreTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,11 +228,13 @@
 		BE208B5F16E9B091004E0F54 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BE142F1C1A6502CF00C731EF /* XCTest.framework */,
 				BE208BFD16E9B8BA004E0F54 /* Core */,
 				BE208BF716E9B8A0004E0F54 /* UIKit.framework */,
 				BE208B6016E9B091004E0F54 /* Foundation.framework */,
 				BE59FCB41817856A00A4FC6E /* Accelerate.framework */,
 				BEB1967C1907B16E003CBFD6 /* SystemConfiguration.framework */,
+				BE142F221A6503D300C731EF /* libz.1.2.5.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -301,6 +354,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		BE142F081A6502B000C731EF /* FwiCoreTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE142F1B1A6502B000C731EF /* Build configuration list for PBXNativeTarget "FwiCoreTests" */;
+			buildPhases = (
+				BE142F051A6502B000C731EF /* Sources */,
+				BE142F061A6502B000C731EF /* Frameworks */,
+				BE142F071A6502B000C731EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BE142F251A6503EA00C731EF /* PBXTargetDependency */,
+			);
+			name = FwiCoreTests;
+			productName = FwiCoreTests;
+			productReference = BE142F091A6502B000C731EF /* FwiCoreTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		BE208B5C16E9B091004E0F54 /* FwiCore */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE208B6B16E9B091004E0F54 /* Build configuration list for PBXNativeTarget "FwiCore" */;
@@ -326,6 +397,11 @@
 			attributes = {
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "FWI Group";
+				TargetAttributes = {
+					BE142F081A6502B000C731EF = {
+						TestTargetID = BE208B5C16E9B091004E0F54;
+					};
+				};
 			};
 			buildConfigurationList = BE208B5816E9B091004E0F54 /* Build configuration list for PBXProject "FwiCore" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -340,10 +416,22 @@
 			projectRoot = "";
 			targets = (
 				BE208B5C16E9B091004E0F54 /* FwiCore */,
+				BE142F081A6502B000C731EF /* FwiCoreTests */,
 				BE208BBC16E9B12D004E0F54 /* FwiCore.framework */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE142F071A6502B000C731EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE142F131A6502B000C731EF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		BE208BFE16E9B959004E0F54 /* Build universal binary */ = {
@@ -363,6 +451,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		BE142F051A6502B000C731EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE142F151A6502B000C731EF /* FwiCoreTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BE208B5916E9B091004E0F54 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -387,7 +483,83 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		BE142F251A6503EA00C731EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE208B5C16E9B091004E0F54 /* FwiCore */;
+			targetProxy = BE142F241A6503EA00C731EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BE142F111A6502B000C731EF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BE142F121A6502B000C731EF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		BE142F191A6502B000C731EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FwiCoreTests/FwiCoreTests-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "FwiCoreTests/FwiCoreTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		BE142F1A1A6502B000C731EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_NS_ASSERTIONS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FwiCoreTests/FwiCoreTests-Prefix.pch";
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = "FwiCoreTests/FwiCoreTests-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
 		BE208B6916E9B091004E0F54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -412,7 +584,6 @@
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -420,7 +591,6 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -433,8 +603,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LINK_WITH_STANDARD_LIBRARIES = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
@@ -467,7 +636,6 @@
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
-				DEAD_CODE_STRIPPING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_THUMB_SUPPORT = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
@@ -481,8 +649,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_PARAMETER = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LINK_WITH_STANDARD_LIBRARIES = NO;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = NO;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos;
@@ -537,6 +704,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		BE142F1B1A6502B000C731EF /* Build configuration list for PBXNativeTarget "FwiCoreTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE142F191A6502B000C731EF /* Debug */,
+				BE142F1A1A6502B000C731EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BE208B5816E9B091004E0F54 /* Build configuration list for PBXProject "FwiCore" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

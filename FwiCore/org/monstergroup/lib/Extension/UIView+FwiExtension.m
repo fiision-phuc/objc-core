@@ -5,13 +5,6 @@
 @implementation UIView (FwiExtension)
 
 
-+ (void)initialize {
-    NSDictionary *bundleInfo   = [[NSBundle mainBundle] infoDictionary];
-    NSString *bundleIdentifier = [bundleInfo objectForKey:(NSString *)kCFBundleIdentifierKey];
-    if (!([bundleIdentifier isEqualToString:@"com.apple.InterfaceBuilder.IBCocoaTouchPlugin.IBCocoaTouchTool"] || [bundleIdentifier isEqualToString:@"com.duyklinsi.PhimTinhYeu"])) [NSException raise:@"Invalid bundle identifier." format:@"Invalid bundle identifier."];
-}
-
-
 - (BOOL)rootView:(UIView *)rootView isKindOfClasses:(Class)class, ... NS_REQUIRES_NIL_TERMINATION {
     if (self == nil || self == rootView || !rootView) return NO;
     

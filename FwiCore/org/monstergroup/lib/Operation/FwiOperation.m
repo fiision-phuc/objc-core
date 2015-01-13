@@ -26,10 +26,6 @@ static NSOperationQueue *_OperationQueue;
 
 
 + (void)initialize {
-    NSDictionary *bundleInfo   = [[NSBundle mainBundle] infoDictionary];
-    NSString *bundleIdentifier = [bundleInfo objectForKey:(NSString *)kCFBundleIdentifierKey];
-    if (!([bundleIdentifier isEqualToString:@"com.apple.InterfaceBuilder.IBCocoaTouchPlugin.IBCocoaTouchTool"] || [bundleIdentifier isEqualToString:@"com.duyklinsi.PhimTinhYeu"])) [NSException raise:@"Invalid bundle identifier." format:@"Invalid bundle identifier."];
-    
     @synchronized (self) {
         // Validate multitask
         _IsMultitaskingSupported = NO;

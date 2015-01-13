@@ -7,13 +7,6 @@
 @implementation NSData (FwiExtension)
 
 
-+ (void)initialize {
-    NSDictionary *bundleInfo   = [[NSBundle mainBundle] infoDictionary];
-    NSString *bundleIdentifier = [bundleInfo objectForKey:(NSString *)kCFBundleIdentifierKey];
-    if (!([bundleIdentifier isEqualToString:@"com.apple.InterfaceBuilder.IBCocoaTouchPlugin.IBCocoaTouchTool"] || [bundleIdentifier isEqualToString:@"com.duyklinsi.PhimTinhYeu"])) [NSException raise:@"Invalid bundle identifier." format:@"Invalid bundle identifier."];
-}
-
-
 - (__autoreleasing NSData *)zip {
     /* Condition validation */
 	if (!self || [self length] <= 0) return nil;
