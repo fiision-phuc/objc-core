@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		BE208BBC16E9B12D004E0F54 /* FwiCore.framework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = BE208BBD16E9B12D004E0F54 /* Build configuration list for PBXAggregateTarget "FwiCore.framework" */;
+			buildPhases = (
+				BE208BFE16E9B959004E0F54 /* Build universal binary */,
+				BE208C0516E9BA5C004E0F54 /* CopyFiles */,
+			);
+			dependencies = (
+			);
+			name = FwiCore.framework;
+			productName = FwiCore.framework;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		BE208B6116E9B091004E0F54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208B6016E9B091004E0F54 /* Foundation.framework */; };
+		BE208BF816E9B8A0004E0F54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BF716E9B8A0004E0F54 /* UIKit.framework */; };
+		BE208BFA16E9B8AC004E0F54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BF916E9B8AC004E0F54 /* CoreGraphics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BE208BFC16E9B8B4004E0F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BFB16E9B8B4004E0F54 /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BE59FCB51817856A00A4FC6E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE59FCB41817856A00A4FC6E /* Accelerate.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		BE65417919F99925004572CF /* NSData+FwiBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65415819F99925004572CF /* NSData+FwiBase64.m */; };
+		BE65417A19F99925004572CF /* NSData+FwiHex.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65415A19F99925004572CF /* NSData+FwiHex.m */; };
+		BE65417B19F99925004572CF /* NSString+FwiBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65415C19F99925004572CF /* NSString+FwiBase64.m */; };
+		BE65417C19F99925004572CF /* NSString+FwiHex.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65415E19F99925004572CF /* NSString+FwiHex.m */; };
+		BE65417D19F99925004572CF /* NSArray+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65416119F99925004572CF /* NSArray+FwiExtension.m */; };
+		BE65417E19F99925004572CF /* NSData+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65416319F99925004572CF /* NSData+FwiExtension.m */; };
+		BE65417F19F99925004572CF /* NSDictionary+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65416519F99925004572CF /* NSDictionary+FwiExtension.m */; };
+		BE65418019F99925004572CF /* NSNumber+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65416719F99925004572CF /* NSNumber+FwiExtension.m */; };
+		BE65418119F99925004572CF /* NSString+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65416919F99925004572CF /* NSString+FwiExtension.m */; };
+		BE65418219F99925004572CF /* NSURL+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65416B19F99925004572CF /* NSURL+FwiExtension.m */; };
+		BE65418319F99925004572CF /* UIButton+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65416D19F99925004572CF /* UIButton+FwiExtension.m */; };
+		BE65418419F99925004572CF /* UIImage+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65416F19F99925004572CF /* UIImage+FwiExtension.m */; };
+		BE65418519F99925004572CF /* UIView+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65417119F99925004572CF /* UIView+FwiExtension.m */; };
+		BE65418619F99925004572CF /* FwiOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65417519F99925004572CF /* FwiOperation.m */; };
+		BE65418719F99925004572CF /* FwiReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE65417819F99925004572CF /* FwiReachability.m */; };
+		BE65418819F99A0A004572CF /* FwiCore.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65417219F99925004572CF /* FwiCore.h */; };
+		BE65418919F99A0A004572CF /* NSData+FwiBase64.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65415719F99925004572CF /* NSData+FwiBase64.h */; };
+		BE65418A19F99A0A004572CF /* NSData+FwiHex.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65415919F99925004572CF /* NSData+FwiHex.h */; };
+		BE65418B19F99A0A004572CF /* NSString+FwiBase64.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65415B19F99925004572CF /* NSString+FwiBase64.h */; };
+		BE65418C19F99A0A004572CF /* NSString+FwiHex.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65415D19F99925004572CF /* NSString+FwiHex.h */; };
+		BE65418D19F99A0A004572CF /* NSArray+FwiExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65416019F99925004572CF /* NSArray+FwiExtension.h */; };
+		BE65418E19F99A0A004572CF /* NSData+FwiExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65416219F99925004572CF /* NSData+FwiExtension.h */; };
+		BE65418F19F99A0A004572CF /* NSDictionary+FwiExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65416419F99925004572CF /* NSDictionary+FwiExtension.h */; };
+		BE65419019F99A0A004572CF /* NSNumber+FwiExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65416619F99925004572CF /* NSNumber+FwiExtension.h */; };
+		BE65419119F99A0A004572CF /* NSString+FwiExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65416819F99925004572CF /* NSString+FwiExtension.h */; };
+		BE65419219F99A0A004572CF /* NSURL+FwiExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65416A19F99925004572CF /* NSURL+FwiExtension.h */; };
+		BE65419319F99A0A004572CF /* UIButton+FwiExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65416C19F99925004572CF /* UIButton+FwiExtension.h */; };
+		BE65419419F99A0A004572CF /* UIImage+FwiExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65416E19F99925004572CF /* UIImage+FwiExtension.h */; };
+		BE65419519F99A0A004572CF /* UIView+FwiExtension.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65417019F99925004572CF /* UIView+FwiExtension.h */; };
+		BE65419619F99A0A004572CF /* FwiOperation.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65417419F99925004572CF /* FwiOperation.h */; };
+		BE65419719F99A0A004572CF /* FwiReachability.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE65417719F99925004572CF /* FwiReachability.h */; };
+		BEB1967D1907B16E003CBFD6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEB1967C1907B16E003CBFD6 /* SystemConfiguration.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BE208B5B16E9B091004E0F54 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE208C0516E9BA5C004E0F54 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "${SOURCE_ROOT}/../Libraries/${PRODUCT_NAME}.framework/Versions/A/Headers";
+			dstSubfolderSpec = 0;
+			files = (
+				BE65418819F99A0A004572CF /* FwiCore.h in CopyFiles */,
+				BE65418919F99A0A004572CF /* NSData+FwiBase64.h in CopyFiles */,
+				BE65418A19F99A0A004572CF /* NSData+FwiHex.h in CopyFiles */,
+				BE65418B19F99A0A004572CF /* NSString+FwiBase64.h in CopyFiles */,
+				BE65418C19F99A0A004572CF /* NSString+FwiHex.h in CopyFiles */,
+				BE65418D19F99A0A004572CF /* NSArray+FwiExtension.h in CopyFiles */,
+				BE65418E19F99A0A004572CF /* NSData+FwiExtension.h in CopyFiles */,
+				BE65418F19F99A0A004572CF /* NSDictionary+FwiExtension.h in CopyFiles */,
+				BE65419019F99A0A004572CF /* NSNumber+FwiExtension.h in CopyFiles */,
+				BE65419119F99A0A004572CF /* NSString+FwiExtension.h in CopyFiles */,
+				BE65419219F99A0A004572CF /* NSURL+FwiExtension.h in CopyFiles */,
+				BE65419319F99A0A004572CF /* UIButton+FwiExtension.h in CopyFiles */,
+				BE65419419F99A0A004572CF /* UIImage+FwiExtension.h in CopyFiles */,
+				BE65419519F99A0A004572CF /* UIView+FwiExtension.h in CopyFiles */,
+				BE65419619F99A0A004572CF /* FwiOperation.h in CopyFiles */,
+				BE65419719F99A0A004572CF /* FwiReachability.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		BE208B5D16E9B091004E0F54 /* libFwiCore.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libFwiCore.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE208B6016E9B091004E0F54 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BE208B6416E9B091004E0F54 /* FwiCore-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FwiCore-Prefix.pch"; sourceTree = "<group>"; };
+		BE208BF716E9B8A0004E0F54 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BE208BF916E9B8AC004E0F54 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BE208BFB16E9B8B4004E0F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BE59FCB41817856A00A4FC6E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		BE65415719F99925004572CF /* NSData+FwiBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+FwiBase64.h"; sourceTree = "<group>"; };
+		BE65415819F99925004572CF /* NSData+FwiBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+FwiBase64.m"; sourceTree = "<group>"; };
+		BE65415919F99925004572CF /* NSData+FwiHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+FwiHex.h"; sourceTree = "<group>"; };
+		BE65415A19F99925004572CF /* NSData+FwiHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+FwiHex.m"; sourceTree = "<group>"; };
+		BE65415B19F99925004572CF /* NSString+FwiBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FwiBase64.h"; sourceTree = "<group>"; };
+		BE65415C19F99925004572CF /* NSString+FwiBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FwiBase64.m"; sourceTree = "<group>"; };
+		BE65415D19F99925004572CF /* NSString+FwiHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FwiHex.h"; sourceTree = "<group>"; };
+		BE65415E19F99925004572CF /* NSString+FwiHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FwiHex.m"; sourceTree = "<group>"; };
+		BE65416019F99925004572CF /* NSArray+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+FwiExtension.h"; sourceTree = "<group>"; };
+		BE65416119F99925004572CF /* NSArray+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+FwiExtension.m"; sourceTree = "<group>"; };
+		BE65416219F99925004572CF /* NSData+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+FwiExtension.h"; sourceTree = "<group>"; };
+		BE65416319F99925004572CF /* NSData+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+FwiExtension.m"; sourceTree = "<group>"; };
+		BE65416419F99925004572CF /* NSDictionary+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+FwiExtension.h"; sourceTree = "<group>"; };
+		BE65416519F99925004572CF /* NSDictionary+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+FwiExtension.m"; sourceTree = "<group>"; };
+		BE65416619F99925004572CF /* NSNumber+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+FwiExtension.h"; sourceTree = "<group>"; };
+		BE65416719F99925004572CF /* NSNumber+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+FwiExtension.m"; sourceTree = "<group>"; };
+		BE65416819F99925004572CF /* NSString+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+FwiExtension.h"; sourceTree = "<group>"; };
+		BE65416919F99925004572CF /* NSString+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+FwiExtension.m"; sourceTree = "<group>"; };
+		BE65416A19F99925004572CF /* NSURL+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+FwiExtension.h"; sourceTree = "<group>"; };
+		BE65416B19F99925004572CF /* NSURL+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+FwiExtension.m"; sourceTree = "<group>"; };
+		BE65416C19F99925004572CF /* UIButton+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+FwiExtension.h"; sourceTree = "<group>"; };
+		BE65416D19F99925004572CF /* UIButton+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+FwiExtension.m"; sourceTree = "<group>"; };
+		BE65416E19F99925004572CF /* UIImage+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FwiExtension.h"; sourceTree = "<group>"; };
+		BE65416F19F99925004572CF /* UIImage+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FwiExtension.m"; sourceTree = "<group>"; };
+		BE65417019F99925004572CF /* UIView+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FwiExtension.h"; sourceTree = "<group>"; };
+		BE65417119F99925004572CF /* UIView+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FwiExtension.m"; sourceTree = "<group>"; };
+		BE65417219F99925004572CF /* FwiCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiCore.h; sourceTree = "<group>"; };
+		BE65417419F99925004572CF /* FwiOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiOperation.h; sourceTree = "<group>"; };
+		BE65417519F99925004572CF /* FwiOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiOperation.m; sourceTree = "<group>"; };
+		BE65417719F99925004572CF /* FwiReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiReachability.h; sourceTree = "<group>"; };
+		BE65417819F99925004572CF /* FwiReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiReachability.m; sourceTree = "<group>"; };
+		BEB1967C1907B16E003CBFD6 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BE208B5A16E9B091004E0F54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEB1967D1907B16E003CBFD6 /* SystemConfiguration.framework in Frameworks */,
+				BE208BF816E9B8A0004E0F54 /* UIKit.framework in Frameworks */,
+				BE208B6116E9B091004E0F54 /* Foundation.framework in Frameworks */,
+				BE59FCB51817856A00A4FC6E /* Accelerate.framework in Frameworks */,
+				BE208BFC16E9B8B4004E0F54 /* QuartzCore.framework in Frameworks */,
+				BE208BFA16E9B8AC004E0F54 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BE208B5416E9B091004E0F54 = {
+			isa = PBXGroup;
+			children = (
+				BE208B6216E9B091004E0F54 /* FwiCore */,
+				BE208B5E16E9B091004E0F54 /* Products */,
+				BE208B5F16E9B091004E0F54 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BE208B5E16E9B091004E0F54 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BE208B5D16E9B091004E0F54 /* libFwiCore.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BE208B5F16E9B091004E0F54 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BE208BFD16E9B8BA004E0F54 /* Core */,
+				BE208BF716E9B8A0004E0F54 /* UIKit.framework */,
+				BE208B6016E9B091004E0F54 /* Foundation.framework */,
+				BE59FCB41817856A00A4FC6E /* Accelerate.framework */,
+				BEB1967C1907B16E003CBFD6 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BE208B6216E9B091004E0F54 /* FwiCore */ = {
+			isa = PBXGroup;
+			children = (
+				BE65415319F99925004572CF /* org */,
+				BE208B6316E9B091004E0F54 /* Supporting Files */,
+			);
+			path = FwiCore;
+			sourceTree = "<group>";
+		};
+		BE208B6316E9B091004E0F54 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BE208B6416E9B091004E0F54 /* FwiCore-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BE208BFD16E9B8BA004E0F54 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				BE208BF916E9B8AC004E0F54 /* CoreGraphics.framework */,
+				BE208BFB16E9B8B4004E0F54 /* QuartzCore.framework */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		BE65415319F99925004572CF /* org */ = {
+			isa = PBXGroup;
+			children = (
+				BE65415419F99925004572CF /* monstergroup */,
+			);
+			path = org;
+			sourceTree = "<group>";
+		};
+		BE65415419F99925004572CF /* monstergroup */ = {
+			isa = PBXGroup;
+			children = (
+				BE65415519F99925004572CF /* lib */,
+			);
+			path = monstergroup;
+			sourceTree = "<group>";
+		};
+		BE65415519F99925004572CF /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				BE65417219F99925004572CF /* FwiCore.h */,
+				BE65415619F99925004572CF /* Codec */,
+				BE65415F19F99925004572CF /* Extension */,
+				BE65417319F99925004572CF /* Operation */,
+				BE65417619F99925004572CF /* Reachability */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		BE65415619F99925004572CF /* Codec */ = {
+			isa = PBXGroup;
+			children = (
+				BE65415719F99925004572CF /* NSData+FwiBase64.h */,
+				BE65415819F99925004572CF /* NSData+FwiBase64.m */,
+				BE65415919F99925004572CF /* NSData+FwiHex.h */,
+				BE65415A19F99925004572CF /* NSData+FwiHex.m */,
+				BE65415B19F99925004572CF /* NSString+FwiBase64.h */,
+				BE65415C19F99925004572CF /* NSString+FwiBase64.m */,
+				BE65415D19F99925004572CF /* NSString+FwiHex.h */,
+				BE65415E19F99925004572CF /* NSString+FwiHex.m */,
+			);
+			path = Codec;
+			sourceTree = "<group>";
+		};
+		BE65415F19F99925004572CF /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BE65416019F99925004572CF /* NSArray+FwiExtension.h */,
+				BE65416119F99925004572CF /* NSArray+FwiExtension.m */,
+				BE65416219F99925004572CF /* NSData+FwiExtension.h */,
+				BE65416319F99925004572CF /* NSData+FwiExtension.m */,
+				BE65416419F99925004572CF /* NSDictionary+FwiExtension.h */,
+				BE65416519F99925004572CF /* NSDictionary+FwiExtension.m */,
+				BE65416619F99925004572CF /* NSNumber+FwiExtension.h */,
+				BE65416719F99925004572CF /* NSNumber+FwiExtension.m */,
+				BE65416819F99925004572CF /* NSString+FwiExtension.h */,
+				BE65416919F99925004572CF /* NSString+FwiExtension.m */,
+				BE65416A19F99925004572CF /* NSURL+FwiExtension.h */,
+				BE65416B19F99925004572CF /* NSURL+FwiExtension.m */,
+				BE65416C19F99925004572CF /* UIButton+FwiExtension.h */,
+				BE65416D19F99925004572CF /* UIButton+FwiExtension.m */,
+				BE65416E19F99925004572CF /* UIImage+FwiExtension.h */,
+				BE65416F19F99925004572CF /* UIImage+FwiExtension.m */,
+				BE65417019F99925004572CF /* UIView+FwiExtension.h */,
+				BE65417119F99925004572CF /* UIView+FwiExtension.m */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		BE65417319F99925004572CF /* Operation */ = {
+			isa = PBXGroup;
+			children = (
+				BE65417419F99925004572CF /* FwiOperation.h */,
+				BE65417519F99925004572CF /* FwiOperation.m */,
+			);
+			path = Operation;
+			sourceTree = "<group>";
+		};
+		BE65417619F99925004572CF /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				BE65417719F99925004572CF /* FwiReachability.h */,
+				BE65417819F99925004572CF /* FwiReachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BE208B5C16E9B091004E0F54 /* FwiCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE208B6B16E9B091004E0F54 /* Build configuration list for PBXNativeTarget "FwiCore" */;
+			buildPhases = (
+				BE208B5916E9B091004E0F54 /* Sources */,
+				BE208B5A16E9B091004E0F54 /* Frameworks */,
+				BE208B5B16E9B091004E0F54 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FwiCore;
+			productName = FwiCore;
+			productReference = BE208B5D16E9B091004E0F54 /* libFwiCore.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BE208B5516E9B091004E0F54 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = "FWI Group";
+			};
+			buildConfigurationList = BE208B5816E9B091004E0F54 /* Build configuration list for PBXProject "FwiCore" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BE208B5416E9B091004E0F54;
+			productRefGroup = BE208B5E16E9B091004E0F54 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BE208B5C16E9B091004E0F54 /* FwiCore */,
+				BE208BBC16E9B12D004E0F54 /* FwiCore.framework */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BE208BFE16E9B959004E0F54 /* Build universal binary */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Build universal binary";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Create build folder & Libraries folder.\nmkdir -p \"${SOURCE_ROOT}/../build/\" &&\nmkdir -p \"${SOURCE_ROOT}/../Libraries/\" &&\n\n# Build static libraries.\nxcodebuild -project \"${PROJECT_NAME}.xcodeproj\" -sdk iphonesimulator -target \"${PROJECT_NAME}\" -configuration \"${CONFIGURATION}\" clean build CONFIGURATION_BUILD_DIR=\"${SOURCE_ROOT}/../build/${CONFIGURATION}-Simulator\" &&\n\nxcodebuild -project \"${PROJECT_NAME}.xcodeproj\" -sdk iphoneos -target \"${PROJECT_NAME}\" -configuration \"${CONFIGURATION}\" clean build CONFIGURATION_BUILD_DIR=\"${SOURCE_ROOT}/../build/${CONFIGURATION}-Device\" &&\n\n# Define path.\nDEVICE_LIBRARY_PATH=\"${SOURCE_ROOT}/../build/${CONFIGURATION}-Device/lib${PROJECT_NAME}.a\" &&\nSIMULATOR_LIBRARY_PATH=\"${SOURCE_ROOT}/../build/${CONFIGURATION}-Simulator/lib${PROJECT_NAME}.a\" &&\n\nUNIVERSAL_LIBRARY_PATH=\"${SOURCE_ROOT}/../build/${PRODUCT_NAME}\" &&\nFRAMEWORK=\"${SOURCE_ROOT}/../Libraries/${PRODUCT_NAME}.framework\" &&\n\n\n# Create framework directory structure.\nrm -rf \"${FRAMEWORK}\" &&\nmkdir -p \"${FRAMEWORK}/Versions/A/Headers\" &&\nmkdir -p \"${FRAMEWORK}/Versions/A/Resources\" &&\n\n# Generate universal binary for the device and simulator.\nlipo \"${DEVICE_LIBRARY_PATH}\" \"${SIMULATOR_LIBRARY_PATH}\" -create -output \"${UNIVERSAL_LIBRARY_PATH}\" &&\n\n# Move files to appropriate locations in framework paths.\ncp \"${UNIVERSAL_LIBRARY_PATH}\" \"${FRAMEWORK}/Versions/A\" &&\nln -s \"A\" \"${FRAMEWORK}/Versions/Current\" &&\nln -s \"Versions/Current/Headers\" \"${FRAMEWORK}/Headers\" &&\nln -s \"Versions/Current/Resources\" \"${FRAMEWORK}/Resources\" &&\nln -s \"Versions/Current/${PRODUCT_NAME}\" \"${FRAMEWORK}/${PRODUCT_NAME}\" &&\n\n# Clean build folder.\nrm -r \"${SOURCE_ROOT}/../build\" &&\nrm -r \"${PROJECT_DIR}/build\"";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BE208B5916E9B091004E0F54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE65418619F99925004572CF /* FwiOperation.m in Sources */,
+				BE65417D19F99925004572CF /* NSArray+FwiExtension.m in Sources */,
+				BE65417E19F99925004572CF /* NSData+FwiExtension.m in Sources */,
+				BE65418119F99925004572CF /* NSString+FwiExtension.m in Sources */,
+				BE65418019F99925004572CF /* NSNumber+FwiExtension.m in Sources */,
+				BE65418319F99925004572CF /* UIButton+FwiExtension.m in Sources */,
+				BE65418719F99925004572CF /* FwiReachability.m in Sources */,
+				BE65417919F99925004572CF /* NSData+FwiBase64.m in Sources */,
+				BE65417B19F99925004572CF /* NSString+FwiBase64.m in Sources */,
+				BE65417F19F99925004572CF /* NSDictionary+FwiExtension.m in Sources */,
+				BE65418519F99925004572CF /* UIView+FwiExtension.m in Sources */,
+				BE65418419F99925004572CF /* UIImage+FwiExtension.m in Sources */,
+				BE65417C19F99925004572CF /* NSString+FwiHex.m in Sources */,
+				BE65417A19F99925004572CF /* NSData+FwiHex.m in Sources */,
+				BE65418219F99925004572CF /* NSURL+FwiExtension.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BE208B6916E9B091004E0F54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+					i386,
+					x86_64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
+			};
+			name = Debug;
+		};
+		BE208B6A16E9B091004E0F54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					"$(ARCHS_STANDARD)",
+					armv7s,
+					i386,
+					x86_64,
+				);
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = NO;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = NO;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = NO;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEAD_CODE_STRIPPING = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_THUMB_SUPPORT = NO;
+				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNKNOWN_PRAGMAS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_PARAMETER = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LINK_WITH_STANDARD_LIBRARIES = NO;
+				ONLY_ACTIVE_ARCH = NO;
+				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
+			};
+			name = Release;
+		};
+		BE208B6C16E9B091004E0F54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FwiCore/FwiCore-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		BE208B6D16E9B091004E0F54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FwiCore/FwiCore-Prefix.pch";
+				GCC_THUMB_SUPPORT = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		BE208BBE16E9B12D004E0F54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_THUMB_SUPPORT = NO;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		BE208BBF16E9B12D004E0F54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_THUMB_SUPPORT = NO;
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BE208B5816E9B091004E0F54 /* Build configuration list for PBXProject "FwiCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE208B6916E9B091004E0F54 /* Debug */,
+				BE208B6A16E9B091004E0F54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE208B6B16E9B091004E0F54 /* Build configuration list for PBXNativeTarget "FwiCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE208B6C16E9B091004E0F54 /* Debug */,
+				BE208B6D16E9B091004E0F54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE208BBD16E9B12D004E0F54 /* Build configuration list for PBXAggregateTarget "FwiCore.framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BE208BBE16E9B12D004E0F54 /* Debug */,
+				BE208BBF16E9B12D004E0F54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BE208B5516E9B091004E0F54 /* Project object */;
+}
