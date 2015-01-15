@@ -1,5 +1,5 @@
-#import "FwiCore.h"
 #import "NSNumber+FwiExtension.h"
+#import "FwiCore.h"
 
 
 @implementation NSNumber (FwiExtension)

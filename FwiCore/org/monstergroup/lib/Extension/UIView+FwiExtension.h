@@ -5,7 +5,7 @@
 //  Created date: 9/23/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2014 Monster Group.
+//  Copyright (C) 2012, 2015 Monster Group.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -41,9 +41,6 @@
 
 @interface UIView (FwiExtension)
 
-/** Go up to the tree view from current view. Stop where rootView is specified. */
-- (BOOL)rootView:(UIView *)rootView isKindOfClasses:(Class)class, ... NS_REQUIRES_NIL_TERMINATION;
-
 /** Create image from current view. */
 - (__autoreleasing UIImage *)createImage;
 - (__autoreleasing UIImage *)createImageWithScaleFactor:(CGFloat)scaleFactor;
@@ -54,9 +51,9 @@
 
 /** Find first responder within tree views. */
 - (__autoreleasing UIView *)findFirstResponder;
-
 /** Find and resign first responder within tree views. */
 - (void)findAndResignFirstResponder;
+
 /** Round corner of an UIView with specific radius. */
 - (void)roundCorner:(CGFloat)radius;
 

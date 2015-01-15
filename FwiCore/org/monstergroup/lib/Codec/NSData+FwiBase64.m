@@ -1,4 +1,5 @@
 #import "NSData+FwiBase64.h"
+#import "FwiCore.h"
 
 
 @implementation NSData (FwiBase64)

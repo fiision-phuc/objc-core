@@ -5,7 +5,7 @@
 //  Created date: 9/23/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2014 Monster Group.
+//  Copyright (C) 2012, 2015 Monster Group.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -40,6 +40,9 @@
 
 
 @interface UIButton (FwiExtension)
+
+/** Apply background to button. */
+- (void)applyBackgroundImage:(NSString *)imageName withEdgeInsets:(UIEdgeInsets)edgeInsets;
 
 /** Apply image to button. */
 - (void)applyImage:(NSString *)imageName;

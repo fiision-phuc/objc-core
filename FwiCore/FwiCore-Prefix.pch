@@ -4,8 +4,11 @@
     #import <CoreGraphics/CoreGraphics.h>
     #import <QuartzCore/QuartzCore.h>
     #import <Accelerate/Accelerate.h>
-    #import <zlib.h>
     #import <SystemConfiguration/SystemConfiguration.h>
+
+    #import <float.h>
+    #import <zlib.h>
+
     // Project Framework
     #import "FwiCore.h"
 #endif

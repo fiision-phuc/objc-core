@@ -1,24 +1,9 @@
-#import <float.h>
-#import "FwiCore.h"
 #import "UIImage+FwiExtension.h"
+#import "FwiCore.h"
 
 
 @implementation UIImage (FwiCreation)
 
-
-+ (__autoreleasing UIImage *)imageWithName:(NSString *)name {
-    NSInteger version = [[[UIDevice currentDevice] systemVersion] integerValue];
-    
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && version < 7) {
-        __autoreleasing NSArray  *components = [name componentsSeparatedByString:@"."];
-
-        __autoreleasing NSString *modifiedName = (components.count == 2 ? [NSString stringWithFormat:@"%@-568h.%@", components[0], components[1]] : [NSString stringWithFormat:@"%@-568h", components[0]]);
-        return [UIImage imageNamed:modifiedName];
-    }
-    else {
-        return [UIImage imageNamed:name];
-    }
-}
 
 + (__autoreleasing UIImage *)reflectedImageWithView:(UIView *)view height:(NSUInteger)height {
     if(!view || height == 0) return nil;

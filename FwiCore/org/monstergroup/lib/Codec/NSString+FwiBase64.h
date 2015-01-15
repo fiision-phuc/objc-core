@@ -5,7 +5,7 @@
 //  Created date: 1/7/14
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2014 Monster Group.
+//  Copyright (C) 2012, 2015 Monster Group.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -37,7 +37,6 @@
 //  caused, directly or indirectly, by the use of this software.
 
 #import <Foundation/Foundation.h>
-#import "FwiCore.h"
 
 
 @interface NSString (FwiBase64)

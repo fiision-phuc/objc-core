@@ -1,39 +1,9 @@
-#import "FwiCore.h"
 #import "NSString+FwiExtension.h"
+#import "FwiCore.h"
 
 
 @implementation UIView (FwiExtension)
 
-
-- (BOOL)rootView:(UIView *)rootView isKindOfClasses:(Class)class, ... NS_REQUIRES_NIL_TERMINATION {
-    if (self == nil || self == rootView || !rootView) return NO;
-    
-    // Define block to validate class instance
-    BOOL(^_isKindOfClasses)(UIView *, Class, va_list) = ^BOOL(UIView *view, Class class, va_list classes) {
-        if ([view isKindOfClass:class]) return YES;
-        
-        while ((class = va_arg(classes, Class))) {
-            if ([view isKindOfClass:class]) return YES;
-        }
-        return NO;
-    };
-    
-    // Perform validation
-    BOOL flag = NO;
-    UIView *view = self;
-    while (view != nil && view != rootView) {
-        va_list classes;
-        va_start(classes, class);
-        flag = _isKindOfClasses(view, class, classes);
-        va_end(classes);
-        
-        if (flag) break;
-        else view = view.superview;
-    }
-    
-    FwiRelease(_isKindOfClasses);
-    return flag;
-}
 
 - (__autoreleasing UIImage *)createImage {
     /* Condition validation */

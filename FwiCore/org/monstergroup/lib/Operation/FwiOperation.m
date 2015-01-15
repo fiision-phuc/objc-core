@@ -1,5 +1,6 @@
 #import <sys/utsname.h>
 #import "FwiOperation.h"
+#import "FwiCore.h"
 
 
 @interface FwiOperation () {
@@ -151,9 +152,6 @@ static NSOperationQueue *_OperationQueue;
 
 #pragma mark - NSOperation's members
 - (BOOL)isAsynchronous {    // Supported from iOS 7+
-    return YES;
-}
-- (BOOL)isConcurrent {      // Predecated, but need for iOS 6
     return YES;
 }
 - (BOOL)isExecuting {

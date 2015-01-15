@@ -1,4 +1,5 @@
 #import "NSString+FwiBase64.h"
+#import "FwiCore.h"
 
 
 @implementation NSString (FwiBase64)

@@ -5,7 +5,7 @@
 //  Created date: 11/20/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2014 Monster Group.
+//  Copyright (C) 2012, 2015 Monster Group.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -40,9 +40,6 @@
 
 
 @interface UIImage (FwiCreation)
-
-/** Load compatible image for all screen size. */
-+ (__autoreleasing UIImage *)imageWithName:(NSString *)name;
 
 /** Create a reflected image for specific view. */
 + (__autoreleasing UIImage *)reflectedImageWithView:(UIView *)view height:(NSUInteger)height;
