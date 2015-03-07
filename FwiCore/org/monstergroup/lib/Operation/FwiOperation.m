@@ -119,7 +119,7 @@ static NSOperationQueue *_OperationQueue;
         [_OperationQueue addOperation:self];
     }
 }
-- (void)executeBusiness {
+- (void)businessLogic {
     // Dummy method.
 }
 
@@ -192,7 +192,7 @@ static NSOperationQueue *_OperationQueue;
             [self didChangeValueForKey:@"isExecuting"];
             
             // Process business
-            [self executeBusiness];
+            [self businessLogic];
             
             // Terminate background task
             [self _operationCompleted];

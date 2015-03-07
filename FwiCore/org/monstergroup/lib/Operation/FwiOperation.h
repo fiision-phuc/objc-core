@@ -70,7 +70,7 @@ typedef NS_ENUM(NSInteger, FwiOPState) {
 /** Execute this operation. */
 - (void)execute;
 /** Implement business logic. */
-- (void)executeBusiness;
+- (void)businessLogic;
 
 @end
 

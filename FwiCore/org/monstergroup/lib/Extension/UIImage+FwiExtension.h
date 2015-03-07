@@ -56,4 +56,6 @@
 - (__autoreleasing UIImage *)lightBlur;
 - (__autoreleasing UIImage *)lightBlurWithRadius:(CGFloat)radius saturationFactor:(CGFloat)saturationFactor;
 
+- (__autoreleasing UIImage *)blurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationFactor:(CGFloat)saturationFactor;
+
 @end

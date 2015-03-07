@@ -63,7 +63,7 @@
 
 
 - (__autoreleasing UIImage *)darkBlur {
-    return [self darkBlurWithRadius:20.0f saturationFactor:1.9f];
+    return [self darkBlurWithRadius:20.0f saturationFactor:1.0f];
 }
 - (__autoreleasing UIImage *)darkBlurWithRadius:(CGFloat)radius saturationFactor:(CGFloat)saturationFactor {
     __autoreleasing UIColor *tintColor = [UIColor colorWithWhite:0.1f alpha:0.5f];
@@ -71,15 +71,13 @@
 }
 
 - (__autoreleasing UIImage *)lightBlur {
-    return [self lightBlurWithRadius:20.0f saturationFactor:1.9f];
+    return [self lightBlurWithRadius:20.0f saturationFactor:1.0f];
 }
 - (__autoreleasing UIImage *)lightBlurWithRadius:(CGFloat)radius saturationFactor:(CGFloat)saturationFactor {
     __autoreleasing UIColor *tintColor = [UIColor colorWithWhite:1.0f alpha:0.5f];
     return [self blurWithRadius:radius tintColor:tintColor saturationFactor:saturationFactor];
 }
 
-
-#pragma mark - Class's private methods
 - (__autoreleasing UIImage *)blurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationFactor:(CGFloat)saturationFactor {
     CGRect imageRect = CGRectMake(0.0f, 0.0f, self.size.width, self.size.height);
     __autoreleasing UIImage *effectImage = self;
