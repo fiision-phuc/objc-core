@@ -1,11 +1,11 @@
 //  Project name: FwiCore
-//  File name   : NSString+FwiBase64.h
+//  File name   : NSData+FwiHex.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 1/7/14
+//  Created date: 1/25/14
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,24 +32,24 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
 #import <Foundation/Foundation.h>
 
 
-@interface NSString (FwiBase64)
+@interface NSData (FwiHex)
 
-/** Validate base64. */
-- (BOOL)isBase64;
-    
-/** Decode base64. */
-- (__autoreleasing NSData *)decodeBase64Data;
-- (__autoreleasing NSString *)decodeBase64String;
-    
-/** Encode base64. */
-- (__autoreleasing NSData *)encodeBase64Data;
-- (__autoreleasing NSString *)encodeBase64String;
+/** Validate Hex. */
+- (BOOL)isHex;
+
+/** Decode Hex. */
+- (__autoreleasing NSData *)decodeHexData;
+- (__autoreleasing NSString *)decodeHexString;
+
+/** Encode Hex. */
+- (__autoreleasing NSData *)encodeHexData;
+- (__autoreleasing NSString *)encodeHexString;
 
 @end

@@ -1,11 +1,11 @@
 //  Project name: FwiCore
-//  File name   : FwiOperation.h
+//  File name   : NSData+FwiBase64.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 11/4/12
+//  Created date: 1/7/14
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,65 +32,24 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
 #import <Foundation/Foundation.h>
 
 
-typedef NS_ENUM(NSInteger, FwiOPState) {
-    kOPState_Initialize = 0x00,
-    kOPState_Cancelled  = 0x01,
-    kOPState_Error      = 0x02,
-    kOPState_Executing	= 0x03,
-    kOPState_Finished	= 0x04
-};  // Operation stage
+@interface NSData (FwiBase64)
 
+/** Validate base64. */
+- (BOOL)isBase64;
 
-@protocol FwiOperationDelegate;
-
-
-@interface FwiOperation : NSOperation {
-
-@protected
-    NSDictionary *_userInfo;
-    FwiOPState   _state;
-}
-
-@property (nonatomic, weak) id delegate;
-@property (nonatomic, strong) NSString *identifier;
-@property (nonatomic, assign, getter=isLongOperation) BOOL longOperation;
-
-
-/** Provide gateway to access to internal operationQueue. */
-+ (NSOperationQueue *)operationQueue;
-
-
-/** Execute this operation. */
-- (void)execute;
-/** Implement business logic. */
-- (void)businessLogic;
-
-@end
-
-
-@interface FwiOperation (FwiOperationExtension)
-
-/** Execute with completion block. */
-- (void)executeWithCompletion:(void(^)(void))completion;
-
-@end
-
-
-@protocol FwiOperationDelegate <NSObject>
-
-@optional
-/** Notify delegate this operation will start. */
-- (void)operationWillStart:(FwiOperation *)operation;
-/** Notify delegate this operation was cancelled. */
-- (void)operationDidCancel:(FwiOperation *)operation;
-/** Notify delegate that this operation finished. */
-- (void)operation:(FwiOperation *)operation didFinishWithStage:(FwiOPState)stage userInfo:(NSDictionary *)userInfo;
+/** Decode base64. */
+- (__autoreleasing NSData *)decodeBase64Data;
+- (__autoreleasing NSString *)decodeBase64String;
+    
+/** Encode base64. */
+- (__autoreleasing NSData *)encodeBase64Data;
+- (__autoreleasing NSString *)encodeBase64String;
 
 @end

@@ -1,11 +1,11 @@
 //  Project name: FwiCore
-//  File name   : UIButton+FwiExtension.h
+//  File name   : NSDictionary+FwiExtension.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 9/23/12
+//  Created date: 9/30/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,19 +32,30 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 
-@interface UIButton (FwiExtension)
+@interface NSDictionary (FwiCreation)
 
-/** Apply background to button. */
-- (void)applyBackgroundImage:(NSString *)imageName withEdgeInsets:(UIEdgeInsets)edgeInsets;
+/** Load content of plist file and return as dictionary. */
++ (__autoreleasing NSDictionary *)loadPlist:(NSString *)plistname;
++ (__autoreleasing NSDictionary *)loadPlist:(NSString *)plistname bundle:(NSBundle *)bundle;
 
-/** Apply image to button. */
-- (void)applyImage:(NSString *)imageName;
+@end
+
+
+@interface NSDictionary (FwiExtension)
+
+/** Search for an object at specific path. */
+- (__autoreleasing id)objectWithPath:(NSString *)path;
+
+/** Convert current mutable dictionary to dictionary. */
+- (__autoreleasing NSDictionary *)toDictionary;
+/** Convert current dictionary to mutable dictionary. */
+- (__autoreleasing NSMutableDictionary *)toMutableDictionary;
 
 @end

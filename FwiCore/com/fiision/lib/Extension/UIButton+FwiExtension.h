@@ -1,11 +1,11 @@
 //  Project name: FwiCore
-//  File name   : NSString+FwiHex.h
+//  File name   : UIButton+FwiExtension.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 1/25/14
+//  Created date: 9/23/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,24 +32,19 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 
-@interface NSString (FwiHex)
+@interface UIButton (FwiExtension)
 
-/** Validate Hex. */
-- (BOOL)isHex;
+/** Apply background to button. */
+- (void)applyBackgroundImage:(NSString *)imageName withEdgeInsets:(UIEdgeInsets)edgeInsets;
 
-/** Decode Hex. */
-- (__autoreleasing NSData *)decodeHexData;
-- (__autoreleasing NSString *)decodeHexString;
-
-/** Encode Hex. */
-- (__autoreleasing NSData *)encodeHexData;
-- (__autoreleasing NSString *)encodeHexString;
+/** Apply image to button. */
+- (void)applyImage:(NSString *)imageName;
 
 @end

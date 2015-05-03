@@ -13,10 +13,20 @@
 - (__autoreleasing UIImage *)createImageWithScaleFactor:(CGFloat)scaleFactor {
     /* Condition validation */
     if (!self) return nil;
-    
     UIGraphicsBeginImageContextWithOptions(self.bounds.size, NO, scaleFactor);
+
+    // Translate graphic context to offset before render if view is table view
+    if ([self isKindOfClass:[UITableView class]]) {
+        _weak UITableView *tableView = (UITableView *)self;
+        CGPoint contentOffset = tableView.contentOffset;
+
+        CGContextTranslateCTM(UIGraphicsGetCurrentContext(), contentOffset.x, -contentOffset.y);
+    }
+
+    // Render view
     [[self layer] renderInContext:UIGraphicsGetCurrentContext()];
-    
+
+    // Create image
     __autoreleasing UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     return image;

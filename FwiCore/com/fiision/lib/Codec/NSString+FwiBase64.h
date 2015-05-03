@@ -1,11 +1,11 @@
 //  Project name: FwiCore
-//  File name   : UIView+FwiExtension.h
+//  File name   : NSString+FwiBase64.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 9/23/12
+//  Created date: 1/7/14
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,29 +32,24 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 
-@interface UIView (FwiExtension)
+@interface NSString (FwiBase64)
 
-/** Create image from current view. */
-- (__autoreleasing UIImage *)createImage;
-- (__autoreleasing UIImage *)createImageWithScaleFactor:(CGFloat)scaleFactor;
-
-/** Create image from region of interest. */
-- (__autoreleasing UIImage *)createImageWithROI:(CGRect)roiRect;
-- (__autoreleasing UIImage *)createImageWithROI:(CGRect)roiRect scaleFactor:(CGFloat)scaleFactor;
-
-/** Find first responder within tree views. */
-- (__autoreleasing UIView *)findFirstResponder;
-/** Find and resign first responder within tree views. */
-- (void)findAndResignFirstResponder;
-
-/** Round corner of an UIView with specific radius. */
-- (void)roundCorner:(CGFloat)radius;
+/** Validate base64. */
+- (BOOL)isBase64;
+    
+/** Decode base64. */
+- (__autoreleasing NSData *)decodeBase64Data;
+- (__autoreleasing NSString *)decodeBase64String;
+    
+/** Encode base64. */
+- (__autoreleasing NSData *)encodeBase64Data;
+- (__autoreleasing NSString *)encodeBase64String;
 
 @end

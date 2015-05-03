@@ -5,7 +5,7 @@
 //  Created date: 9/21/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,7 +32,7 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
@@ -59,21 +59,13 @@
 
 #define FwiReleaseCF(o)                 if(o) { CFRelease(o); o = nil; }
 
+
 // Logger
 #ifdef DEBUG
     #define DLog(...)                   NSLog(@"\n%s %@\n\n", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
 #else
     #define DLog(...)                   do { } while (0)
 #endif
-
-// Color Converter
-#define FwiColorWithRGB(rgb)            [UIColor colorWithRed:((float)((rgb & 0xFF0000) >> 16))/255.0f green:((float)((rgb & 0xFF00) >> 8))/255.0f blue:((float)(rgb & 0xFF))/255.0f alpha:1.0f]
-#define FwiColorWithRGBA(rgba)          [UIColor colorWithRed:((float)((rgba & 0xFF000000) >> 24))/255.0f green:((float)((rgba & 0x00FF0000) >> 16))/255.0f blue:((float)((rgba & 0x0000FF00) >> 8))/255.0f alpha:((float)(rgba & 0x000000FF))/255.0f]
-
-// Define degree/radians value
-#define kDegreeToRadian                 0.0174532925199432957
-#define kRadianToDegree                 57.295779513082320876
-#define kCircle                         6.28319 // (360 degree)
 
 
 // Foundation
@@ -91,8 +83,30 @@
 #import "UIButton+FwiExtension.h"
 #import "UIImage+FwiExtension.h"
 #import "UIView+FwiExtension.h"
+// i18n
+#import "FwiLocalization.h"
 // Operation
 #import "FwiOperation.h"
+// Reachability
+#import "FwiReachability.h"
+
+
+// i18n
+#define FwiLocalizedReset()             [[FwiLocalization sharedInstance] reset]
+#define FwiLocalizedLocale()            [[FwiLocalization sharedInstance] locale]
+#define FwiLocalizedSetLocale(locale)   [[FwiLocalization sharedInstance] setLocale:locale]
+#define FwiLocalizedString(key)         [[FwiLocalization sharedInstance] localizedForString:key alternative:key]
+
+
+// Color Converter
+#define FwiColorWithRGB(rgb)            [UIColor colorWithRed:((float)((rgb & 0xFF0000) >> 16))/255.0f green:((float)((rgb & 0xFF00) >> 8))/255.0f blue:((float)(rgb & 0xFF))/255.0f alpha:1.0f]
+#define FwiColorWithRGBA(rgba)          [UIColor colorWithRed:((float)((rgba & 0xFF000000) >> 24))/255.0f green:((float)((rgba & 0x00FF0000) >> 16))/255.0f blue:((float)((rgba & 0x0000FF00) >> 8))/255.0f alpha:((float)(rgba & 0x000000FF))/255.0f]
+
+
+// Define degree/radians value
+#define kDegreeToRadian                 0.0174532925199432957
+#define kRadianToDegree                 57.295779513082320876
+#define kCircle                         6.28319 // (360 degree)
 
 
 // Define converter macro functions

@@ -1,11 +1,11 @@
 //  Project name: FwiCore
-//  File name   : NSString+FwiExtension.h
+//  File name   : NSNumber+FwiExtension.h
 //
 //  Author      : Phuc, Tran Huu
 //  Created date: 9/23/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,43 +32,19 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
 #import <Foundation/Foundation.h>
 
 
-@interface NSString (FwiCreation)
+@interface NSNumber (FwiExtension)
 
-/** Generate random identifier base on uuid. */
-+ (__autoreleasing NSString *)randomIdentifier;
-
-/** Generate timestamp string. */
-+ (__autoreleasing NSString *)timestamp;
-
-@end
-
-
-@interface NSString (FwiExtension)
-
-/** Compare 2 string regardless case sensitive. */
-- (BOOL)isEqualToStringIgnoreCase:(NSString *)otherString;
-
-/** Validate string. */
-- (BOOL)matchPattern:(NSString *)pattern;
-- (BOOL)matchPattern:(NSString *)pattern option:(NSRegularExpressionOptions)option;
-
-/** Convert string to data. */
-- (__autoreleasing NSData *)toData;
-- (__autoreleasing NSData *)toDataWithEncoding:(NSStringEncoding)encoding;
-
-/** Convert html string compatible to string. */
-- (__autoreleasing NSString *)decodeHTML;
-/** Convert string to html string compatible. */
-- (__autoreleasing NSString *)encodeHTML;
-
-/** Trim all spaces before and after a string. */
-- (__autoreleasing NSString *)trim;
+/** Display number to specific currency format. */
+- (__autoreleasing NSString *)currencyWithISO3:(NSString *)currencyISO3
+                              decimalSeparator:(NSString *)decimalSeparator
+                             groupingSeparator:(NSString *)groupingSeparator
+                                   usingSymbol:(BOOL)usingSymbol;
 
 @end

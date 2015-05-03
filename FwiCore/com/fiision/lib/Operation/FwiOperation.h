@@ -1,11 +1,11 @@
 //  Project name: FwiCore
-//  File name   : NSData+FwiExtension.h
+//  File name   : FwiOperation.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 9/23/12
+//  Created date: 11/4/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,29 +32,65 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
 #import <Foundation/Foundation.h>
 
 
-@interface NSData (FwiExtension)
+typedef NS_ENUM(NSInteger, FwiOPState) {
+    kOPState_Initialize = 0x00,
+    kOPState_Cancelled  = 0x01,
+    kOPState_Error      = 0x02,
+    kOPState_Executing	= 0x03,
+    kOPState_Finished	= 0x04
+};  // Operation stage
 
-/** Zip/Unzip data. */
-- (__autoreleasing NSData *)zip;
-- (__autoreleasing NSData *)unzip;
 
-/** Convert data to utf8 string. */
-- (__autoreleasing NSString *)toString;
+@protocol FwiOperationDelegate;
 
-/** Convert data to string base on string encoding type. */
-- (__autoreleasing NSString *)toStringWithEncoding:(NSStringEncoding)encoding;
 
-/** Clear all bytes data. */
-- (void)clearBytes;
+@interface FwiOperation : NSOperation {
 
-/** Reverse the order of bytes. */
-- (void)reverseBytes;
+@protected
+    NSDictionary *_userInfo;
+    FwiOPState   _state;
+}
+
+@property (nonatomic, weak) id delegate;
+@property (nonatomic, strong) NSString *identifier;
+@property (nonatomic, assign, getter=isLongOperation) BOOL longOperation;
+
+
+/** Provide gateway to access to internal operationQueue. */
++ (NSOperationQueue *)operationQueue;
+
+
+/** Execute this operation. */
+- (void)execute;
+/** Implement business logic. */
+- (void)businessLogic;
+
+@end
+
+
+@interface FwiOperation (FwiOperationExtension)
+
+/** Execute with completion block. */
+- (void)executeWithCompletion:(void(^)(void))completion;
+
+@end
+
+
+@protocol FwiOperationDelegate <NSObject>
+
+@optional
+/** Notify delegate this operation will start. */
+- (void)operationWillStart:(FwiOperation *)operation;
+/** Notify delegate this operation was cancelled. */
+- (void)operationDidCancel:(FwiOperation *)operation;
+/** Notify delegate that this operation finished. */
+- (void)operation:(FwiOperation *)operation didFinishWithStage:(FwiOPState)stage userInfo:(NSDictionary *)userInfo;
 
 @end

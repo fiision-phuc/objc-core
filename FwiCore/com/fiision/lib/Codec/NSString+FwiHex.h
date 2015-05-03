@@ -1,11 +1,11 @@
 //  Project name: FwiCore
-//  File name   : UIImage+FwiExtension.h
+//  File name   : NSString+FwiHex.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 11/20/12
+//  Created date: 1/25/14
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,30 +32,24 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 
-@interface UIImage (FwiCreation)
+@interface NSString (FwiHex)
 
-/** Create a reflected image for specific view. */
-+ (__autoreleasing UIImage *)reflectedImageWithView:(UIView *)view height:(NSUInteger)height;
+/** Validate Hex. */
+- (BOOL)isHex;
 
-@end
+/** Decode Hex. */
+- (__autoreleasing NSData *)decodeHexData;
+- (__autoreleasing NSString *)decodeHexString;
 
-
-@interface UIImage (FwiExtension)
-
-/** Create blur effect image from original source. */
-- (__autoreleasing UIImage *)darkBlur;
-- (__autoreleasing UIImage *)darkBlurWithRadius:(CGFloat)radius saturationFactor:(CGFloat)saturationFactor;
-
-- (__autoreleasing UIImage *)lightBlur;
-- (__autoreleasing UIImage *)lightBlurWithRadius:(CGFloat)radius saturationFactor:(CGFloat)saturationFactor;
-
-- (__autoreleasing UIImage *)blurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationFactor:(CGFloat)saturationFactor;
+/** Encode Hex. */
+- (__autoreleasing NSData *)encodeHexData;
+- (__autoreleasing NSString *)encodeHexString;
 
 @end

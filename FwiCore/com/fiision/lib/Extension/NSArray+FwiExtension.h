@@ -1,11 +1,11 @@
 //  Project name: FwiCore
-//  File name   : NSURL+FwiExtension.h
+//  File name   : NSArray+FwiExtension.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 3/23/13
+//  Created date: 9/30/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,16 +32,21 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
 #import <Foundation/Foundation.h>
 
 
-@interface NSURL (FwiCreation)
+@interface NSArray (FwiExtension)
 
-/** URL to main document folder. */
-+ (__autoreleasing NSURL *)documentDirectory;
+/** Search for an object at specific path. */
+- (__autoreleasing id)objectWithPath:(NSString *)path;
+
+/** Convert current mutable array to array. */
+- (__autoreleasing NSArray *)toArray;
+/** Convert current array to mutable array. */
+- (__autoreleasing NSMutableArray *)toMutableArray;
 
 @end

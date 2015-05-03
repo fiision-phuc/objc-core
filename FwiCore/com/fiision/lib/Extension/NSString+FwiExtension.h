@@ -1,11 +1,11 @@
 //  Project name: FwiCore
-//  File name   : NSData+FwiBase64.h
+//  File name   : NSString+FwiExtension.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 1/7/14
+//  Created date: 9/23/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Monster Group.
+//  Copyright (C) 2012, 2015 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -32,24 +32,43 @@
 //  __________
 //  Although reasonable care has been taken to  ensure  the  correctness  of  this
 //  software, this software should never be used in any application without proper
-//  testing. Monster Group  disclaim  all  liability  and  responsibility  to  any
+//  testing. Fiision Studio disclaim  all  liability  and  responsibility  to  any
 //  person or entity with respect to any loss or damage caused, or alleged  to  be
 //  caused, directly or indirectly, by the use of this software.
 
 #import <Foundation/Foundation.h>
 
 
-@interface NSData (FwiBase64)
+@interface NSString (FwiCreation)
 
-/** Validate base64. */
-- (BOOL)isBase64;
+/** Generate random identifier base on uuid. */
++ (__autoreleasing NSString *)randomIdentifier;
 
-/** Decode base64. */
-- (__autoreleasing NSData *)decodeBase64Data;
-- (__autoreleasing NSString *)decodeBase64String;
-    
-/** Encode base64. */
-- (__autoreleasing NSData *)encodeBase64Data;
-- (__autoreleasing NSString *)encodeBase64String;
+/** Generate timestamp string. */
++ (__autoreleasing NSString *)timestamp;
+
+@end
+
+
+@interface NSString (FwiExtension)
+
+/** Compare 2 string regardless case sensitive. */
+- (BOOL)isEqualToStringIgnoreCase:(NSString *)otherString;
+
+/** Validate string. */
+- (BOOL)matchPattern:(NSString *)pattern;
+- (BOOL)matchPattern:(NSString *)pattern option:(NSRegularExpressionOptions)option;
+
+/** Convert string to data. */
+- (__autoreleasing NSData *)toData;
+- (__autoreleasing NSData *)toDataWithEncoding:(NSStringEncoding)encoding;
+
+/** Convert html string compatible to string. */
+- (__autoreleasing NSString *)decodeHTML;
+/** Convert string to html string compatible. */
+- (__autoreleasing NSString *)encodeHTML;
+
+/** Trim all spaces before and after a string. */
+- (__autoreleasing NSString *)trim;
 
 @end
