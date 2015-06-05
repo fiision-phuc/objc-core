@@ -50,7 +50,7 @@
     
     CGContextTranslateCTM(UIGraphicsGetCurrentContext(), -roiRect.origin.x, -roiRect.origin.y);
     [self.layer renderInContext:UIGraphicsGetCurrentContext()];
-    
+
     __autoreleasing UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     
