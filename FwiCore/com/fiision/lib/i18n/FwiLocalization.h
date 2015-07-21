@@ -42,6 +42,7 @@
 @interface FwiLocalization : NSObject {
 }
 
+@property (nonatomic, strong) NSBundle *bundle;
 @property (nonatomic, strong) NSString *locale;
 
 

@@ -4,8 +4,6 @@
 @interface FwiLocalization () {
 }
 
-@property (nonatomic, strong) NSBundle *bundle;
-
 
 @end
 
@@ -43,7 +41,7 @@ static FwiLocalization *_SharedInstance = nil;
 
 #pragma mark - Class's properties
 - (NSString *)locale {
-    return nil;
+    return _locale;
 }
 - (void)setLocale:(NSString *)locale {
     FwiRelease(_locale);
@@ -60,6 +58,9 @@ static FwiLocalization *_SharedInstance = nil;
         [self reset];
     }
     else {
+        [[NSUserDefaults standardUserDefaults] setObject:@[_locale] forKey:@"AppleLanguages"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        
         self.bundle = [NSBundle bundleWithPath:[path stringByDeletingLastPathComponent]];
     }
 }
