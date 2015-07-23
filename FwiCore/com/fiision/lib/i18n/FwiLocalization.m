@@ -54,7 +54,7 @@ static FwiLocalization *_SharedInstance = nil;
                                                             forLocalization:locale];
 
     // Set new bundle
-    if (!path) {
+    if (!_locale || !path) {
         [self reset];
     }
     else {
