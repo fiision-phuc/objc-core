@@ -82,6 +82,8 @@
 // UIKit
 #import "UIButton+FwiExtension.h"
 #import "UIImage+FwiExtension.h"
+#import "UINavigationController+FwiExtension.h"
+#import "UITabBarController+FwiExtension.h"
 #import "UIView+FwiExtension.h"
 // i18n
 #import "FwiLocalization.h"
