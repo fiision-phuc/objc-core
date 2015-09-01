@@ -68,6 +68,12 @@
 #endif
 
 
+// Define degree/radians value
+#define kDegreeToRadian                 0.0174532925199432957
+#define kRadianToDegree                 57.295779513082320876
+#define kCircle                         6.28319 // (360 degree)
+
+
 // Foundation
 #import "NSArray+FwiExtension.h"
 #import "NSData+FwiExtension.h"
@@ -94,21 +100,32 @@
 
 
 // i18n
-#define FwiLocalizedReset()             [[FwiLocalization sharedInstance] reset]
-#define FwiLocalizedLocale()            [[FwiLocalization sharedInstance] locale]
-#define FwiLocalizedSetLocale(locale)   [[FwiLocalization sharedInstance] setLocale:locale]
-#define FwiLocalizedString(key)         [[FwiLocalization sharedInstance] localizedForString:key alternative:key]
-
+static inline void FwiLocalizedReset() {
+    [[FwiLocalization sharedInstance] reset];
+}
+static inline NSString* FwiLocalizedLocale() {
+    return [[FwiLocalization sharedInstance] locale];
+}
+static inline void FwiLocalizedSetLocale(NSString *locale) {
+    [[FwiLocalization sharedInstance] setLocale:locale];
+}
+static inline NSString* FwiLocalizedString(NSString *key) {
+    return [[FwiLocalization sharedInstance] localizedForString:key alternative:key];
+}
 
 // Color Converter
-#define FwiColorWithRGB(rgb)            [UIColor colorWithRed:((float)((rgb & 0xFF0000) >> 16))/255.0f green:((float)((rgb & 0xFF00) >> 8))/255.0f blue:((float)(rgb & 0xFF))/255.0f alpha:1.0f]
-#define FwiColorWithRGBA(rgba)          [UIColor colorWithRed:((float)((rgba & 0xFF000000) >> 24))/255.0f green:((float)((rgba & 0x00FF0000) >> 16))/255.0f blue:((float)((rgba & 0x0000FF00) >> 8))/255.0f alpha:((float)(rgba & 0x000000FF))/255.0f]
-
-
-// Define degree/radians value
-#define kDegreeToRadian                 0.0174532925199432957
-#define kRadianToDegree                 57.295779513082320876
-#define kCircle                         6.28319 // (360 degree)
+static inline UIColor* FwiColorWithRGB(NSUInteger rgb) {
+    return [UIColor colorWithRed:((float)((rgb & 0xFF0000) >> 16))/255.0f
+                           green:((float)((rgb & 0xFF00) >> 8))/255.0f
+                            blue:((float)(rgb & 0xFF))/255.0f
+                           alpha:1.0f];
+}
+static inline UIColor* FwiColorWithRGBA(NSUInteger rgba) {
+    return [UIColor colorWithRed:((float)((rgba & 0xFF000000) >> 24))/255.0f
+                           green:((float)((rgba & 0x00FF0000) >> 16))/255.0f
+                            blue:((float)((rgba & 0x0000FF00) >> 8))/255.0f
+                           alpha:((float)(rgba & 0x000000FF))/255.0f];
+}
 
 
 // Define converter macro functions

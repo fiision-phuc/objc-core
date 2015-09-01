@@ -39,7 +39,7 @@
 #import <Foundation/Foundation.h>
 
 
-extern NSString *kNotification_ReachabilityStateChanged;
+FOUNDATION_EXPORT NSString *kNotification_ReachabilityStateChanged;
 
 
 typedef NS_ENUM(NSInteger, FwiReachabilityState) {

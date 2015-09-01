@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, FwiOPState) {
 
 @protected
     NSDictionary *_userInfo;
-    FwiOPState   _state;
+    FwiOPState _state;
 }
 
 @property (nonatomic, weak) id delegate;
