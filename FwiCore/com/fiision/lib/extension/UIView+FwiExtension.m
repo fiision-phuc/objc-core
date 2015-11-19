@@ -60,7 +60,7 @@
 - (__autoreleasing UIView *)findFirstResponder {
     /* Condition validation */
     if (!self) return nil;
-    if ([self isFirstResponder]) return self;
+    if ([self isFirstResponder] && ![self isKindOfClass:[UITableViewCell class]] && ![self isKindOfClass:[UICollectionViewCell class]]) return self;
     
 	// Find and resign first responder
     __autoreleasing NSArray *views = [self subviews];
