@@ -5,7 +5,7 @@
 //  Created date: 9/21/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
-//  Copyright (C) 2012, 2015 Fiision Studio.
+//  Copyright © 2012, 2016 Fiision Studio.
 //  All Rights Reserved.
 //  --------------------------------------------------------------
 //
@@ -98,7 +98,9 @@ static inline double FwiConvertToRadian(double degree) {
 #import "NSData+FwiBase64.h"
 #import "NSString+FwiBase64.h"
 #import "NSData+FwiHex.h"
+#import "NSString+FwiHex.h"
 // UIKit
+#import "UIApplication+FwiApplication.h"
 #import "UIButton+FwiExtension.h"
 #import "UIColor+FwiExtension.h"
 #import "UIImage+FwiExtension.h"

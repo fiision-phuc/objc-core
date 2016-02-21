@@ -1,8 +1,8 @@
 //  Project name: FwiCore
-//  File name   : UIView+FwiExtension.h
+//  File name   : UIApplication+FwiApplication.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 9/23/12
+//  Created date: 2/21/16
 //  Version     : 1.20
 //  --------------------------------------------------------------
 //  Copyright © 2012, 2016 Fiision Studio.
@@ -39,22 +39,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface UIView (FwiExtension)
+@interface UIApplication (FwiApplication)
 
-/** Create image from current view. */
-- (__autoreleasing UIImage *)createImage;
-- (__autoreleasing UIImage *)createImageWithScaleFactor:(CGFloat)scaleFactor;
-
-/** Create image from region of interest. */
-- (__autoreleasing UIImage *)createImageWithROI:(CGRect)roiRect;
-- (__autoreleasing UIImage *)createImageWithROI:(CGRect)roiRect scaleFactor:(CGFloat)scaleFactor;
-
-/** Find first responder within tree views. */
-- (__autoreleasing UIView *)findFirstResponder;
-/** Find and resign first responder within tree views. */
-- (void)findAndResignFirstResponder;
-
-/** Round corner of an UIView with specific radius. */
-- (void)roundCorner:(CGFloat)radius;
+/** Enable remote notification. */
+- (void)enableRemoteNotification;
 
 @end
