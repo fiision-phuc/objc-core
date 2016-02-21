@@ -1,8 +1,8 @@
 //  Project name: FwiCore
-//  File name   : FwiLocalization.h
+//  File name   : FwiNetworkManager.h
 //
-//  Author      : Phuc Tran
-//  Created date: 4/13/15
+//  Author      : Phuc, Tran Huu
+//  Created date: 4/13/14
 //  Version     : 1.20
 //  --------------------------------------------------------------
 //  Copyright (C) 2012, 2015 Fiision Studio.
@@ -39,24 +39,29 @@
 #import <Foundation/Foundation.h>
 
 
-@interface FwiLocalization : NSObject {
+@interface FwiNetworkManager : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate/*, NSURLSessionDownloadDelegate (Should be implemented by receiver)*/> {
+    
+@private
+    NSURLSession *_session;
+    NSURLSessionConfiguration *_configuration;
 }
 
-@property (nonatomic, strong) NSBundle *bundle;
-@property (nonatomic, strong) NSString *locale;
 
+/** Generate generic HTTP Request. */
+- (__autoreleasing NSURLRequest *)prepareRequestWithURL:(NSURL *)url method:(FwiHttpMethod)method;
+- (__autoreleasing NSURLRequest *)prepareRequestWithURL:(NSURL *)url method:(FwiHttpMethod)method params:(NSDictionary *)params;
 
-/** Find localize text for text. */
-- (__autoreleasing NSString *)localizedForString:(NSString *)string alternative:(NSString *)alternative;
-/** Reset localize to default. */
-- (void)reset;
+/** Send request to server. */
+- (void)sendRequest:(NSURLRequest *)request completion:(void(^)(NSData *data, NSError *error, NSInteger statusCode))completion;
+/** Download resource from server. */
+- (void)downloadResource:(NSURLRequest *)request completion:(void(^)(NSURL *location, NSError *error, NSInteger statusCode))completion;
 
 @end
 
 
-@interface FwiLocalization (FwiLocalizationCreation)
+@interface FwiNetworkManager (FwiNetworkManagerSingleton)
 
-// Class's static constructors
-+ (__weak FwiLocalization *)sharedInstance;
+/** Get singleton network manager. */
++ (__weak FwiNetworkManager *)sharedInstance;
 
 @end

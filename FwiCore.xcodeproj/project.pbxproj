@@ -25,25 +25,25 @@
 		BE142F131A6502B000C731EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE142F111A6502B000C731EF /* InfoPlist.strings */; };
 		BE142F1D1A6502CF00C731EF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142F1C1A6502CF00C731EF /* XCTest.framework */; };
 		BE142F581A65064900C731EF /* libFwiCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208B5D16E9B091004E0F54 /* libFwiCore.a */; };
-		BE15E37D1BBBB83E004722A6 /* NSArray+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3661BBBB83E004722A6 /* NSArray+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E37E1BBBB83E004722A6 /* NSData+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3681BBBB83E004722A6 /* NSData+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E37F1BBBB83E004722A6 /* NSDictionary+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E36A1BBBB83E004722A6 /* NSDictionary+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E3801BBBB83E004722A6 /* NSNumber+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E36C1BBBB83E004722A6 /* NSNumber+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E3811BBBB83E004722A6 /* NSString+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E36E1BBBB83E004722A6 /* NSString+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E3821BBBB83E004722A6 /* NSURL+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3701BBBB83E004722A6 /* NSURL+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E3831BBBB83E004722A6 /* UIButton+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3721BBBB83E004722A6 /* UIButton+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E3841BBBB83E004722A6 /* UIColor+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3741BBBB83E004722A6 /* UIColor+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E3851BBBB83E004722A6 /* UIImage+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3761BBBB83E004722A6 /* UIImage+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E3861BBBB83E004722A6 /* UINavigationController+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3781BBBB83E004722A6 /* UINavigationController+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E3871BBBB83E004722A6 /* UITabBarController+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E37A1BBBB83E004722A6 /* UITabBarController+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE15E3881BBBB83E004722A6 /* UIView+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E37C1BBBB83E004722A6 /* UIView+FwiExtension.m */; settings = {ASSET_TAGS = (); }; };
-		BE1D81561BB0F2870036D2A7 /* NSData+FwiBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D812E1BB0F2870036D2A7 /* NSData+FwiBase64.m */; settings = {ASSET_TAGS = (); }; };
-		BE1D81571BB0F2870036D2A7 /* NSData+FwiHex.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D81301BB0F2870036D2A7 /* NSData+FwiHex.m */; settings = {ASSET_TAGS = (); }; };
-		BE1D81581BB0F2870036D2A7 /* NSString+FwiBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D81321BB0F2870036D2A7 /* NSString+FwiBase64.m */; settings = {ASSET_TAGS = (); }; };
-		BE1D81591BB0F2870036D2A7 /* NSString+FwiHex.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D81341BB0F2870036D2A7 /* NSString+FwiHex.m */; settings = {ASSET_TAGS = (); }; };
-		BE1D81651BB0F2870036D2A7 /* FwiLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D814F1BB0F2870036D2A7 /* FwiLocalization.m */; settings = {ASSET_TAGS = (); }; };
-		BE1D81661BB0F2870036D2A7 /* FwiOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D81521BB0F2870036D2A7 /* FwiOperation.m */; settings = {ASSET_TAGS = (); }; };
-		BE1D81671BB0F2870036D2A7 /* FwiReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D81551BB0F2870036D2A7 /* FwiReachability.m */; settings = {ASSET_TAGS = (); }; };
+		BE15E37D1BBBB83E004722A6 /* NSArray+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3661BBBB83E004722A6 /* NSArray+FwiExtension.m */; };
+		BE15E37E1BBBB83E004722A6 /* NSData+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3681BBBB83E004722A6 /* NSData+FwiExtension.m */; };
+		BE15E37F1BBBB83E004722A6 /* NSDictionary+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E36A1BBBB83E004722A6 /* NSDictionary+FwiExtension.m */; };
+		BE15E3801BBBB83E004722A6 /* NSNumber+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E36C1BBBB83E004722A6 /* NSNumber+FwiExtension.m */; };
+		BE15E3811BBBB83E004722A6 /* NSString+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E36E1BBBB83E004722A6 /* NSString+FwiExtension.m */; };
+		BE15E3821BBBB83E004722A6 /* NSURL+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3701BBBB83E004722A6 /* NSURL+FwiExtension.m */; };
+		BE15E3831BBBB83E004722A6 /* UIButton+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3721BBBB83E004722A6 /* UIButton+FwiExtension.m */; };
+		BE15E3841BBBB83E004722A6 /* UIColor+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3741BBBB83E004722A6 /* UIColor+FwiExtension.m */; };
+		BE15E3851BBBB83E004722A6 /* UIImage+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3761BBBB83E004722A6 /* UIImage+FwiExtension.m */; };
+		BE15E3861BBBB83E004722A6 /* UINavigationController+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E3781BBBB83E004722A6 /* UINavigationController+FwiExtension.m */; };
+		BE15E3871BBBB83E004722A6 /* UITabBarController+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E37A1BBBB83E004722A6 /* UITabBarController+FwiExtension.m */; };
+		BE15E3881BBBB83E004722A6 /* UIView+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE15E37C1BBBB83E004722A6 /* UIView+FwiExtension.m */; };
+		BE1D81561BB0F2870036D2A7 /* NSData+FwiBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D812E1BB0F2870036D2A7 /* NSData+FwiBase64.m */; };
+		BE1D81571BB0F2870036D2A7 /* NSData+FwiHex.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D81301BB0F2870036D2A7 /* NSData+FwiHex.m */; };
+		BE1D81581BB0F2870036D2A7 /* NSString+FwiBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D81321BB0F2870036D2A7 /* NSString+FwiBase64.m */; };
+		BE1D81591BB0F2870036D2A7 /* NSString+FwiHex.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D81341BB0F2870036D2A7 /* NSString+FwiHex.m */; };
+		BE1D81651BB0F2870036D2A7 /* FwiLocalization.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D814F1BB0F2870036D2A7 /* FwiLocalization.m */; };
+		BE1D81661BB0F2870036D2A7 /* FwiOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D81521BB0F2870036D2A7 /* FwiOperation.m */; };
+		BE1D81671BB0F2870036D2A7 /* FwiReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1D81551BB0F2870036D2A7 /* FwiReachability.m */; };
 		BE208B6116E9B091004E0F54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208B6016E9B091004E0F54 /* Foundation.framework */; };
 		BE208BF816E9B8A0004E0F54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BF716E9B8A0004E0F54 /* UIKit.framework */; };
 		BE208BFA16E9B8AC004E0F54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BF916E9B8AC004E0F54 /* CoreGraphics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -63,6 +63,11 @@
 		BE261ED11A667804008521C2 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142F221A6503D300C731EF /* libz.1.2.5.dylib */; };
 		BE59FCB51817856A00A4FC6E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE59FCB41817856A00A4FC6E /* Accelerate.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE7DBB7C1AF68B760066E650 /* FwiOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7DBB7B1AF68B760066E650 /* FwiOperationTest.m */; };
+		BEF4C2C01C797A3600D23868 /* FwiNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF4C2B51C797A3600D23868 /* FwiNetworkManager.m */; };
+		BEF4C2C11C797A3600D23868 /* FwiRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF4C2B81C797A3600D23868 /* FwiRequest.m */; };
+		BEF4C2C21C797A3600D23868 /* FwiDataParam.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF4C2BB1C797A3600D23868 /* FwiDataParam.m */; };
+		BEF4C2C31C797A3600D23868 /* FwiFormParam.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF4C2BD1C797A3600D23868 /* FwiFormParam.m */; };
+		BEF4C2C41C797A3600D23868 /* FwiMultipartParam.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF4C2BF1C797A3600D23868 /* FwiMultipartParam.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +162,16 @@
 		BE59FCB41817856A00A4FC6E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BE5BF0DC1A6509C200F99FFA /* FwiCoreTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FwiCoreTests-Prefix.pch"; sourceTree = "<group>"; };
 		BE7DBB7B1AF68B760066E650 /* FwiOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiOperationTest.m; sourceTree = "<group>"; };
+		BEF4C2B41C797A3600D23868 /* FwiNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiNetworkManager.h; sourceTree = "<group>"; };
+		BEF4C2B51C797A3600D23868 /* FwiNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiNetworkManager.m; sourceTree = "<group>"; };
+		BEF4C2B71C797A3600D23868 /* FwiRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiRequest.h; sourceTree = "<group>"; };
+		BEF4C2B81C797A3600D23868 /* FwiRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiRequest.m; sourceTree = "<group>"; };
+		BEF4C2BA1C797A3600D23868 /* FwiDataParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiDataParam.h; sourceTree = "<group>"; };
+		BEF4C2BB1C797A3600D23868 /* FwiDataParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiDataParam.m; sourceTree = "<group>"; };
+		BEF4C2BC1C797A3600D23868 /* FwiFormParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiFormParam.h; sourceTree = "<group>"; };
+		BEF4C2BD1C797A3600D23868 /* FwiFormParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiFormParam.m; sourceTree = "<group>"; };
+		BEF4C2BE1C797A3600D23868 /* FwiMultipartParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiMultipartParam.h; sourceTree = "<group>"; };
+		BEF4C2BF1C797A3600D23868 /* FwiMultipartParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiMultipartParam.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +254,7 @@
 				BE1D812C1BB0F2870036D2A7 /* codec */,
 				BE1D81351BB0F2870036D2A7 /* extension */,
 				BE1D814D1BB0F2870036D2A7 /* i18n */,
+				BEF4C2B31C797A3600D23868 /* network */,
 				BE1D81501BB0F2870036D2A7 /* operation */,
 				BE1D81531BB0F2870036D2A7 /* reachability */,
 			);
@@ -384,6 +400,39 @@
 			name = Test;
 			sourceTree = "<group>";
 		};
+		BEF4C2B31C797A3600D23868 /* network */ = {
+			isa = PBXGroup;
+			children = (
+				BEF4C2B41C797A3600D23868 /* FwiNetworkManager.h */,
+				BEF4C2B51C797A3600D23868 /* FwiNetworkManager.m */,
+				BEF4C2B61C797A3600D23868 /* request */,
+				BEF4C2B91C797A3600D23868 /* request_param */,
+			);
+			path = network;
+			sourceTree = "<group>";
+		};
+		BEF4C2B61C797A3600D23868 /* request */ = {
+			isa = PBXGroup;
+			children = (
+				BEF4C2B71C797A3600D23868 /* FwiRequest.h */,
+				BEF4C2B81C797A3600D23868 /* FwiRequest.m */,
+			);
+			path = request;
+			sourceTree = "<group>";
+		};
+		BEF4C2B91C797A3600D23868 /* request_param */ = {
+			isa = PBXGroup;
+			children = (
+				BEF4C2BA1C797A3600D23868 /* FwiDataParam.h */,
+				BEF4C2BB1C797A3600D23868 /* FwiDataParam.m */,
+				BEF4C2BC1C797A3600D23868 /* FwiFormParam.h */,
+				BEF4C2BD1C797A3600D23868 /* FwiFormParam.m */,
+				BEF4C2BE1C797A3600D23868 /* FwiMultipartParam.h */,
+				BEF4C2BF1C797A3600D23868 /* FwiMultipartParam.m */,
+			);
+			path = request_param;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -505,21 +554,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE15E3851BBBB83E004722A6 /* UIImage+FwiExtension.m in Sources */,
+				BEF4C2C31C797A3600D23868 /* FwiFormParam.m in Sources */,
 				BE1D81671BB0F2870036D2A7 /* FwiReachability.m in Sources */,
 				BE15E3861BBBB83E004722A6 /* UINavigationController+FwiExtension.m in Sources */,
 				BE15E37E1BBBB83E004722A6 /* NSData+FwiExtension.m in Sources */,
 				BE1D81661BB0F2870036D2A7 /* FwiOperation.m in Sources */,
 				BE15E37F1BBBB83E004722A6 /* NSDictionary+FwiExtension.m in Sources */,
+				BEF4C2C41C797A3600D23868 /* FwiMultipartParam.m in Sources */,
 				BE1D81561BB0F2870036D2A7 /* NSData+FwiBase64.m in Sources */,
 				BE1D81581BB0F2870036D2A7 /* NSString+FwiBase64.m in Sources */,
 				BE1D81651BB0F2870036D2A7 /* FwiLocalization.m in Sources */,
+				BEF4C2C01C797A3600D23868 /* FwiNetworkManager.m in Sources */,
 				BE15E3801BBBB83E004722A6 /* NSNumber+FwiExtension.m in Sources */,
 				BE15E3841BBBB83E004722A6 /* UIColor+FwiExtension.m in Sources */,
 				BE15E3831BBBB83E004722A6 /* UIButton+FwiExtension.m in Sources */,
 				BE15E3811BBBB83E004722A6 /* NSString+FwiExtension.m in Sources */,
+				BEF4C2C21C797A3600D23868 /* FwiDataParam.m in Sources */,
 				BE1D81591BB0F2870036D2A7 /* NSString+FwiHex.m in Sources */,
 				BE15E3871BBBB83E004722A6 /* UITabBarController+FwiExtension.m in Sources */,
 				BE1D81571BB0F2870036D2A7 /* NSData+FwiHex.m in Sources */,
+				BEF4C2C11C797A3600D23868 /* FwiRequest.m in Sources */,
 				BE15E3881BBBB83E004722A6 /* UIView+FwiExtension.m in Sources */,
 				BE15E3821BBBB83E004722A6 /* NSURL+FwiExtension.m in Sources */,
 				BE15E37D1BBBB83E004722A6 /* NSArray+FwiExtension.m in Sources */,

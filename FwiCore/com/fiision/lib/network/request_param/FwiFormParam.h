@@ -1,8 +1,8 @@
 //  Project name: FwiCore
-//  File name   : FwiLocalization.h
+//  File name   : FwiFormParam.h
 //
-//  Author      : Phuc Tran
-//  Created date: 4/13/15
+//  Author      : Phuc, Tran Huu
+//  Created date: 9/23/12
 //  Version     : 1.20
 //  --------------------------------------------------------------
 //  Copyright (C) 2012, 2015 Fiision Studio.
@@ -39,24 +39,25 @@
 #import <Foundation/Foundation.h>
 
 
-@interface FwiLocalization : NSObject {
+@interface FwiFormParam : NSObject <NSCoding> {
 }
 
-@property (nonatomic, strong) NSBundle *bundle;
-@property (nonatomic, strong) NSString *locale;
+@property (nonatomic, strong) NSString *key;
+@property (nonatomic, strong) NSString *value;
 
 
-/** Find localize text for text. */
-- (__autoreleasing NSString *)localizedForString:(NSString *)string alternative:(NSString *)alternative;
-/** Reset localize to default. */
-- (void)reset;
+/** Comparison. */
+- (NSComparisonResult)compare:(FwiFormParam *)parameter;
 
 @end
 
 
-@interface FwiLocalization (FwiLocalizationCreation)
+@interface FwiFormParam (FwiFormParamCreation)
 
 // Class's static constructors
-+ (__weak FwiLocalization *)sharedInstance;
++ (__autoreleasing FwiFormParam *)paramWithKey:(NSString *)key andValue:(NSString *)value;
+
+// Class's constructors
+- (id)initWithKey:(NSString *)key andValue:(NSString *)value;
 
 @end

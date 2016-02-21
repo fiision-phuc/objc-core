@@ -9,10 +9,10 @@
     if (!self || self.count == 0) return nil;
     
     __autoreleasing NSArray *tokens = [path componentsSeparatedByString:@"/"];
-    _weak id o = self;
+    __weak id o = self;
     
     for (NSUInteger i = 0; i < [tokens count]; i++) {
-        _weak NSString *path = tokens[i];
+        __weak NSString *path = tokens[i];
         
         // Lookup object
         if ([o isKindOfClass:[NSArray class]]) {

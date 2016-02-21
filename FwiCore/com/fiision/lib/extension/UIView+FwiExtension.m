@@ -17,7 +17,7 @@
 
     // Translate graphic context to offset before render if view is table view
     if ([self isKindOfClass:[UITableView class]]) {
-        _weak UITableView *tableView = (UITableView *)self;
+        __weak UITableView *tableView = (UITableView *)self;
         CGPoint contentOffset = tableView.contentOffset;
 
         CGContextTranslateCTM(UIGraphicsGetCurrentContext(), contentOffset.x, -contentOffset.y);

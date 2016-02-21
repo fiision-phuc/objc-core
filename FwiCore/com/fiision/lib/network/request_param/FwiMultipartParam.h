@@ -1,8 +1,8 @@
 //  Project name: FwiCore
-//  File name   : FwiLocalization.h
+//  File name   : FwiMultipartParam.h
 //
-//  Author      : Phuc Tran
-//  Created date: 4/13/15
+//  Author      : Phuc, Tran Huu
+//  Created date: 5/11/14
 //  Version     : 1.20
 //  --------------------------------------------------------------
 //  Copyright (C) 2012, 2015 Fiision Studio.
@@ -39,24 +39,28 @@
 #import <Foundation/Foundation.h>
 
 
-@interface FwiLocalization : NSObject {
+@interface FwiMultipartParam : NSObject<NSCoding> {
 }
 
-@property (nonatomic, strong) NSBundle *bundle;
-@property (nonatomic, strong) NSString *locale;
+@property (nonatomic, readonly) NSString *name;
+@property (nonatomic, readonly) NSString *fileName;
+
+@property (nonatomic, readonly) NSData *data;
+@property (nonatomic, readonly) NSString *contentType;
 
 
-/** Find localize text for text. */
-- (__autoreleasing NSString *)localizedForString:(NSString *)string alternative:(NSString *)alternative;
-/** Reset localize to default. */
-- (void)reset;
+/** Comparison. */
+- (NSComparisonResult)compare:(FwiMultipartParam *)parameter;
 
 @end
 
 
-@interface FwiLocalization (FwiLocalizationCreation)
+@interface FwiMultipartParam (FwiMultipartParamCreation)
 
 // Class's static constructors
-+ (__weak FwiLocalization *)sharedInstance;
++ (__autoreleasing FwiMultipartParam *)paramWithName:(NSString *)name fileName:(NSString *)fileName data:(NSData *)data contentType:(NSString *)contentType;
+
+// Class's constructors
+- (id)initWithName:(NSString *)name fileName:(NSString *)fileName data:(NSData *)data contentType:(NSString *)contentType;
 
 @end

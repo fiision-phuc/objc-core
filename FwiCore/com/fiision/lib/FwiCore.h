@@ -45,8 +45,11 @@
     #define __bridge_transfer           /* Empty */
 #endif
 
+#if !defined(__bridge_transfer)
+#define __weak                          /* Empty */
+#endif
+
 #if __has_feature(objc_arc)
-    #define _weak                       __weak
     #define FwiRetain(o)                o
     #define FwiRelease(o)               if(o) { o = nil; }
     #define FwiAutoRelease(o)           o
@@ -73,6 +76,16 @@
 #define kRadianToDegree                 57.295779513082320876
 #define kCircle                         6.28319 // (360 degree)
 
+// Define converter macro functions
+static inline double FwiConvertToDegree(double radian) {
+    double degree = radian * kRadianToDegree;
+    return degree;
+}
+static inline double FwiConvertToRadian(double degree) {
+    double radian = degree * kDegreeToRadian;
+    return radian;
+}
+
 
 // Foundation
 #import "NSArray+FwiExtension.h"
@@ -92,15 +105,14 @@
 #import "UINavigationController+FwiExtension.h"
 #import "UITabBarController+FwiExtension.h"
 #import "UIView+FwiExtension.h"
-// i18n
-#import "FwiLocalization.h"
 // Operation
 #import "FwiOperation.h"
 // Reachability
 #import "FwiReachability.h"
 
 
-// i18n
+#pragma mark - i18n
+#import "FwiLocalization.h"
 static inline void FwiLocalizedReset() {
     [[FwiLocalization sharedInstance] reset];
 }
@@ -115,15 +127,81 @@ static inline NSString* FwiLocalizedString(NSString *key) {
 }
 
 
-// Define converter macro functions
-static inline double FwiConvertToDegree(double radian) {
-    double degree = radian * kRadianToDegree;
-    return degree;
+#pragma mark - Network
+typedef NS_ENUM(NSInteger, FwiHttpMethod) {
+    kCopy    = 0x00,
+    kDelete  = 0x01,
+    kGet     = 0x02,
+    kHead    = 0x03,
+    kLink    = 0x04,
+    kOptions = 0x05,
+    kPatch   = 0x06,
+    kPost    = 0x07,
+    kPurge   = 0x08,
+    kPut     = 0x09,
+    kUnlink  = 0x0a
+};
+
+typedef NS_ENUM(NSInteger, FwiNetworkStatus) {
+    kNone                              = -1,
+    kUnknown                           = NSURLErrorUnknown,
+    kCancelled                         = NSURLErrorCancelled,
+    kBadURL                            = NSURLErrorBadURL,
+    kTimedOut                          = NSURLErrorTimedOut,
+    kUnsupportedURL                    = NSURLErrorUnsupportedURL,
+    kCannotFindHost                    = NSURLErrorCannotFindHost,
+    kCannotConnectToHost               = NSURLErrorCannotConnectToHost,
+    kNetworkConnectionLost             = NSURLErrorNetworkConnectionLost,
+    kDNSLookupFailed                   = NSURLErrorDNSLookupFailed,
+    kHTTPTooManyRedirects              = NSURLErrorHTTPTooManyRedirects,
+    kResourceUnavailable               = NSURLErrorResourceUnavailable,
+    kNotConnectedToInternet            = NSURLErrorNotConnectedToInternet,
+    kRedirectToNonExistentLocation     = NSURLErrorRedirectToNonExistentLocation,
+    kBadServerResponse                 = NSURLErrorBadServerResponse,
+    kUserCancelledAuthentication       = NSURLErrorUserCancelledAuthentication,
+    kUserAuthenticationRequired        = NSURLErrorUserAuthenticationRequired,
+    kZeroByteResource                  = NSURLErrorZeroByteResource,
+    kCannotDecodeRawData               = NSURLErrorCannotDecodeRawData,
+    kCannotDecodeContentData           = NSURLErrorCannotDecodeContentData,
+    kCannotParseResponse               = NSURLErrorCannotParseResponse,
+    kFileDoesNotExist                  = NSURLErrorFileDoesNotExist,
+    kFileIsDirectory                   = NSURLErrorFileIsDirectory,
+    kNoPermissionsToReadFile           = NSURLErrorNoPermissionsToReadFile,
+    kDataLengthExceedsMaximum          = NSURLErrorDataLengthExceedsMaximum,
+    // SSL errors
+    kSecureConnectionFailed            = NSURLErrorSecureConnectionFailed,
+    kServerCertificateHasBadDate       = NSURLErrorServerCertificateHasBadDate,
+    kServerCertificateUntrusted        = NSURLErrorServerCertificateUntrusted,
+    kServerCertificateHasUnknownRoot   = NSURLErrorServerCertificateHasUnknownRoot,
+    kServerCertificateNotYetValid      = NSURLErrorServerCertificateNotYetValid,
+    kClientCertificateRejected         = NSURLErrorClientCertificateRejected,
+    kClientCertificateRequired         = NSURLErrorClientCertificateRequired,
+    kCannotLoadFromNetwork             = NSURLErrorCannotLoadFromNetwork,
+    // Download and file I/O errors
+    kCannotCreateFile                  = NSURLErrorCannotCreateFile,
+    kCannotOpenFile                    = NSURLErrorCannotOpenFile,
+    kCannotCloseFile                   = NSURLErrorCannotCloseFile,
+    kCannotWriteToFile                 = NSURLErrorCannotWriteToFile,
+    kCannotRemoveFile                  = NSURLErrorCannotRemoveFile,
+    kCannotMoveFile                    = NSURLErrorCannotMoveFile,
+    kDownloadDecodingFailedMidStream   = NSURLErrorDownloadDecodingFailedMidStream,
+    kDownloadDecodingFailedToComplete  = NSURLErrorDownloadDecodingFailedToComplete,
+    
+    kInternationalRoamingOff           = NSURLErrorInternationalRoamingOff,
+    kCallIsActive                      = NSURLErrorCallIsActive,
+    kDataNotAllowed                    = NSURLErrorDataNotAllowed,
+    kRequestBodyStreamExhausted        = NSURLErrorRequestBodyStreamExhausted,
+};
+
+static inline BOOL FwiNetworkStatusIsSuccces(NSInteger statusCode) {
+    return (200 <= statusCode && statusCode <= 299);
 }
-static inline double FwiConvertToRadian(double degree) {
-    double radian = degree * kDegreeToRadian;
-    return radian;
-}
+
+#import "FwiNetworkManager.h"
+#import "FwiRequest.h"
+#import "FwiDataParam.h"
+#import "FwiFormParam.h"
+#import "FwiMultipartParam.h"
 
 
 #endif

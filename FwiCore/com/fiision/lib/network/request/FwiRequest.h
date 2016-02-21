@@ -1,8 +1,8 @@
 //  Project name: FwiCore
-//  File name   : FwiLocalization.h
+//  File name   : FwiRequest.h
 //
-//  Author      : Phuc Tran
-//  Created date: 4/13/15
+//  Author      : Phuc, Tran Huu
+//  Created date: 8/4/13
 //  Version     : 1.20
 //  --------------------------------------------------------------
 //  Copyright (C) 2012, 2015 Fiision Studio.
@@ -37,26 +37,51 @@
 //  caused, directly or indirectly, by the use of this software.
 
 #import <Foundation/Foundation.h>
+@class FwiDataParam;
+@class FwiFormParam;
+@class FwiMultipartParam;
 
 
-@interface FwiLocalization : NSObject {
+@interface FwiRequest : NSMutableURLRequest {
 }
 
-@property (nonatomic, strong) NSBundle *bundle;
-@property (nonatomic, strong) NSString *locale;
 
-
-/** Find localize text for text. */
-- (__autoreleasing NSString *)localizedForString:(NSString *)string alternative:(NSString *)alternative;
-/** Reset localize to default. */
-- (void)reset;
+/** Build the request. */
+- (size_t)prepare;
 
 @end
 
 
-@interface FwiLocalization (FwiLocalizationCreation)
+@interface FwiRequest (FwiRequestCreation)
 
 // Class's static constructors
-+ (__weak FwiLocalization *)sharedInstance;
++ (__autoreleasing FwiRequest *)requestWithURL:(NSURL *)url methodType:(FwiHttpMethod)type;
+
+@end
+
+
+@interface FwiRequest (FwiForm)
+
+/** Like add parameters but will reset the collection. */
+- (void)setFormParam:(FwiFormParam *)param;
+- (void)setFormParams:(NSArray *)params;
+/** Add key-value. */
+- (void)addFormParam:(FwiFormParam *)param;
+- (void)addFormParams:(NSArray *)params;
+
+/** Like add multipart data but will reset the collection. */
+- (void)setMultipartParam:(FwiMultipartParam *)param;
+- (void)setMultipartParams:(NSArray *)params;
+/** Add multipart data. */
+- (void)addMultipartParam:(FwiMultipartParam *)param;
+- (void)addMultipartParams:(NSArray *)params;
+
+@end
+
+
+@interface FwiRequest (FwiRaw)
+
+/** Inject raw data to request. Previous raw data will be replaced. */
+- (void)setDataParameter:(FwiDataParam *)parameter;
 
 @end
