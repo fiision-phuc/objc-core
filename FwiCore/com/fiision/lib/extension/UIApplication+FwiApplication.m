@@ -6,7 +6,7 @@
 
 - (void)enableRemoteNotification {
 #if !TARGET_IPHONE_SIMULATOR
-    if (self.osVersion < 8) {
+    if ([[[UIDevice currentDevice] systemVersion] integerValue] < 8) {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound)];
     }
     else {
