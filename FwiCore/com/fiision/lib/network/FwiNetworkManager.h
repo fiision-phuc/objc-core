@@ -42,6 +42,7 @@
 @interface FwiNetworkManager : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate/*, NSURLSessionDownloadDelegate (Should be implemented by receiver)*/> {
     
 @private
+    NSURLCache *_cache;
     NSURLSession *_session;
     NSURLSessionConfiguration *_configuration;
 }
@@ -52,9 +53,10 @@
 - (__autoreleasing NSURLRequest *)prepareRequestWithURL:(NSURL *)url method:(FwiHttpMethod)method params:(NSDictionary *)params;
 
 /** Send request to server. */
-- (void)sendRequest:(NSURLRequest *)request completion:(void(^)(NSData *data, NSError *error, NSInteger statusCode))completion;
+- (void)sendRequest:(NSURLRequest *)request completion:(void(^)(NSData *data, NSError *error, NSInteger statusCode, NSHTTPURLResponse *response))completion;
+
 /** Download resource from server. */
-- (void)downloadResource:(NSURLRequest *)request completion:(void(^)(NSURL *location, NSError *error, NSInteger statusCode))completion;
+- (void)downloadResource:(NSURLRequest *)request completion:(void(^)(NSURL *location, NSError *error, NSInteger statusCode, NSHTTPURLResponse *response))completion;
 
 @end
 

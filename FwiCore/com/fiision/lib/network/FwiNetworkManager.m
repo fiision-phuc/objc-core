@@ -20,12 +20,17 @@
 - (id)init {
     self = [super init];
     if (self) {
+        // Default configuration
         _configuration = FwiRetain([NSURLSessionConfiguration defaultSessionConfiguration]);
         _configuration.allowsCellularAccess = YES;
-        _configuration.timeoutIntervalForRequest = 30.0f;
-        _configuration.timeoutIntervalForResource = 60.0f;
+        _configuration.timeoutIntervalForRequest = 10.0f;
+        _configuration.timeoutIntervalForResource = 10.0f;
         _configuration.networkServiceType = NSURLNetworkServiceTypeBackground;
-        _configuration.requestCachePolicy = NSURLRequestReloadIgnoringCacheData;
+        
+        // Cache configuration
+        _configuration.requestCachePolicy = NSURLRequestReturnCacheDataElseLoad;
+        _configuration.URLCache = [NSURLCache sharedURLCache];
+        _cache = [NSURLCache sharedURLCache];
         
         _session = [NSURLSession sessionWithConfiguration:_configuration delegate:self delegateQueue:[FwiOperation operationQueue]];
     }
@@ -52,7 +57,7 @@
     return [FwiRequest requestWithURL:url methodType:method];
 }
 - (__autoreleasing NSURLRequest *)prepareRequestWithURL:(NSURL *)url method:(FwiHttpMethod)method params:(NSDictionary *)params {
-    __unsafe_unretained __block FwiRequest *request = [FwiRequest requestWithURL:url methodType:method];
+    FwiRequest *request = [FwiRequest requestWithURL:url methodType:method];
 
     // Insert data parameters if available
     [params enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *value, BOOL *stop __attribute__((unused))) {
@@ -61,26 +66,51 @@
     return request;
 }
 
-- (void)sendRequest:(NSURLRequest *)request completion:(void(^)(NSData *data, NSError *error, NSInteger statusCode))completion {
+- (void)sendRequest:(NSURLRequest *)request completion:(void(^)(NSData *data, NSError *error, NSInteger statusCode, NSHTTPURLResponse *response))completion {
     if ([request isKindOfClass:[FwiRequest class]]) {
         __weak FwiRequest *customRequest = (FwiRequest *)request;
         [customRequest prepare];
+    }
+    
+    // Check cache if there is any
+    __block NSCachedURLResponse *cached = [_cache cachedResponseForRequest:request];
+    __weak NSHTTPURLResponse *cachedResponse = (NSHTTPURLResponse *) cached.response;
+    
+    if (cachedResponse && cachedResponse.allHeaderFields[@"Date"] && [request isKindOfClass:[FwiRequest class]]) {
+        __weak FwiRequest *r = (FwiRequest *) request;
+        [r setValue:cachedResponse.allHeaderFields[@"Date"] forHTTPHeaderField:@"If-Modified-Since"];
     }
 
     @synchronized(self) {
         _counter++;
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     }
+    
     __autoreleasing NSURLSessionDataTask *task = [_session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         NSInteger statusCode = kNone;
+        __weak NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        
+        // Validate http status
         if (error) {
             statusCode = error.code;
         }
         else if (response) {
-            statusCode = ((NSHTTPURLResponse *)response).statusCode;
+            statusCode = httpResponse.statusCode;
 
             if (!FwiNetworkStatusIsSuccces(statusCode)) {
                 error = [NSError errorWithDomain:NSURLErrorDomain code:statusCode userInfo:@{NSURLErrorFailingURLErrorKey:[request.URL description], NSURLErrorFailingURLStringErrorKey:[request.URL description], NSLocalizedDescriptionKey:[NSHTTPURLResponse localizedStringForStatusCode:statusCode]}];
+            }
+            else {
+                // Should we cache this request or not
+                __autoreleasing NSString *cacheControl = [httpResponse.allHeaderFields[@"Cache-Control"] lowercaseString];
+                if (statusCode != 304 && cacheControl && [cacheControl hasPrefix:@"public"]) {
+                    // Remove previous cache, remove it anyways
+                    [_cache removeCachedResponseForRequest:request];
+                    
+                    // Generate new cache
+                    __autoreleasing NSCachedURLResponse *cachedResponse = [[NSCachedURLResponse alloc] initWithResponse:response data:data];
+                    [_cache storeCachedResponse:cachedResponse forRequest:request];
+                }
             }
         }
 
@@ -95,19 +125,26 @@
 
             NSLog(@"\n\n%@\n\n", errorMessage);
         }
-
+        
         // Turn off activity indicator if neccessary
         @synchronized(self) {
             _counter--;
             if (_counter == 0) [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         }
+        
+        // Load cache if http status is 304 or offline
+        if (cached && (statusCode == kNotConnectedToInternet || statusCode == 304)) {
+            if (completion) completion(cached.data, nil, cachedResponse.statusCode, cachedResponse);
+            cached = nil;
+            return;
+        }
 
         // Return result
-        if (completion) completion(data, error, statusCode);
+        if (completion) completion(data, error, statusCode, httpResponse);
     }];
     [task resume];
 }
-- (void)downloadResource:(NSURLRequest *)request completion:(void(^)(NSURL *location, NSError *error, NSInteger statusCode))completion {
+- (void)downloadResource:(NSURLRequest *)request completion:(void(^)(NSURL *location, NSError *error, NSInteger statusCode, NSHTTPURLResponse *response))completion {
     if ([request isKindOfClass:[FwiRequest class]]) {
         __weak FwiRequest *customRequest = (FwiRequest *)request;
         [customRequest prepare];
@@ -115,7 +152,7 @@
     
     __autoreleasing NSURLSessionDownloadTask *task = [_session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
         // FIX FIX FIX: Need to handle response status
-        if (completion) completion(location, error, 200);
+        if (completion) completion(location, error, 200, (NSHTTPURLResponse *)response);
     }];
     [task resume];
 }
@@ -415,7 +452,7 @@
     DLog(@"");
 }
 - (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler {
-    DLog(@"");
+    DLog(@"%@", proposedResponse);
 }
 
 

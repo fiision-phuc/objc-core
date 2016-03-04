@@ -196,7 +196,7 @@ typedef NS_ENUM(NSInteger, FwiNetworkStatus) {
 };
 
 static inline BOOL FwiNetworkStatusIsSuccces(NSInteger statusCode) {
-    return (200 <= statusCode && statusCode <= 299);
+    return ((200 <= statusCode && statusCode <= 299) || statusCode == 304);
 }
 
 #import "FwiNetworkManager.h"
