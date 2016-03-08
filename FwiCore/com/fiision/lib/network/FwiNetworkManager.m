@@ -362,8 +362,8 @@
     DLog(@"");
 }
 - (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler {
-//    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
-//        SecTrustRef serverTrust = challenge.protectionSpace.serverTrust;
+    if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
+        SecTrustRef serverTrust = challenge.protectionSpace.serverTrust;
 //        SecCertificateRef certificate = SecTrustGetCertificateAtIndex(serverTrust, 0);
 //
 //        // Verify certificate
@@ -415,14 +415,14 @@
 ////                if (completionHandler) completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
 ////            }
 ////            else {
-//        __autoreleasing NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
-//        if (completionHandler) completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
+        __autoreleasing NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
+        if (completionHandler) completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
 ////            }
 ////        }
-//    }
-//    else {
-//        if (completionHandler) completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
-//    }
+    }
+    else {
+        if (completionHandler) completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
+    }
 }
 
 
