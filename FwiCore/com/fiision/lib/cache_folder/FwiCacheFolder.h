@@ -42,6 +42,7 @@
 @interface FwiCacheFolder : NSObject {
 }
 
+@property (nonatomic, assign) NSTimeInterval idleTime;
 @property (nonatomic, strong, readonly) NSString *pathReady;
 
 
@@ -62,9 +63,6 @@
 @interface FwiCacheFolder (FwiCacheCreation)
 
 // Class's static constructors
-+ (__autoreleasing FwiCacheFolder *)cacheFolderWithPath:(NSString *)path;
-
-// Class's constructors
-- (id)initWithPath:(NSString *)path;
++ (__autoreleasing FwiCacheFolder *)cacheFolderWithNamed:(NSString *)named;
 
 @end
