@@ -46,7 +46,7 @@
 #endif
 
 #if !defined(__bridge_transfer)
-#define __weak                          /* Empty */
+    #define __weak                      /* Empty */
 #endif
 
 #if __has_feature(objc_arc)
@@ -54,7 +54,6 @@
     #define FwiRelease(o)               if(o) { o = nil; }
     #define FwiAutoRelease(o)           o
 #else
-    #define _weak                       /* Empty */
     #define FwiRetain(o)                [o retain]
     #define FwiRelease(o)               if(o) { [o release]; o = nil;  }
     #define FwiAutoRelease(o)           [o autorelease]

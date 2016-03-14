@@ -358,67 +358,33 @@
 
 
 #pragma mark - NSURLSessionDelegate's members
-- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
-    DLog(@"");
-}
-- (void)URLSession:(NSURLSession *)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler {
+//- (void)URLSession:(NSURLSession *)session didBecomeInvalidWithError:(NSError *)error {
+//}
+- (void)URLSession:(NSURLSession * __unused)session didReceiveChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition disposition, NSURLCredential *credential))completionHandler {
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
         SecTrustRef serverTrust = challenge.protectionSpace.serverTrust;
 //        SecCertificateRef certificate = SecTrustGetCertificateAtIndex(serverTrust, 0);
-//
+//        
 //        // Verify certificate
 //        __autoreleasing NSData *crtData = (NSData *)CFBridgingRelease(SecCertificateCopyData(certificate));
-////        __autoreleasing NSArray *paths = [[NSBundle bundleForClass:[self class]] pathsForResourcesOfType:@"cer" inDirectory:@"."];
-////
-////        // Load all accepted certificates
-////        __autoreleasing NSMutableArray *crts = [NSMutableArray arrayWithCapacity:paths.count];
-////        for (NSString *path in paths) {
-////            __autoreleasing NSData *data = [NSData dataWithContentsOfFile:path];
-////            [crts addObject:data];
-////        }
-////
-////        // Validate the received certificate
-////        if ([crts containsObject:crtData]) {
-////            __autoreleasing NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
-////            [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
-////        }
-////        else {
-//        __autoreleasing FwiDer *cert = [crtData decodeDer];
-//        __autoreleasing NSDate *today = [NSDate date];
-//
-//        FwiDer *issuer = [cert derWithPath:@"0/3"];
-//        FwiDer *subject = [cert derWithPath:@"0/5"];
-//        NSUInteger version = [[cert derWithPath:@"0/0/0"] getInt];
-//        NSDate *notBefor = [[cert derWithPath:@"0/4/0"] getTime];
-//        NSDate *notAfter = [[cert derWithPath:@"0/4/1"] getTime];
-//
-//        /* Condition validation */
-//        if (version != 2) {
-//            if (completionHandler) completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
-//            return;
+//        __autoreleasing NSArray *paths = [[NSBundle bundleForClass:[self class]] pathsForResourcesOfType:@"cer" inDirectory:@"."];
+//        
+//        // Load all accepted certificates
+//        __autoreleasing NSMutableArray *crts = [NSMutableArray arrayWithCapacity:paths.count];
+//        for (NSString *path in paths) {
+//            __autoreleasing NSData *data = [NSData dataWithContentsOfFile:path];
+//            [crts addObject:data];
 //        }
-//        if (!issuer || !subject) {
-//            if (completionHandler) completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
-//            return;
+//        
+//        // Validate the received certificate
+//        if ([crts containsObject:crtData]) {
+            __autoreleasing NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
+            [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
 //        }
-//        if (!notBefor || !notAfter || !(([today compare:notBefor] >= 0 && [today compare:notAfter] < 0))) {
+//        else {
+//            [[challenge sender] cancelAuthenticationChallenge:challenge];
 //            if (completionHandler) completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
-//            return;
 //        }
-//
-////            BOOL shouldAllow = NO;
-////            if (self.delegate && [self.delegate respondsToSelector:@selector(service:authenticationChallenge:)])
-////                shouldAllow = [(id<FwiServiceDelegate>)self.delegate service:self authenticationChallenge:certificate];
-//
-////            if (!shouldAllow) {
-////                [[challenge sender] cancelAuthenticationChallenge:challenge];
-////                if (completionHandler) completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
-////            }
-////            else {
-        __autoreleasing NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
-        if (completionHandler) completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
-////            }
-////        }
     }
     else {
         if (completionHandler) completionHandler(NSURLSessionAuthChallengeCancelAuthenticationChallenge, nil);
@@ -427,33 +393,33 @@
 
 
 #pragma mark - NSURLSessionTaskDelegate's members
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task willPerformHTTPRedirection:(NSHTTPURLResponse *)response newRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLRequest *))completionHandler {
+- (void)URLSession:(NSURLSession * __unused)session task:(NSURLSessionTask * __unused)task willPerformHTTPRedirection:(NSHTTPURLResponse * __unused)response newRequest:(NSURLRequest *)request completionHandler:(void (^)(NSURLRequest *request))completionHandler {
     if (completionHandler) completionHandler(request);
 }
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task needNewBodyStream:(void (^)(NSInputStream *bodyStream))completionHandler {
-    DLog(@"");
-}
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
-    DLog(@"");
-}
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
-    DLog(@"");
-}
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task needNewBodyStream:(void (^)(NSInputStream *bodyStream))completionHandler {
+//    DLog(@"");
+//}
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didSendBodyData:(int64_t)bytesSent totalBytesSent:(int64_t)totalBytesSent totalBytesExpectedToSend:(int64_t)totalBytesExpectedToSend {
+//    DLog(@"");
+//}
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+//    DLog(@"");
+//}
 
 
 #pragma mark - NSURLSessionDataDelegate's members
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
-    DLog(@"");
-}
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask {
-    DLog(@"");
-}
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
-    DLog(@"");
-}
-- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler {
-    DLog(@"%@", proposedResponse);
-}
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition disposition))completionHandler {
+//    DLog(@"");
+//}
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didBecomeDownloadTask:(NSURLSessionDownloadTask *)downloadTask {
+//    DLog(@"");
+//}
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+//    DLog(@"");
+//}
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask willCacheResponse:(NSCachedURLResponse *)proposedResponse completionHandler:(void (^)(NSCachedURLResponse *cachedResponse))completionHandler {
+//    DLog(@"%@", proposedResponse);
+//}
 
 
 @end

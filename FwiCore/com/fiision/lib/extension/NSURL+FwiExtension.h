@@ -41,6 +41,9 @@
 
 @interface NSURL (FwiCreation)
 
+/** URL to cache folder. */
++ (__autoreleasing NSURL *)cacheDirectory;
+
 /** URL to main document folder. */
 + (__autoreleasing NSURL *)documentDirectory;
 

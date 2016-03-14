@@ -1,8 +1,8 @@
 //  Project name: FwiCore
-//  File name   : FwiNetworkManager.h
+//  File name   : FwiCacheFolder.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 4/13/14
+//  Created date: 11/30/13
 //  Version     : 1.20
 //  --------------------------------------------------------------
 //  Copyright © 2012, 2016 Fiision Studio.
@@ -39,31 +39,32 @@
 #import <Foundation/Foundation.h>
 
 
-@interface FwiNetworkManager : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate/*, NSURLSessionDownloadDelegate (Should be implemented by receiver)*/> {
-    
-@private
-    NSURLCache *_cache;
-    NSURLSession *_session;
-    NSURLSessionConfiguration *_configuration;
+@interface FwiCacheFolder : NSObject {
 }
 
+@property (nonatomic, strong, readonly) NSString *pathReady;
 
-/** Generate generic HTTP Request. */
-- (__autoreleasing NSURLRequest *)prepareRequestWithURL:(NSURL *)url method:(FwiHttpMethod)method;
-- (__autoreleasing NSURLRequest *)prepareRequestWithURL:(NSURL *)url method:(FwiHttpMethod)method params:(NSDictionary *)params;
 
-/** Send request to server. */
-- (void)sendRequest:(NSURLRequest *)request completion:(void(^)(NSData *data, NSError *error, NSInteger statusCode, NSHTTPURLResponse *response))completion;
+/** Get path to downloaded file. */
+- (__autoreleasing NSString *)pathForReadyFile:(NSString *)filename;
 
-/** Download resource from server. */
-- (void)downloadResource:(NSURLRequest *)request completion:(void(^)(NSURL *location, NSError *error, NSInteger statusCode, NSHTTPURLResponse *response))completion;
+/** Get path to downloaded file. */
+- (__autoreleasing NSString *)loadingFinishedForFilename:(NSString *)filename;
+
+/** Update modification files. */
+- (void)updateFile:(NSString *)filename;
+/** Delete all files. */
+- (void)clearCache;
 
 @end
 
 
-@interface FwiNetworkManager (FwiNetworkManagerSingleton)
+@interface FwiCacheFolder (FwiCacheCreation)
 
-/** Get singleton network manager. */
-+ (__weak FwiNetworkManager *)sharedInstance;
+// Class's static constructors
++ (__autoreleasing FwiCacheFolder *)cacheFolderWithPath:(NSString *)path;
+
+// Class's constructors
+- (id)initWithPath:(NSString *)path;
 
 @end

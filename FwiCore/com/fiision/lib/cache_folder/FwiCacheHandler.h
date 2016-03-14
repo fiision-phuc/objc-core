@@ -1,8 +1,8 @@
 //  Project name: FwiCore
-//  File name   : FwiNetworkManager.h
+//  File name   : FwiCacheFolder.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 4/13/14
+//  Created date: 11/30/13
 //  Version     : 1.20
 //  --------------------------------------------------------------
 //  Copyright © 2012, 2016 Fiision Studio.
@@ -37,33 +37,48 @@
 //  caused, directly or indirectly, by the use of this software.
 
 #import <Foundation/Foundation.h>
+#import "FwiCacheFolder.h"
 
 
-@interface FwiNetworkManager : NSObject <NSURLSessionDelegate, NSURLSessionTaskDelegate, NSURLSessionDataDelegate/*, NSURLSessionDownloadDelegate (Should be implemented by receiver)*/> {
-    
-@private
-    NSURLCache *_cache;
-    NSURLSession *_session;
-    NSURLSessionConfiguration *_configuration;
+@protocol FwiCacheHandlerDelegate;
+
+
+@interface FwiCacheHandler : NSObject  {
 }
 
+@property (nonatomic, strong, readonly) FwiCacheFolder *cacheFolder;
 
-/** Generate generic HTTP Request. */
-- (__autoreleasing NSURLRequest *)prepareRequestWithURL:(NSURL *)url method:(FwiHttpMethod)method;
-- (__autoreleasing NSURLRequest *)prepareRequestWithURL:(NSURL *)url method:(FwiHttpMethod)method params:(NSDictionary *)params;
 
-/** Send request to server. */
-- (void)sendRequest:(NSURLRequest *)request completion:(void(^)(NSData *data, NSError *error, NSInteger statusCode, NSHTTPURLResponse *response))completion;
-
-/** Download resource from server. */
-- (void)downloadResource:(NSURLRequest *)request completion:(void(^)(NSURL *location, NSError *error, NSInteger statusCode, NSHTTPURLResponse *response))completion;
+/** Handle delegate object. */
+- (void)handleDelegate:(id<FwiCacheHandlerDelegate>)delegate;
 
 @end
 
 
-@interface FwiNetworkManager (FwiNetworkManagerSingleton)
+@interface FwiCacheHandler (FwiCacheHandlerCreation)
 
-/** Get singleton network manager. */
-+ (__weak FwiNetworkManager *)sharedInstance;
+// Class's static constructors
++ (FwiCacheHandler *)cacheHandlerWithCacheFolder:(FwiCacheFolder *)cacheFolder;
+
+// Class's constructors
+- (id)initWithCacheFolder:(FwiCacheFolder *)cacheFolder;
+
+@end
+
+
+@protocol FwiCacheHandlerDelegate <NSObject>
+
+@required
+/** Provide image's url. */
+- (NSURL *)urlForHandler:(FwiCacheHandler *)cacheHandler;
+
+@optional
+/** Notify delegate that handler will begin downloading image. */
+- (void)cacheHandlerWillStartDownloading:(FwiCacheHandler *)cacheHandler;
+
+/** Notify delegate that handler could not download image. */
+- (void)cacheHandler:(FwiCacheHandler *)cacheHandler didFailDownloadingImage:(UIImage *)image atUrl:(NSURL *)url;
+/** Notify delegate that handler did finish download image. */
+- (void)cacheHandler:(FwiCacheHandler *)cacheHandler didFinishDownloadingImage:(UIImage *)image atUrl:(NSURL *)url;
 
 @end

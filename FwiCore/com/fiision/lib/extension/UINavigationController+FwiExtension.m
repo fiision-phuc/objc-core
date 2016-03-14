@@ -4,6 +4,19 @@
 @implementation UINavigationController (FwiExtension)
 
 
+//- (BOOL)prefersStatusBarHidden {
+//    if (self.topViewController) {
+//        return [[self topViewController] prefersStatusBarHidden];
+//    }
+//    return [super prefersStatusBarHidden];
+//}
+//- (UIStatusBarStyle)preferredStatusBarStyle {
+//    if (self.topViewController) {
+//        return [[self topViewController] preferredStatusBarStyle];
+//    }
+//    return [super preferredStatusBarStyle];
+//}
+
 - (BOOL)shouldAutorotate {
     return self.visibleViewController.shouldAutorotate;
 }
