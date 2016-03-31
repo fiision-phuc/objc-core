@@ -57,6 +57,6 @@
 @interface FwiLocalization (FwiLocalizationCreation)
 
 // Class's static constructors
-+ (__weak FwiLocalization *)sharedInstance;
++ (FwiLocalization *)sharedInstance;
 
 @end

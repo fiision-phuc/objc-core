@@ -88,7 +88,7 @@ static FwiLocalization *_SharedInstance = nil;
 
 
 #pragma mark - Class's static constructors
-+ (__weak FwiLocalization *)sharedInstance {
++ (FwiLocalization *)sharedInstance {
     /* Condition validation */
     if (_SharedInstance) return _SharedInstance;
 

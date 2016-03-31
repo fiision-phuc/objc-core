@@ -64,6 +64,6 @@
 @interface FwiNetworkManager (FwiNetworkManagerSingleton)
 
 /** Get singleton network manager. */
-+ (__weak FwiNetworkManager *)sharedInstance;
++ (FwiNetworkManager *)sharedInstance;
 
 @end

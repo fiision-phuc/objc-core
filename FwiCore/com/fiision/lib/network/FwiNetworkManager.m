@@ -438,7 +438,7 @@ static FwiNetworkManager *_NetworkManager;
 
 
 #pragma mark - Class's static constructors
-+ (__weak FwiNetworkManager *)sharedInstance {
++ (FwiNetworkManager *)sharedInstance {
     if (_NetworkManager) return _NetworkManager;
     
     @synchronized (self) {
