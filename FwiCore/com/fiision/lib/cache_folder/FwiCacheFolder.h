@@ -39,22 +39,24 @@
 #import <Foundation/Foundation.h>
 
 
+@protocol FwiCacheFolderDelegate;
+
+
 @interface FwiCacheFolder : NSObject {
 }
 
+@property (nonatomic, strong, readonly) NSString *rootPath;
 @property (nonatomic, assign) NSTimeInterval idleTime;
-@property (nonatomic, strong, readonly) NSString *pathReady;
 
+
+/** Handle delegate object. */
+- (void)handleDelegate:(id<FwiCacheFolderDelegate>)delegate;
 
 /** Get path to downloaded file. */
-- (__autoreleasing NSString *)pathForReadyFile:(NSString *)filename;
-
-/** Get path to downloaded file. */
-- (__autoreleasing NSString *)loadingFinishedForFilename:(NSString *)filename;
-
+- (__autoreleasing NSString *)pathForRemoteMedia:(NSString *)remoteMedia;
 /** Update modification files. */
 - (void)updateFile:(NSString *)filename;
-/** Delete all files. */
+/** Delete all files. */ 
 - (void)clearCache;
 
 @end
@@ -64,5 +66,21 @@
 
 // Class's static constructors
 + (__autoreleasing FwiCacheFolder *)cacheFolderWithNamed:(NSString *)named;
+
+@end
+
+
+@protocol FwiCacheFolderDelegate <NSObject>
+
+@required
+/** Provide remote media's url. */
+- (__autoreleasing NSURL *)remoteMedia:(FwiCacheFolder *)cacheFolder;
+
+@optional
+/** Notify delegate that cache folder will begin downloading remote media. */
+- (void)cacheFolder:(FwiCacheFolder *)cacheFolder willDownloadRemoteMedia:(NSURL *)remoteURL;
+
+/** Notify delegate that cache folder did finish download remote media. */
+- (void)cacheFolder:(FwiCacheFolder *)cacheFolder didFinishDownloadingRemoteMedia:(NSURL *)remoteURL image:(UIImage *)image;
 
 @end

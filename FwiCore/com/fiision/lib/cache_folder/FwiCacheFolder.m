@@ -3,7 +3,9 @@
 
 @interface FwiCacheFolder () {
     
-    __weak NSFileManager *_fileManager;
+    NSFileManager *_fileManager;
+    NSMutableArray *_placeHolder;
+    FwiNetworkManager *_networkManager;
 }
 
 
@@ -21,16 +23,19 @@
 @implementation FwiCacheFolder
 
 
-@synthesize pathReady=_pathReady;
+@synthesize rootPath=_rootPath;
 
 
 #pragma mark - Class's constructors
 - (id)init {
     self = [super init];
     if (self) {
-        _pathReady   = nil;
-        _idleTime    = 172800;                                                                      // 2 days = 2 * 24 * 60 * 60
-        _fileManager = [NSFileManager defaultManager];
+        _rootPath       = nil;
+        _idleTime       = 172800;                                                                   // 2 days = 2 * 24 * 60 * 60
+        _fileManager    = [NSFileManager defaultManager];
+        _networkManager = [FwiNetworkManager sharedInstance];
+        
+        _placeHolder = [[NSMutableArray alloc] initWithCapacity:50];
     }
     return self;
 }
@@ -38,8 +43,11 @@
 
 #pragma mark - Cleanup memory
 -(void)dealloc {
-    FwiRelease(_pathReady);
-
+    FwiRelease(_placeHolder);
+    FwiRelease(_rootPath);
+    _networkManager = nil;
+    _fileManager = nil;
+    
 #if !__has_feature(objc_arc)
     [super dealloc];
 #endif
@@ -50,47 +58,81 @@
 
 
 #pragma mark - Class's public methods
-- (__autoreleasing NSString *)pathForReadyFile:(NSString *)filename {
-    /* Condition validation */
-    if (!filename || filename.length == 0) return nil;
+- (void)handleDelegate:(id<FwiCacheFolderDelegate>)delegate {
+    NSURL *remoteURL = [delegate remoteMedia:self];
+    NSString *readyFile = [self pathForRemoteMedia:[remoteURL description]];
     
-    filename = [self _validateFilename:filename];
-	return [NSString stringWithFormat:@"%@%@", _pathReady, filename];
+    if ([_fileManager fileExistsAtPath:readyFile]) {
+        [self updateFile:readyFile];
+        
+        if (delegate && [delegate respondsToSelector:@selector(cacheFolder:didFinishDownloadingRemoteMedia:image:)]) {
+            __autoreleasing UIImage *image = [UIImage imageWithContentsOfFile:readyFile];
+            [delegate cacheFolder:self didFinishDownloadingRemoteMedia:remoteURL image:image];
+        }
+    }
+    else {
+        // Add to place holder
+        @synchronized (_placeHolder) {
+            [_placeHolder addObject:@{@"url":remoteURL, @"delegate":delegate}];
+        }
+        
+        // Notify delegate before download
+        if (delegate && [delegate respondsToSelector:@selector(cacheFolder:willDownloadRemoteMedia:)]) {
+            [delegate cacheFolder:self willDownloadRemoteMedia:remoteURL];
+        }
+        
+        // Perform download file from server
+        __autoreleasing NSURLRequest *request = [_networkManager prepareRequestWithURL:remoteURL method:kGet];
+        [_networkManager downloadResource:request completion:^(NSURL *location, __unused NSError *error, NSInteger statusCode, __unused NSHTTPURLResponse *response) {
+            if (200 <= statusCode && statusCode <= 299) {
+                __autoreleasing NSError *error = nil;
+                [_fileManager moveItemAtPath:[location path] toPath:readyFile error:&error];
+            }
+            
+            // Notify all waiting delegates
+            @synchronized (_placeHolder) {
+                __autoreleasing NSPredicate *p = [NSPredicate predicateWithFormat:@"SELF.url == %@", remoteURL];
+                __autoreleasing NSArray *filters = [_placeHolder filteredArrayUsingPredicate:p];
+                
+                [filters enumerateObjectsUsingBlock:^(NSDictionary *item, __unused NSUInteger idx, __unused BOOL *stop) {
+                    id<FwiCacheFolderDelegate> d = [item objectForKey:@"delegate"];
+                    
+                    if (d && [d respondsToSelector:@selector(cacheFolder:didFinishDownloadingRemoteMedia:image:)]) {
+                        __autoreleasing UIImage *image = [UIImage imageWithContentsOfFile:readyFile];
+                        [d cacheFolder:self didFinishDownloadingRemoteMedia:remoteURL image:image];
+                    }
+                }];
+                
+                // Update place holder
+                [filters enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(NSDictionary *item, __unused NSUInteger idx, __unused BOOL *stop) {
+                    [_placeHolder removeObject:item];
+                }];
+            }
+        }];
+    }
 }
 
-- (__autoreleasing NSString *)loadingFinishedForFilename:(NSString *)filename {
+- (__autoreleasing NSString *)pathForRemoteMedia:(NSString *)remoteMedia {
     /* Condition validation */
-    if (!filename || filename.length == 0) return nil;
-	__autoreleasing NSString *readyFile = [self pathForReadyFile:filename];
+    if (!remoteMedia || remoteMedia.length == 0) return nil;
     
-//    // Move file to ready folder
-//	__autoreleasing NSError *error = nil;
-//	[_manager moveItemAtPath:loadingFile toPath:readyFile error:&error];
-    
-//    // Apply exclude backup attribute
-//    __autoreleasing NSURL *readyURL = [NSURL fileURLWithPath:readyFile];
-//    [readyURL setResourceValues:@{NSURLIsExcludedFromBackupKey:@YES} error:&error];
-//    
-//    // Destroy file if it could not exclude from backup
-//    if (error) [_manager removeItemAtPath:readyFile error:nil];
-//    return (!error ? readyFile : nil);
+    remoteMedia = [self _validateFilename:remoteMedia];
+    return [_rootPath stringByAppendingPathComponent:remoteMedia];
 }
-
 - (void)updateFile:(NSString *)filename {
     /* Condition validation */
-	__autoreleasing NSDictionary *attributes = [_fileManager attributesOfItemAtPath:filename error:nil];
+	__autoreleasing NSMutableDictionary *attributes = [[_fileManager attributesOfItemAtPath:filename error:nil] toMutableDictionary];
     if (!attributes) return;
     
     /* Condition validation: */
-    NSTimeInterval seconds = -1 * [[attributes objectForKey:NSFileModificationDate] timeIntervalSinceNow];
+    NSTimeInterval seconds = -[attributes[NSFileModificationDate] timeIntervalSinceNow];
     if (seconds < (_idleTime / 2)) return;
     
-    __autoreleasing NSMutableDictionary *newAttributes = [NSMutableDictionary dictionaryWithDictionary:attributes];
-    [newAttributes setObject:[NSDate date] forKey:NSFileModificationDate];
-    [_fileManager setAttributes:newAttributes ofItemAtPath:filename error:nil];
+    attributes[NSFileModificationDate] = [NSDate date];
+    [_fileManager setAttributes:attributes ofItemAtPath:filename error:nil];
 }
 - (void)clearCache {
-	[self _clearAllFilesAtPath:_pathReady];
+	[self _clearAllFilesAtPath:_rootPath];
 }
 
 
@@ -108,11 +150,11 @@
 }
 
 - (void)_clearFolder {
-    __autoreleasing NSDirectoryEnumerator *enumerator = [_fileManager enumeratorAtPath:_pathReady];
+    __autoreleasing NSDirectoryEnumerator *enumerator = [_fileManager enumeratorAtPath:_rootPath];
     __autoreleasing NSString *filename = [enumerator nextObject];
     
     while (filename) {
-        filename = [NSString stringWithFormat:@"%@%@", _pathReady, filename];
+        filename = [NSString stringWithFormat:@"%@%@", _rootPath, filename];
         
         // Load file's attributes
         NSDictionary *attributes = [_fileManager attributesOfItemAtPath:filename error:nil];
@@ -147,6 +189,8 @@
 
 #pragma mark - Class's static constructors
 + (__autoreleasing FwiCacheFolder *)cacheFolderWithNamed:(NSString *)named {
+    /* Condition validation */
+    if (!named || named.length == 0) return nil;
     return FwiAutoRelease([[FwiCacheFolder alloc] initWithNamed:named]);
 }
 
@@ -155,21 +199,21 @@
 - (id)initWithNamed:(NSString *)named {
 	self = [self init];
     if (self) {
-        _pathReady = [[NSString alloc] initWithFormat:@"%@/%@/", [[NSURL cacheDirectory] path], named];
+        _rootPath = FwiRetain([[[NSURL cacheDirectory] path] stringByAppendingPathComponent:named]);
         
         /* Condition validation: Validate paths */
         BOOL isFolder  = NO;
-        BOOL isExisted = [_fileManager fileExistsAtPath:_pathReady isDirectory:&isFolder];
+        BOOL isExisted = [_fileManager fileExistsAtPath:_rootPath isDirectory:&isFolder];
         
         if (isExisted && isFolder) {
             // Do nothing
         }
         else if (isExisted && !isFolder) {
-            [_fileManager removeItemAtPath:_pathReady error:nil];
-            [_fileManager createDirectoryAtPath:_pathReady withIntermediateDirectories:YES attributes:nil error:nil];
+            [_fileManager removeItemAtPath:_rootPath error:nil];
+            [_fileManager createDirectoryAtPath:_rootPath withIntermediateDirectories:YES attributes:nil error:nil];
         }
         else {
-            [_fileManager createDirectoryAtPath:_pathReady withIntermediateDirectories:YES attributes:nil error:nil];
+            [_fileManager createDirectoryAtPath:_rootPath withIntermediateDirectories:YES attributes:nil error:nil];
         }
         
         //delete any half loaded files

@@ -379,7 +379,7 @@
 //        // Validate the received certificate
 //        if ([crts containsObject:crtData]) {
             __autoreleasing NSURLCredential *credential = [NSURLCredential credentialForTrust:serverTrust];
-            [[challenge sender] useCredential:credential forAuthenticationChallenge:challenge];
+            if (completionHandler) completionHandler(NSURLSessionAuthChallengeUseCredential, credential);
 //        }
 //        else {
 //            [[challenge sender] cancelAuthenticationChallenge:challenge];
