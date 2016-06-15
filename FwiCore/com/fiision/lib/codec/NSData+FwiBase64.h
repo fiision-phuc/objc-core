@@ -42,14 +42,14 @@
 @interface NSData (FwiBase64)
 
 /** Validate base64. */
-- (BOOL)isBase64;
+@property (NS_NONATOMIC_IOSONLY, getter=isBase64, readonly) BOOL base64;
 
 /** Decode base64. */
-- (__autoreleasing NSData *)decodeBase64Data;
-- (__autoreleasing NSString *)decodeBase64String;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSData *decodeBase64Data;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSString *decodeBase64String;
     
 /** Encode base64. */
-- (__autoreleasing NSData *)encodeBase64Data;
-- (__autoreleasing NSString *)encodeBase64String;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSData *encodeBase64Data;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSString *encodeBase64String;
 
 @end

@@ -24,7 +24,7 @@ static const uint8_t _HexDecodingTable[128] = {
     /* Condition validation */
     if (!self || self.length == 0 || (self.length % 2) != 0) return NO;
     
-    const uint8_t *bytes = [self bytes];
+    const uint8_t *bytes = self.bytes;
     BOOL isHexString = YES;
     
     for (size_t i = 0; i < self.length; i++) {
@@ -46,7 +46,7 @@ static const uint8_t _HexDecodingTable[128] = {
     uint8_t *outputBytes = malloc(length);
     bzero(outputBytes, length);
     
-    const uint8_t *chars = [self bytes];
+    const uint8_t *chars = self.bytes;
     for (NSUInteger i = 0; i < self.length; i += 2) {
         uint8_t b1 = chars[i];
         uint8_t b2 = chars[i + 1];
@@ -72,7 +72,7 @@ static const uint8_t _HexDecodingTable[128] = {
     uint8_t *outputBytes = malloc(length);
     bzero(outputBytes, length);
     
-    const uint8_t *bytes = [self bytes];
+    const uint8_t *bytes = self.bytes;
     for (NSUInteger i = 0, j = 0; i < length; i += 2, j++) {
         uint8_t b = bytes[j];
         outputBytes[i] = _HexEncodingTable[(b >> 4)];

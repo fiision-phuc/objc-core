@@ -55,6 +55,6 @@
 + (__autoreleasing FwiDataParam *)parameterWithData:(NSData *)data contentType:(NSString *)contentType;
 
 // Class's constructors
-- (id)initWithData:(NSData *)data contentType:(NSString *)contentType;
+- (instancetype)initWithData:(NSData *)data contentType:(NSString *)contentType;
 
 @end

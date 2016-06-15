@@ -42,7 +42,7 @@
 @interface UIView (FwiExtension)
 
 /** Create image from current view. */
-- (__autoreleasing UIImage *)createImage;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) UIImage *createImage;
 - (__autoreleasing UIImage *)createImageWithScaleFactor:(CGFloat)scaleFactor;
 
 /** Create image from region of interest. */
@@ -50,7 +50,7 @@
 - (__autoreleasing UIImage *)createImageWithROI:(CGRect)roiRect scaleFactor:(CGFloat)scaleFactor;
 
 /** Find first responder within tree views. */
-- (__autoreleasing UIView *)findFirstResponder;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) UIView *findFirstResponder;
 /** Find and resign first responder within tree views. */
 - (void)findAndResignFirstResponder;
 

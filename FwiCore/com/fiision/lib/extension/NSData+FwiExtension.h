@@ -42,11 +42,11 @@
 @interface NSData (FwiExtension)
 
 /** Zip/Unzip data. */
-- (__autoreleasing NSData *)zip;
-- (__autoreleasing NSData *)unzip;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSData *zip;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSData *unzip;
 
 /** Convert data to utf8 string. */
-- (__autoreleasing NSString *)toString;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSString *toString;
 
 /** Convert data to string base on string encoding type. */
 - (__autoreleasing NSString *)toStringWithEncoding:(NSStringEncoding)encoding;

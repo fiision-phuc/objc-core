@@ -8,7 +8,7 @@
 - (__autoreleasing UIImage *)createImage {
     /* Condition validation */
     if (!self) return nil;
-    return [self createImageWithScaleFactor:[[UIScreen mainScreen] scale]];
+    return [self createImageWithScaleFactor:[UIScreen mainScreen].scale];
 }
 - (__autoreleasing UIImage *)createImageWithScaleFactor:(CGFloat)scaleFactor {
     /* Condition validation */
@@ -24,7 +24,7 @@
     }
 
     // Render view
-    [[self layer] renderInContext:UIGraphicsGetCurrentContext()];
+    [self.layer renderInContext:UIGraphicsGetCurrentContext()];
 
     // Create image
     __autoreleasing UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
@@ -38,7 +38,7 @@
     
     /* Condition validation: Validate ROI */
     if (!CGRectContainsRect(self.bounds, roiRect)) return nil;
-    return [self createImageWithROI:roiRect scaleFactor:[[UIScreen mainScreen] scale]];
+    return [self createImageWithROI:roiRect scaleFactor:[UIScreen mainScreen].scale];
 }
 - (__autoreleasing UIImage *)createImageWithROI:(CGRect)roiRect scaleFactor:(CGFloat)scaleFactor {
     /* Condition validation */
@@ -63,7 +63,7 @@
     if ([self isFirstResponder] && ![self isKindOfClass:[UITableViewCell class]] && ![self isKindOfClass:[UICollectionViewCell class]]) return self;
     
 	// Find and resign first responder
-    __autoreleasing NSArray *views = [self subviews];
+    __autoreleasing NSArray *views = self.subviews;
 	for (UIView *view in views) {
 		if ([view isFirstResponder]) return view;
 		else {
@@ -87,9 +87,9 @@
 }
 
 - (void)roundCorner:(CGFloat)radius {
-    __autoreleasing CALayer *bgLayer = [self layer];
+    __autoreleasing CALayer *bgLayer = self.layer;
     
-    [bgLayer setCornerRadius:radius];
+    bgLayer.cornerRadius = radius;
     [bgLayer setMasksToBounds:YES];
 }
 

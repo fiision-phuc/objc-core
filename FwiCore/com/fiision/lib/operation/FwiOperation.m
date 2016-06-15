@@ -31,7 +31,7 @@ static NSOperationQueue *_OperationQueue;
         // Validate multitask
         _IsMultitaskingSupported = NO;
         if ([[UIDevice currentDevice] respondsToSelector:@selector(isMultitaskingSupported)]) {
-            _IsMultitaskingSupported = [[UIDevice currentDevice] isMultitaskingSupported];
+            _IsMultitaskingSupported = [UIDevice currentDevice].multitaskingSupported;
         }
         
         // Create operation queue
@@ -40,19 +40,19 @@ static NSOperationQueue *_OperationQueue;
             struct utsname systemInfo;
             uname(&systemInfo);
             
-            __autoreleasing NSString *text = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+            __autoreleasing NSString *text = @(systemInfo.machine);
             if ([text hasPrefix:@"iPod"]) {
                 text = [text substringFromIndex:4];
-                CGFloat modelVersion = [text floatValue];
-                [_OperationQueue setMaxConcurrentOperationCount:(modelVersion < 5 ? 3 : 5)];
+                CGFloat modelVersion = text.floatValue;
+                _OperationQueue.maxConcurrentOperationCount = (modelVersion < 5 ? 3 : 5);
             }
             if ([text hasPrefix:@"iPhone"]) {
                 text = [text substringFromIndex:6];
-                CGFloat modelVersion = [text floatValue];
-                [_OperationQueue setMaxConcurrentOperationCount:(modelVersion < 4 ? 3 : 5)];
+                CGFloat modelVersion = text.floatValue;
+                _OperationQueue.maxConcurrentOperationCount = (modelVersion < 4 ? 3 : 5);
             }
             else {
-                [_OperationQueue setMaxConcurrentOperationCount:5];
+                _OperationQueue.maxConcurrentOperationCount = 5;
             }
         }
     }
@@ -66,7 +66,7 @@ static NSOperationQueue *_OperationQueue;
 
 
 #pragma mark - Class's constructors
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         _isCancelled = NO;
@@ -94,7 +94,7 @@ static NSOperationQueue *_OperationQueue;
 #pragma mark - Class's public methods
 - (void)execute {
     // Always check for cancellation before launching the task.
-    if ([self isCancelled]) {
+    if (self.cancelled) {
         [self _operationCompleted];
     }
     else {
@@ -177,7 +177,7 @@ static NSOperationQueue *_OperationQueue;
 - (void)start {
     @autoreleasepool {
         // Always check for cancellation before launching the task.
-        if ([self isCancelled]) {
+        if (self.cancelled) {
             [self _operationCompleted];
         }
         else {

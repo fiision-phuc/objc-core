@@ -27,7 +27,7 @@
 
 
 #pragma mark - Class's constructors
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         _rootPath       = nil;
@@ -60,7 +60,7 @@
 #pragma mark - Class's public methods
 - (void)handleDelegate:(id<FwiCacheFolderDelegate>)delegate {
     NSURL *remoteURL = [delegate remoteMedia:self];
-    NSString *readyFile = [self pathForRemoteMedia:[remoteURL description]];
+    NSString *readyFile = [self pathForRemoteMedia:remoteURL.description];
     
     if ([_fileManager fileExistsAtPath:readyFile]) {
         [self updateFile:readyFile];
@@ -86,7 +86,7 @@
         [_networkManager downloadResource:request completion:^(NSURL *location, __unused NSError *error, NSInteger statusCode, __unused NSHTTPURLResponse *response) {
             if (200 <= statusCode && statusCode <= 299) {
                 __autoreleasing NSError *error = nil;
-                [_fileManager moveItemAtPath:[location path] toPath:readyFile error:&error];
+                [_fileManager moveItemAtPath:location.path toPath:readyFile error:&error];
             }
             
             // Notify all waiting delegates
@@ -95,7 +95,7 @@
                 __autoreleasing NSArray *filters = [_placeHolder filteredArrayUsingPredicate:p];
                 
                 [filters enumerateObjectsUsingBlock:^(NSDictionary *item, __unused NSUInteger idx, __unused BOOL *stop) {
-                    id<FwiCacheFolderDelegate> d = [item objectForKey:@"delegate"];
+                    id<FwiCacheFolderDelegate> d = item[@"delegate"];
                     
                     if (d && [d respondsToSelector:@selector(cacheFolder:didFinishDownloadingRemoteMedia:image:)]) {
                         __autoreleasing UIImage *image = [UIImage imageWithContentsOfFile:readyFile];
@@ -139,7 +139,7 @@
 #pragma mark - Class's private methods
 - (NSString *)_validateFilename:(NSString *)filename {
     __autoreleasing NSData *data = [filename toData];
-    uint8_t *chars = (void *)[data bytes];
+    uint8_t *chars = (void *)data.bytes;
     
     // Replace all invalid characters
     for (NSUInteger i = 0; i < data.length; i++) {
@@ -158,7 +158,7 @@
         
         // Load file's attributes
         NSDictionary *attributes = [_fileManager attributesOfItemAtPath:filename error:nil];
-        NSTimeInterval seconds = -1 * [[attributes fileModificationDate] timeIntervalSinceNow];
+        NSTimeInterval seconds = -1 * [attributes fileModificationDate].timeIntervalSinceNow;
         
         if (seconds >= _idleTime) {
             [_fileManager removeItemAtPath:filename error:nil];
@@ -196,7 +196,7 @@
 
 
 #pragma mark - Class's constructors
-- (id)initWithNamed:(NSString *)named {
+- (instancetype)initWithNamed:(NSString *)named {
 	self = [self init];
     if (self) {
         _rootPath = FwiRetain([[[NSURL cacheDirectory] path] stringByAppendingPathComponent:named]);

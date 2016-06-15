@@ -28,8 +28,8 @@
 	/* Condition validation */
 	if (!self || !otherString) return NO;
 	
-    __autoreleasing NSString *text1 = [[otherString lowercaseString] trim];
-    __autoreleasing NSString *text2 = [[self lowercaseString] trim];
+    __autoreleasing NSString *text1 = [otherString.lowercaseString trim];
+    __autoreleasing NSString *text2 = [self.lowercaseString trim];
 	return [text1 isEqualToString:text2];
 }
 
@@ -45,7 +45,7 @@
     __autoreleasing NSError *error = nil;
     __autoreleasing NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern options:option error:&error];
     
-    NSUInteger matches = [regex numberOfMatchesInString:self options:0 range:NSMakeRange(0, [self length])];
+    NSUInteger matches = [regex numberOfMatchesInString:self options:0 range:NSMakeRange(0, self.length)];
     return (matches == 1);
 }
 

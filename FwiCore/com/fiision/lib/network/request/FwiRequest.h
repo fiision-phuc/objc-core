@@ -47,7 +47,7 @@
 
 
 /** Build the request. */
-- (size_t)prepare;
+@property (NS_NONATOMIC_IOSONLY, readonly) size_t prepare;
 
 @end
 

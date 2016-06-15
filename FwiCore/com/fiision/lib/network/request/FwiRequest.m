@@ -18,16 +18,16 @@
 
 
 static inline NSString* FwiGenerateUserAgent() {
-    __autoreleasing NSDictionary *bundleInfo   = [[NSBundle mainBundle] infoDictionary];
+    __autoreleasing NSDictionary *bundleInfo   = [NSBundle mainBundle].infoDictionary;
     __autoreleasing UIDevice *deviceInfo       = [UIDevice currentDevice];
-    __autoreleasing NSString *bundleExecutable = [bundleInfo objectForKey:(NSString *)kCFBundleExecutableKey];
-    __autoreleasing NSString *bundleIdentifier = [bundleInfo objectForKey:(NSString *)kCFBundleIdentifierKey];
-    __autoreleasing NSString *bundleVersion    = [bundleInfo objectForKey:(NSString *)kCFBundleVersionKey];
-    __autoreleasing NSString *systemVersion    = [deviceInfo systemVersion];
-    __autoreleasing NSString *model            = [deviceInfo model];
+    __autoreleasing NSString *bundleExecutable = bundleInfo[(NSString *)kCFBundleExecutableKey];
+    __autoreleasing NSString *bundleIdentifier = bundleInfo[(NSString *)kCFBundleIdentifierKey];
+    __autoreleasing NSString *bundleVersion    = bundleInfo[(NSString *)kCFBundleVersionKey];
+    __autoreleasing NSString *systemVersion    = deviceInfo.systemVersion;
+    __autoreleasing NSString *model            = deviceInfo.model;
     
     // Define user-agent
-    return [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)", (bundleExecutable ? bundleExecutable : bundleIdentifier), bundleVersion, model, systemVersion, [[UIScreen mainScreen] scale]];
+    return [NSString stringWithFormat:@"%@/%@ (%@; iOS %@; Scale/%0.2f)", (bundleExecutable ? bundleExecutable : bundleIdentifier), bundleVersion, model, systemVersion, [UIScreen mainScreen].scale];
 }
 
 
@@ -49,7 +49,7 @@ static inline NSString* FwiGenerateUserAgent() {
 
 
 /** Class's constructors. */
-- (id)initWithURL:(NSURL *)url methodType:(FwiHttpMethod)type;
+- (instancetype)initWithURL:(NSURL *)url methodType:(FwiHttpMethod)type;
 
 
 /** Initialize form & upload. */
@@ -69,7 +69,7 @@ static inline NSString* FwiGenerateUserAgent() {
 
 
 #pragma mark - Class's constructors
-- (id)initWithURL:(NSURL *)url methodType:(FwiHttpMethod)type {
+- (instancetype)initWithURL:(NSURL *)url methodType:(FwiHttpMethod)type {
     self = [super initWithURL:url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30.0f];
     if (self) {
         _type = type;
@@ -147,7 +147,7 @@ static inline NSString* FwiGenerateUserAgent() {
 
 #pragma mark - Class's public methods
 - (size_t)prepare {
-    __autoreleasing NSDictionary *allHeaders = [self allHTTPHeaderFields];
+    __autoreleasing NSDictionary *allHeaders = self.allHTTPHeaderFields;
     if (!allHeaders[@"Accept"]) [self setValue:@"*/*" forHTTPHeaderField:@"Accept"];
     if (!allHeaders[@"Accept-Charset"]) [self setValue:@"UTF-8" forHTTPHeaderField:@"Accept-Charset"];
     if (!allHeaders[@"Connection"]) [self setValue:@"close" forHTTPHeaderField:@"Connection"];
@@ -158,8 +158,8 @@ static inline NSString* FwiGenerateUserAgent() {
     size_t length = 0;
 
     if (_raw) {
-        length = [_raw.data length];
-        [self setHTTPBody:_raw.data];
+        length = (_raw.data).length;
+        self.HTTPBody = _raw.data;
         [self setValue:_raw.contentType forHTTPHeaderField:@"Content-Type"];
         [self setValue:[NSString stringWithFormat:@"%zu", length] forHTTPHeaderField:@"Content-Length"];
     }
@@ -171,14 +171,14 @@ static inline NSString* FwiGenerateUserAgent() {
                 if (_form && !_upload) {
                     __autoreleasing NSData *encodedData = [[_form componentsJoinedByString:@"&"] toData];
 
-                    length = [encodedData length];
-                    [self setHTTPBody:encodedData];
+                    length = encodedData.length;
+                    self.HTTPBody = encodedData;
                     [self setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
                     [self setValue:[NSString stringWithFormat:@"%zu", length] forHTTPHeaderField:@"Content-Length"];
                 }
                 else {
                     // Define boundary
-                    __unsafe_unretained __block NSString *boundary = [NSString stringWithFormat:@"--------%li", (unsigned long) [[NSDate date] timeIntervalSince1970]];
+                    __unsafe_unretained __block NSString *boundary = [NSString stringWithFormat:@"--------%li", (unsigned long) [NSDate date].timeIntervalSince1970];
                     __autoreleasing NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", boundary];
 
                     // Define body
@@ -197,8 +197,8 @@ static inline NSString* FwiGenerateUserAgent() {
                     }];
                     [body appendData:[[NSString stringWithFormat:@"\r\n--%@--\r\n", boundary] toData]];
 
-                    length = [body length];
-                    [self setHTTPBody:body];
+                    length = body.length;
+                    self.HTTPBody = body;
                     [self setValue:contentType forHTTPHeaderField:@"Content-Type"];
                     [self setValue:[NSString stringWithFormat:@"%zu", length] forHTTPHeaderField:@"Content-Length"];
                 }

@@ -6,13 +6,13 @@
 
 - (BOOL)prefersStatusBarHidden {
     if (self.topViewController) {
-        return [[self topViewController] prefersStatusBarHidden];
+        return [self.topViewController prefersStatusBarHidden];
     }
     return [super prefersStatusBarHidden];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
     if (self.topViewController) {
-        return [[self topViewController] preferredStatusBarStyle];
+        return [self.topViewController preferredStatusBarStyle];
     }
     return [super preferredStatusBarStyle];
 }

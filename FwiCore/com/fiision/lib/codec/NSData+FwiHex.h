@@ -42,14 +42,14 @@
 @interface NSData (FwiHex)
 
 /** Validate Hex. */
-- (BOOL)isHex;
+@property (NS_NONATOMIC_IOSONLY, getter=isHex, readonly) BOOL hex;
 
 /** Decode Hex. */
-- (__autoreleasing NSData *)decodeHexData;
-- (__autoreleasing NSString *)decodeHexString;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSData *decodeHexData;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSString *decodeHexString;
 
 /** Encode Hex. */
-- (__autoreleasing NSData *)encodeHexData;
-- (__autoreleasing NSString *)encodeHexString;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSData *encodeHexData;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSString *encodeHexString;
 
 @end

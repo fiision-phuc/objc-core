@@ -61,6 +61,6 @@
 + (__autoreleasing FwiMultipartParam *)paramWithName:(NSString *)name fileName:(NSString *)fileName data:(NSData *)data contentType:(NSString *)contentType;
 
 // Class's constructors
-- (id)initWithName:(NSString *)name fileName:(NSString *)fileName data:(NSData *)data contentType:(NSString *)contentType;
+- (instancetype)initWithName:(NSString *)name fileName:(NSString *)fileName data:(NSData *)data contentType:(NSString *)contentType;
 
 @end

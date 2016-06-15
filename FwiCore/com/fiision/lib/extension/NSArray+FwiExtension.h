@@ -42,11 +42,11 @@
 @interface NSArray (FwiExtension)
 
 /** Search for an object at specific path. */
-- (__autoreleasing id)objectWithPath:(NSString *)path;
+- (instancetype)objectWithPath:(NSString *)path;
 
 /** Convert current mutable array to array. */
-- (__autoreleasing NSArray *)toArray;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSArray *toArray;
 /** Convert current array to mutable array. */
-- (__autoreleasing NSMutableArray *)toMutableArray;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSMutableArray *toMutableArray;
 
 @end

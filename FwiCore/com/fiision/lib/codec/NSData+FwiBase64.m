@@ -31,7 +31,7 @@ static const uint8_t _DecodingTable[128] = {
 - (BOOL)isBase64 {
     /* Condition validation */
     if (!self || self.length <= 0 || (self.length % 4) != 0) return NO;
-    const uint8_t *bytes = [self bytes];
+    const uint8_t *bytes = self.bytes;
     BOOL isBase64 = YES;
 
     for (NSUInteger i = 0; i < self.length; i++) {
@@ -51,10 +51,10 @@ static const uint8_t _DecodingTable[128] = {
     
 	// Initialize buffer
 	uint8_t b1, b2, b3, b4;
-	const uint8_t *bytes = [self bytes];
+	const uint8_t *bytes = self.bytes;
     
 	// Calculate output length
-	NSUInteger end    = [self length];
+	NSUInteger end    = self.length;
 	NSUInteger finish = end - 4;
 	NSUInteger length = (finish >> 2) * 3;
 	if		(bytes[end - 2] == '=') length += 1;
@@ -110,7 +110,7 @@ static const uint8_t _DecodingTable[128] = {
 }
 - (__autoreleasing NSString *)decodeBase64String {
     /* Condition validation */
-	if (!self || [self length] <= 0) return nil;
+	if (!self || self.length <= 0) return nil;
     return [[self decodeBase64Data] toString];
 }
 
@@ -118,15 +118,15 @@ static const uint8_t _DecodingTable[128] = {
 #pragma mark - Encode base64
 - (__autoreleasing NSData *)encodeBase64Data {
 	/* Condition validation */
-	if (!self || [self length] <= 0) return nil;
+	if (!self || self.length <= 0) return nil;
     
 	// Calculate output length
-	uint8_t modulus = [self length] % 3;
-	NSUInteger dataLength = [self length] - modulus;
+	uint8_t modulus = self.length % 3;
+	NSUInteger dataLength = self.length - modulus;
 	NSUInteger outputLength = (dataLength / 3) * 4 + ((modulus == 0) ? 0 : 4);
     
 	// Create output space
-	const uint8_t *bytes = [self bytes];
+	const uint8_t *bytes = self.bytes;
 	uint8_t *outputBytes = malloc(outputLength);
 	bzero(outputBytes, outputLength);
     
@@ -183,7 +183,7 @@ static const uint8_t _DecodingTable[128] = {
 }
 - (__autoreleasing NSString *)encodeBase64String {
     /* Condition validation */
-	if (!self || [self length] <= 0) return nil;
+	if (!self || self.length <= 0) return nil;
     return [[self encodeBase64Data] toString];
 }
 

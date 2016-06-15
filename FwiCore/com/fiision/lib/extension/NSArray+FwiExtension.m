@@ -4,20 +4,20 @@
 @implementation NSArray (FwiExtension)
 
 
-- (__autoreleasing id)objectWithPath:(NSString *)path {
+- (instancetype)objectWithPath:(NSString *)path {
     /* Condition validation */
     if (!self || self.count == 0) return nil;
     
     __autoreleasing NSArray *tokens = [path componentsSeparatedByString:@"/"];
     __weak id o = self;
     
-    for (NSUInteger i = 0; i < [tokens count]; i++) {
+    for (NSUInteger i = 0; i < tokens.count; i++) {
         __weak NSString *path = tokens[i];
         
         // Lookup object
         if ([o isKindOfClass:[NSArray class]]) {
-            NSInteger index = [path integerValue];
-            if (index < 0 || index >= [(NSArray *)o count]) {
+            NSInteger index = path.integerValue;
+            if (index < 0 || index >= ((NSArray *)o).count) {
                 o = nil;
             }
             else {

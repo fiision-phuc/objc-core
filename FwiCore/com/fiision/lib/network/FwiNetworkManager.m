@@ -17,7 +17,7 @@
 
 
 #pragma mark - Class's constructors
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         // Default configuration
@@ -81,6 +81,7 @@
         [r setValue:cachedResponse.allHeaderFields[@"Date"] forHTTPHeaderField:@"If-Modified-Since"];
     }
 
+    // Turn on activity indicator
     @synchronized(self) {
         _counter++;
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
@@ -98,7 +99,7 @@
             statusCode = httpResponse.statusCode;
 
             if (!FwiNetworkStatusIsSuccces(statusCode)) {
-                error = [NSError errorWithDomain:NSURLErrorDomain code:statusCode userInfo:@{NSURLErrorFailingURLErrorKey:[request.URL description], NSURLErrorFailingURLStringErrorKey:[request.URL description], NSLocalizedDescriptionKey:[NSHTTPURLResponse localizedStringForStatusCode:statusCode]}];
+                error = [NSError errorWithDomain:NSURLErrorDomain code:statusCode userInfo:@{NSURLErrorFailingURLErrorKey:(request.URL).description, NSURLErrorFailingURLStringErrorKey:(request.URL).description, NSLocalizedDescriptionKey:[NSHTTPURLResponse localizedStringForStatusCode:statusCode]}];
             }
             else {
                 // Should we cache this request or not
@@ -150,9 +151,48 @@
         [customRequest prepare];
     }
     
+    // Turn on activity indicator
+    @synchronized(self) {
+        _counter++;
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    }
+    
     __autoreleasing NSURLSessionDownloadTask *task = [_session downloadTaskWithRequest:request completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-        // FIX FIX FIX: Need to handle response status
-        if (completion) completion(location, error, 200, (NSHTTPURLResponse *)response);
+        NSInteger statusCode = kNone;
+        __weak NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+        
+        // Validate http status
+        if (error) {
+            statusCode = error.code;
+        }
+        else if (response) {
+            statusCode = httpResponse.statusCode;
+            
+            if (!FwiNetworkStatusIsSuccces(statusCode)) {
+                error = [NSError errorWithDomain:NSURLErrorDomain code:statusCode userInfo:@{NSURLErrorFailingURLErrorKey:(request.URL).description, NSURLErrorFailingURLStringErrorKey:(request.URL).description, NSLocalizedDescriptionKey:[NSHTTPURLResponse localizedStringForStatusCode:statusCode]}];
+            }
+        }
+        
+        // Console log error
+        if (error) {
+            __autoreleasing NSMutableString *errorMessage = [NSMutableString string];
+            [errorMessage appendFormat:@"Domain     : %@\n", request.URL.host];
+            [errorMessage appendFormat:@"HTTP Url   : %@\n", request.URL];
+            [errorMessage appendFormat:@"HTTP Method: %@\n", request.HTTPMethod];
+            [errorMessage appendFormat:@"HTTP Status: %li (%@)\n", (unsigned long) statusCode, error.localizedDescription];
+            [errorMessage appendFormat:@"%@", location.path];
+            
+            NSLog(@"\n\n%@\n\n", errorMessage);
+        }
+        
+        // Turn off activity indicator if neccessary
+        @synchronized(self) {
+            _counter--;
+            if (_counter == 0) [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        }
+        
+        // Return result
+        if (completion) completion(location, error, statusCode, httpResponse);
     }];
     [task resume];
 }

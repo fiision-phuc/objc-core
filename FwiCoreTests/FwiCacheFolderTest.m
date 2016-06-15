@@ -33,7 +33,7 @@
     _cacheFolder = FwiRetain([FwiCacheFolder cacheFolderWithNamed:@"images"]);
     XCTAssertEqual(_cacheFolder.idleTime, 172800, @"Expected initial idleTime would be 2 days.");   // 2 * 24 * 60 * 60
     
-    __autoreleasing NSString *rootPath = [[[NSURL cacheDirectory] path] stringByAppendingPathComponent:@"images"];
+    __autoreleasing NSString *rootPath = [[NSURL cacheDirectory].path stringByAppendingPathComponent:@"images"];
     XCTAssertEqualObjects(_cacheFolder.rootPath, rootPath, @"Expected root path will be cache path and named.");
     
     NSFileManager *manager = [NSFileManager defaultManager];

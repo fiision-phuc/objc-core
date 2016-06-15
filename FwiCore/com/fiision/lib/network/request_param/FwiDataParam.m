@@ -14,7 +14,7 @@
 
 
 #pragma mark - Class's constructors
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         _data = nil;
@@ -36,7 +36,7 @@
 
 
 #pragma mark - NSCoding's members
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [self init];
     if (self && aDecoder) {
         _data = FwiRetain([aDecoder decodeObjectForKey:@"_data"]);
@@ -71,7 +71,7 @@
 
 
 #pragma mark - Class's constructors
-- (id)initWithData:(NSData *)data contentType:(NSString *)contentType {
+- (instancetype)initWithData:(NSData *)data contentType:(NSString *)contentType {
     self = [self init];
     if (self) {
         _data = FwiRetain(data);

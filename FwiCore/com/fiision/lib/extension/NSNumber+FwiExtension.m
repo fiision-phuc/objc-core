@@ -14,24 +14,24 @@
     NSNumberFormatter *currencyFormat = [[NSNumberFormatter alloc] init];
     
     // Layout currency
-    [currencyFormat setFormatterBehavior:NSNumberFormatterBehavior10_4];
-    [currencyFormat setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [currencyFormat setRoundingMode:NSNumberFormatterRoundHalfUp];
+    currencyFormat.formatterBehavior = NSNumberFormatterBehavior10_4;
+    currencyFormat.numberStyle = NSNumberFormatterCurrencyStyle;
+    currencyFormat.roundingMode = NSNumberFormatterRoundHalfUp;
     [currencyFormat setGeneratesDecimalNumbers:YES];
-    [currencyFormat setLocale:locale];
+    currencyFormat.locale = locale;
     
-    [currencyFormat setCurrencyGroupingSeparator:groupingSeparator];
-    [currencyFormat setCurrencyDecimalSeparator:decimalSeparator];
+    currencyFormat.currencyGroupingSeparator = groupingSeparator;
+    currencyFormat.currencyDecimalSeparator = decimalSeparator;
     
     if (usingSymbol) {
-        [currencyFormat setPositiveFormat:@"\u00a4#,##0.00"];
-        [currencyFormat setNegativeFormat:@"- \u00a4#,##0.00"];
+        currencyFormat.positiveFormat = @"\u00a4#,##0.00";
+        currencyFormat.negativeFormat = @"- \u00a4#,##0.00";
     }
     else {
-        [currencyFormat setPositiveFormat:[NSString stringWithFormat:@"#,##0.00 %@", currencyISO3]];
-        [currencyFormat setNegativeFormat:[NSString stringWithFormat:@"- #,##0.00 %@", currencyISO3]];
+        currencyFormat.positiveFormat = [NSString stringWithFormat:@"#,##0.00 %@", currencyISO3];
+        currencyFormat.negativeFormat = [NSString stringWithFormat:@"- #,##0.00 %@", currencyISO3];
     }
-    [currencyFormat setCurrencyCode:currencyISO3];
+    currencyFormat.currencyCode = currencyISO3;
     
     __autoreleasing NSString *result = [currencyFormat stringFromNumber:self];
     FwiRelease(currencyFormat);

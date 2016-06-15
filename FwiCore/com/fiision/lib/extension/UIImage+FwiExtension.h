@@ -50,10 +50,10 @@
 @interface UIImage (FwiExtension)
 
 /** Create blur effect image from original source. */
-- (__autoreleasing UIImage *)darkBlur;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) UIImage *darkBlur;
 - (__autoreleasing UIImage *)darkBlurWithRadius:(CGFloat)radius saturationFactor:(CGFloat)saturationFactor;
 
-- (__autoreleasing UIImage *)lightBlur;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) UIImage *lightBlur;
 - (__autoreleasing UIImage *)lightBlurWithRadius:(CGFloat)radius saturationFactor:(CGFloat)saturationFactor;
 
 - (__autoreleasing UIImage *)blurWithRadius:(CGFloat)blurRadius tintColor:(UIColor *)tintColor saturationFactor:(CGFloat)saturationFactor;

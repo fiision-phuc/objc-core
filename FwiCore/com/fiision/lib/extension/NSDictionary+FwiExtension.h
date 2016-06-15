@@ -51,11 +51,11 @@
 @interface NSDictionary (FwiExtension)
 
 /** Search for an object at specific path. */
-- (__autoreleasing id)objectWithPath:(NSString *)path;
+- (instancetype)objectWithPath:(NSString *)path;
 
 /** Convert current mutable dictionary to dictionary. */
-- (__autoreleasing NSDictionary *)toDictionary;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSDictionary *toDictionary;
 /** Convert current dictionary to mutable dictionary. */
-- (__autoreleasing NSMutableDictionary *)toMutableDictionary;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSMutableDictionary *toMutableDictionary;
 
 @end

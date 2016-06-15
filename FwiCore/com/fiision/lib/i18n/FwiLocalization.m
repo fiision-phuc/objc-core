@@ -18,7 +18,7 @@ static FwiLocalization *_SharedInstance = nil;
 
 
 #pragma mark - Class's constructors
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         _bundle = nil;
@@ -61,7 +61,7 @@ static FwiLocalization *_SharedInstance = nil;
         [[NSUserDefaults standardUserDefaults] setObject:@[_locale] forKey:@"AppleLanguages"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
-        self.bundle = [NSBundle bundleWithPath:[path stringByDeletingLastPathComponent]];
+        self.bundle = [NSBundle bundleWithPath:path.stringByDeletingLastPathComponent];
     }
 }
 
@@ -71,7 +71,7 @@ static FwiLocalization *_SharedInstance = nil;
     return [self.bundle localizedStringForKey:string value:alternative table:nil];
 }
 - (void)reset {
-    __autoreleasing NSArray *languages = [[NSBundle mainBundle] preferredLocalizations];
+    __autoreleasing NSArray *languages = [NSBundle mainBundle].preferredLocalizations;
     if (languages.count > 0) {
         self.locale = languages[0];
     }

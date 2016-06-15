@@ -54,7 +54,7 @@ static void reachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
 
 #pragma mark - Class's constructors
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         _returnWiFiStatus = NO;
@@ -150,7 +150,7 @@ static void reachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 	return reachability;
 }
 + (__autoreleasing FwiReachability *)reachabilityWithHostname:(NSString *)hostname {
-	SCNetworkReachabilityRef reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, [hostname UTF8String]);
+	SCNetworkReachabilityRef reachabilityRef = SCNetworkReachabilityCreateWithName(NULL, hostname.UTF8String);
 
     __autoreleasing FwiReachability *reachability = (reachabilityRef ? FwiAutoRelease([[FwiReachability alloc] initWithNetworkReachability:reachabilityRef]) : nil);
     if (!reachability) FwiReleaseCF(reachabilityRef);
@@ -185,7 +185,7 @@ static void reachabilityCallback(SCNetworkReachabilityRef target, SCNetworkReach
 
 
 #pragma mark - Class's constructors
-- (id)initWithNetworkReachability:(SCNetworkReachabilityRef)reachabilityRef {
+- (instancetype)initWithNetworkReachability:(SCNetworkReachabilityRef)reachabilityRef {
     self = [self init];
     if (self) {
         _reachabilityRef = reachabilityRef;

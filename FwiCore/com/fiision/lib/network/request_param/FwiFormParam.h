@@ -58,6 +58,6 @@
 + (__autoreleasing FwiFormParam *)paramWithKey:(NSString *)key andValue:(NSString *)value;
 
 // Class's constructors
-- (id)initWithKey:(NSString *)key andValue:(NSString *)value;
+- (instancetype)initWithKey:(NSString *)key andValue:(NSString *)value;
 
 @end

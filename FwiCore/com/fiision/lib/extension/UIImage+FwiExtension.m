@@ -43,7 +43,7 @@
 	CGContextScaleCTM(mainContext, 1.0f, -1.0f);
 	
 	// Draw the image into the bitmap context
-	CGContextDrawImage(mainContext, view.bounds, [[view createImage] CGImage]);
+	CGContextDrawImage(mainContext, view.bounds, [view createImage].CGImage);
 	
 	// Create CGImageRef
 	CGImageRef imgReflectedRef = CGBitmapContextCreateImage(mainContext);
@@ -166,7 +166,7 @@
     
     
     // Set up output context.
-    UIGraphicsBeginImageContextWithOptions(self.size, NO, [[UIScreen mainScreen] scale]);
+    UIGraphicsBeginImageContextWithOptions(self.size, NO, [UIScreen mainScreen].scale);
     CGContextRef outputContext = UIGraphicsGetCurrentContext();
     
     CGContextScaleCTM(outputContext, 1.0f, -1.0f);

@@ -14,7 +14,7 @@
 
 
 #pragma mark - Class's constructors
-- (id)init {
+- (instancetype)init {
     self = [super init];
     if (self) {
         _name = nil;
@@ -44,10 +44,10 @@
 - (NSUInteger)hash {
     NSUInteger hash = 0;
 
-    hash += [_name hash];
-    hash += [_fileName hash];
-    hash += [_data hash];
-    hash += [_contentType hash];
+    hash += _name.hash;
+    hash += _fileName.hash;
+    hash += _data.hash;
+    hash += _contentType.hash;
 
     return hash;
 }
@@ -56,14 +56,14 @@
     /* Condition validation */
     if (!parameter) return NSOrderedDescending;
 
-    __autoreleasing NSNumber *a = @([self hash]);
-    __autoreleasing NSNumber *b = @([parameter hash]);
+    __autoreleasing NSNumber *a = @(self.hash);
+    __autoreleasing NSNumber *b = @(parameter.hash);
     return [a compare:b];
 }
 
 
 #pragma mark - NSCoding's members
-- (id)initWithCoder:(NSCoder *)aDecoder {
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [self init];
     if (self && aDecoder) {
         _name        = FwiRetain([aDecoder decodeObjectForKey:@"_name"]);
@@ -95,7 +95,7 @@
 
 
 #pragma mark - Class's constructors
-- (id)initWithName:(NSString *)name fileName:(NSString *)fileName data:(NSData *)data contentType:(NSString *)contentType {
+- (instancetype)initWithName:(NSString *)name fileName:(NSString *)fileName data:(NSData *)data contentType:(NSString *)contentType {
     self = [self init];
     if (self) {
         _name = FwiRetain(name);

@@ -60,15 +60,15 @@
 - (BOOL)matchPattern:(NSString *)pattern option:(NSRegularExpressionOptions)option;
 
 /** Convert string to data. */
-- (__autoreleasing NSData *)toData;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSData *toData;
 - (__autoreleasing NSData *)toDataWithEncoding:(NSStringEncoding)encoding;
 
 /** Convert html string compatible to string. */
-- (__autoreleasing NSString *)decodeHTML;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSString *decodeHTML;
 /** Convert string to html string compatible. */
-- (__autoreleasing NSString *)encodeHTML;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSString *encodeHTML;
 
 /** Trim all spaces before and after a string. */
-- (__autoreleasing NSString *)trim;
+@property (NS_NONATOMIC_IOSONLY, readonly, strong) NSString *trim;
 
 @end
