@@ -103,7 +103,6 @@ static inline double FwiConvertToRadian(double degree) {
 #import "UIButton+FwiExtension.h"
 #import "UIColor+FwiExtension.h"
 #import "UIImage+FwiExtension.h"
-#import "UIImageView+FwiExtension.h"
 #import "UINavigationController+FwiExtension.h"
 #import "UITabBarController+FwiExtension.h"
 #import "UIView+FwiExtension.h"

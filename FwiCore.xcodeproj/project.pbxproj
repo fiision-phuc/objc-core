@@ -37,7 +37,6 @@
 		BE208BFA16E9B8AC004E0F54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BF916E9B8AC004E0F54 /* CoreGraphics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE208BFC16E9B8B4004E0F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BFB16E9B8B4004E0F54 /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE2606D81CB0D12B005FAC9E /* FwiCacheFolderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2606D71CB0D12B005FAC9E /* FwiCacheFolderTest.m */; };
-		BE2606DB1CB102DE005FAC9E /* UIImageView+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2606DA1CB102DE005FAC9E /* UIImageView+FwiExtension.m */; };
 		BE261EBE1A666789008521C2 /* FwiBase64DataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE261EBD1A666789008521C2 /* FwiBase64DataTest.m */; };
 		BE261EC01A66679C008521C2 /* FwiBase64StringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE261EBF1A66679C008521C2 /* FwiBase64StringTest.m */; };
 		BE261EC21A6667AD008521C2 /* FwiHexDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE261EC11A6667AD008521C2 /* FwiHexDataTest.m */; };
@@ -51,7 +50,6 @@
 		BE261ECF1A6677F6008521C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208B6016E9B091004E0F54 /* Foundation.framework */; };
 		BE261ED01A6677FB008521C2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE59FCB41817856A00A4FC6E /* Accelerate.framework */; };
 		BE261ED11A667804008521C2 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142F221A6503D300C731EF /* libz.1.2.5.dylib */; };
-		BE5288051C97132600A6D23C /* FwiCacheFolder.m in Sources */ = {isa = PBXBuildFile; fileRef = BE5288021C97132600A6D23C /* FwiCacheFolder.m */; };
 		BE59FCB51817856A00A4FC6E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE59FCB41817856A00A4FC6E /* Accelerate.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE7DBB7C1AF68B760066E650 /* FwiOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7DBB7B1AF68B760066E650 /* FwiOperationTest.m */; };
 		BEF4C2C01C797A3600D23868 /* FwiNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF4C2B51C797A3600D23868 /* FwiNetworkManager.m */; };
@@ -133,8 +131,6 @@
 		BE208BF916E9B8AC004E0F54 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BE208BFB16E9B8B4004E0F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BE2606D71CB0D12B005FAC9E /* FwiCacheFolderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiCacheFolderTest.m; sourceTree = "<group>"; };
-		BE2606D91CB102DE005FAC9E /* UIImageView+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+FwiExtension.h"; sourceTree = "<group>"; };
-		BE2606DA1CB102DE005FAC9E /* UIImageView+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+FwiExtension.m"; sourceTree = "<group>"; };
 		BE261EBD1A666789008521C2 /* FwiBase64DataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiBase64DataTest.m; sourceTree = "<group>"; };
 		BE261EBF1A66679C008521C2 /* FwiBase64StringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiBase64StringTest.m; sourceTree = "<group>"; };
 		BE261EC11A6667AD008521C2 /* FwiHexDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiHexDataTest.m; sourceTree = "<group>"; };
@@ -142,8 +138,6 @@
 		BE261EC51A6667D0008521C2 /* FwiExtensionDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiExtensionDataTest.m; sourceTree = "<group>"; };
 		BE261EC71A6667E4008521C2 /* FwiExtensionNumberTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiExtensionNumberTest.m; sourceTree = "<group>"; };
 		BE261EC91A6667FC008521C2 /* FwiExtensionStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiExtensionStringTest.m; sourceTree = "<group>"; };
-		BE5288011C97132600A6D23C /* FwiCacheFolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FwiCacheFolder.h; sourceTree = "<group>"; };
-		BE5288021C97132600A6D23C /* FwiCacheFolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiCacheFolder.m; sourceTree = "<group>"; };
 		BE59FCB41817856A00A4FC6E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BE5BF0DC1A6509C200F99FFA /* FwiCoreTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FwiCoreTests-Prefix.pch"; sourceTree = "<group>"; };
 		BE7DBB7B1AF68B760066E650 /* FwiOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiOperationTest.m; sourceTree = "<group>"; };
@@ -265,7 +259,6 @@
 				BE1D814C1BB0F2870036D2A7 /* FwiCore.h */,
 				BE1D812C1BB0F2870036D2A7 /* codec */,
 				BE1D81351BB0F2870036D2A7 /* extension */,
-				BE5287FA1C97085100A6D23C /* cache_folder */,
 				BE1D814D1BB0F2870036D2A7 /* i18n */,
 				BEF4C2B31C797A3600D23868 /* network */,
 				BE1D81501BB0F2870036D2A7 /* operation */,
@@ -312,8 +305,6 @@
 				BEF4C2DA1C79814100D23868 /* UIColor+FwiExtension.m */,
 				BEF4C2DB1C79814100D23868 /* UIImage+FwiExtension.h */,
 				BEF4C2DC1C79814100D23868 /* UIImage+FwiExtension.m */,
-				BE2606D91CB102DE005FAC9E /* UIImageView+FwiExtension.h */,
-				BE2606DA1CB102DE005FAC9E /* UIImageView+FwiExtension.m */,
 				BEF4C2DD1C79814100D23868 /* UINavigationController+FwiExtension.h */,
 				BEF4C2DE1C79814100D23868 /* UINavigationController+FwiExtension.m */,
 				BEF4C2DF1C79814100D23868 /* UITabBarController+FwiExtension.h */,
@@ -415,15 +406,6 @@
 				BE142F1C1A6502CF00C731EF /* XCTest.framework */,
 			);
 			name = Test;
-			sourceTree = "<group>";
-		};
-		BE5287FA1C97085100A6D23C /* cache_folder */ = {
-			isa = PBXGroup;
-			children = (
-				BE5288011C97132600A6D23C /* FwiCacheFolder.h */,
-				BE5288021C97132600A6D23C /* FwiCacheFolder.m */,
-			);
-			path = cache_folder;
 			sourceTree = "<group>";
 		};
 		BEF4C2B31C797A3600D23868 /* network */ = {
@@ -590,11 +572,9 @@
 				BEF4C2E41C79814100D23868 /* NSData+FwiExtension.m in Sources */,
 				BEF4C2EE1C79814100D23868 /* UITabBarController+FwiExtension.m in Sources */,
 				BE1D81561BB0F2870036D2A7 /* NSData+FwiBase64.m in Sources */,
-				BE2606DB1CB102DE005FAC9E /* UIImageView+FwiExtension.m in Sources */,
 				BE1D81581BB0F2870036D2A7 /* NSString+FwiBase64.m in Sources */,
 				BEF4C2ED1C79814100D23868 /* UINavigationController+FwiExtension.m in Sources */,
 				BE1D81651BB0F2870036D2A7 /* FwiLocalization.m in Sources */,
-				BE5288051C97132600A6D23C /* FwiCacheFolder.m in Sources */,
 				BEF4C2EB1C79814100D23868 /* UIColor+FwiExtension.m in Sources */,
 				BEF4C2C01C797A3600D23868 /* FwiNetworkManager.m in Sources */,
 				BEF4C2E61C79814100D23868 /* NSNumber+FwiExtension.m in Sources */,
