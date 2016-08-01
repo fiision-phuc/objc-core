@@ -8,19 +8,21 @@
     if (self.topViewController) {
         return [self.topViewController prefersStatusBarHidden];
     }
+    
     return [super prefersStatusBarHidden];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
     if (self.topViewController) {
         return [self.topViewController preferredStatusBarStyle];
     }
+    
     return [super preferredStatusBarStyle];
 }
 
 - (BOOL)shouldAutorotate {
     return self.visibleViewController.shouldAutorotate;
 }
-- (NSUInteger)supportedInterfaceOrientations {
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     return self.visibleViewController.supportedInterfaceOrientations;
 }
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {

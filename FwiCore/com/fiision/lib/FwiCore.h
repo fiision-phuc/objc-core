@@ -41,32 +41,32 @@
 
 
 // ARC & Non-ARC Compatible
-#if !defined(__bridge_transfer)
-    #define __bridge_transfer           /* Empty */
+#if !defined (__bridge_transfer)
+#define __bridge_transfer       /* Empty */
 #endif
 
-#if !defined(__bridge_transfer)
-    #define __weak                      /* Empty */
+#if !defined (__bridge_transfer)
+#define __weak                  /* Empty */
 #endif
 
 #if __has_feature(objc_arc)
-    #define FwiRetain(o)                o
-    #define FwiRelease(o)               if(o) { o = nil; }
-    #define FwiAutoRelease(o)           o
+#define FwiRetain(o)                o
+#define FwiRelease(o)               if (o) {o = nil; }
+#define FwiAutoRelease(o)           o
 #else
-    #define FwiRetain(o)                [o retain]
-    #define FwiRelease(o)               if(o) { [o release]; o = nil;  }
-    #define FwiAutoRelease(o)           [o autorelease]
+#define FwiRetain(o)                [o retain]
+#define FwiRelease(o)               if (o) {[o release]; o = nil; }
+#define FwiAutoRelease(o)           [o autorelease]
 #endif
 
-#define FwiReleaseCF(o)                 if(o) { CFRelease(o); o = nil; }
+#define FwiReleaseCF(o)                 if (o) {CFRelease(o); o = nil; }
 
 
 // Logger
 #ifdef DEBUG
-    #define DLog(...)                   NSLog(@"\n%s %@\n\n", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
+#define DLog(...)                   NSLog(@"\n%s %@\n\n", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
 #else
-    #define DLog(...)                   do { } while (0)
+#define DLog(...)                   do {} while (0)
 #endif
 
 
@@ -78,10 +78,12 @@
 // Define converter macro functions
 static inline double FwiConvertToDegree(double radian) {
     double degree = radian * kRadianToDegree;
+    
     return degree;
 }
 static inline double FwiConvertToRadian(double degree) {
     double radian = degree * kDegreeToRadian;
+    
     return radian;
 }
 
@@ -104,6 +106,7 @@ static inline double FwiConvertToRadian(double degree) {
 #import "UIColor+FwiExtension.h"
 #import "UIImage+FwiExtension.h"
 #import "UINavigationController+FwiExtension.h"
+#import "UISplitViewController+FwiExtension.h"
 #import "UITabBarController+FwiExtension.h"
 #import "UIView+FwiExtension.h"
 // Operation
@@ -117,85 +120,85 @@ static inline double FwiConvertToRadian(double degree) {
 static inline void FwiLocalizedReset() {
     [[FwiLocalization sharedInstance] reset];
 }
-static inline NSString* FwiLocalizedLocale() {
+static inline NSString *FwiLocalizedLocale() {
     return [[FwiLocalization sharedInstance] locale];
 }
 static inline void FwiLocalizedSetLocale(NSString *locale) {
     [[FwiLocalization sharedInstance] setLocale:locale];
 }
-static inline NSString* FwiLocalizedString(NSString *key) {
+static inline NSString *FwiLocalizedString(NSString *key) {
     return [[FwiLocalization sharedInstance] localizedForString:key alternative:key];
 }
 
 
 #pragma mark - Network
-typedef NS_ENUM(NSInteger, FwiHttpMethod) {
-    kCopy    = 0x00,
-    kDelete  = 0x01,
-    kGet     = 0x02,
-    kHead    = 0x03,
-    kLink    = 0x04,
+typedef NS_ENUM (NSInteger, FwiHttpMethod) {
+    kCopy = 0x00,
+    kDelete = 0x01,
+    kGet = 0x02,
+    kHead = 0x03,
+    kLink = 0x04,
     kOptions = 0x05,
-    kPatch   = 0x06,
-    kPost    = 0x07,
-    kPurge   = 0x08,
-    kPut     = 0x09,
-    kUnlink  = 0x0a
+    kPatch = 0x06,
+    kPost = 0x07,
+    kPurge = 0x08,
+    kPut = 0x09,
+    kUnlink = 0x0a
 };
 
-typedef NS_ENUM(NSInteger, FwiNetworkStatus) {
-    kNone                              = -1,
-    kUnknown                           = NSURLErrorUnknown,
-    kCancelled                         = NSURLErrorCancelled,
-    kBadURL                            = NSURLErrorBadURL,
-    kTimedOut                          = NSURLErrorTimedOut,
-    kUnsupportedURL                    = NSURLErrorUnsupportedURL,
-    kCannotFindHost                    = NSURLErrorCannotFindHost,
-    kCannotConnectToHost               = NSURLErrorCannotConnectToHost,
-    kNetworkConnectionLost             = NSURLErrorNetworkConnectionLost,
-    kDNSLookupFailed                   = NSURLErrorDNSLookupFailed,
-    kHTTPTooManyRedirects              = NSURLErrorHTTPTooManyRedirects,
-    kResourceUnavailable               = NSURLErrorResourceUnavailable,
-    kNotConnectedToInternet            = NSURLErrorNotConnectedToInternet,
-    kRedirectToNonExistentLocation     = NSURLErrorRedirectToNonExistentLocation,
-    kBadServerResponse                 = NSURLErrorBadServerResponse,
-    kUserCancelledAuthentication       = NSURLErrorUserCancelledAuthentication,
-    kUserAuthenticationRequired        = NSURLErrorUserAuthenticationRequired,
-    kZeroByteResource                  = NSURLErrorZeroByteResource,
-    kCannotDecodeRawData               = NSURLErrorCannotDecodeRawData,
-    kCannotDecodeContentData           = NSURLErrorCannotDecodeContentData,
-    kCannotParseResponse               = NSURLErrorCannotParseResponse,
-    kFileDoesNotExist                  = NSURLErrorFileDoesNotExist,
-    kFileIsDirectory                   = NSURLErrorFileIsDirectory,
-    kNoPermissionsToReadFile           = NSURLErrorNoPermissionsToReadFile,
-    kDataLengthExceedsMaximum          = NSURLErrorDataLengthExceedsMaximum,
+typedef NS_ENUM (NSInteger, FwiNetworkStatus) {
+    kNone = -1,
+    kUnknown = NSURLErrorUnknown,
+    kCancelled = NSURLErrorCancelled,
+    kBadURL = NSURLErrorBadURL,
+    kTimedOut = NSURLErrorTimedOut,
+    kUnsupportedURL = NSURLErrorUnsupportedURL,
+    kCannotFindHost = NSURLErrorCannotFindHost,
+    kCannotConnectToHost = NSURLErrorCannotConnectToHost,
+    kNetworkConnectionLost = NSURLErrorNetworkConnectionLost,
+    kDNSLookupFailed = NSURLErrorDNSLookupFailed,
+    kHTTPTooManyRedirects = NSURLErrorHTTPTooManyRedirects,
+    kResourceUnavailable = NSURLErrorResourceUnavailable,
+    kNotConnectedToInternet = NSURLErrorNotConnectedToInternet,
+    kRedirectToNonExistentLocation = NSURLErrorRedirectToNonExistentLocation,
+    kBadServerResponse = NSURLErrorBadServerResponse,
+    kUserCancelledAuthentication = NSURLErrorUserCancelledAuthentication,
+    kUserAuthenticationRequired = NSURLErrorUserAuthenticationRequired,
+    kZeroByteResource = NSURLErrorZeroByteResource,
+    kCannotDecodeRawData = NSURLErrorCannotDecodeRawData,
+    kCannotDecodeContentData = NSURLErrorCannotDecodeContentData,
+    kCannotParseResponse = NSURLErrorCannotParseResponse,
+    kFileDoesNotExist = NSURLErrorFileDoesNotExist,
+    kFileIsDirectory = NSURLErrorFileIsDirectory,
+    kNoPermissionsToReadFile = NSURLErrorNoPermissionsToReadFile,
+    kDataLengthExceedsMaximum = NSURLErrorDataLengthExceedsMaximum,
     // SSL errors
-    kSecureConnectionFailed            = NSURLErrorSecureConnectionFailed,
-    kServerCertificateHasBadDate       = NSURLErrorServerCertificateHasBadDate,
-    kServerCertificateUntrusted        = NSURLErrorServerCertificateUntrusted,
-    kServerCertificateHasUnknownRoot   = NSURLErrorServerCertificateHasUnknownRoot,
-    kServerCertificateNotYetValid      = NSURLErrorServerCertificateNotYetValid,
-    kClientCertificateRejected         = NSURLErrorClientCertificateRejected,
-    kClientCertificateRequired         = NSURLErrorClientCertificateRequired,
-    kCannotLoadFromNetwork             = NSURLErrorCannotLoadFromNetwork,
+    kSecureConnectionFailed = NSURLErrorSecureConnectionFailed,
+    kServerCertificateHasBadDate = NSURLErrorServerCertificateHasBadDate,
+    kServerCertificateUntrusted = NSURLErrorServerCertificateUntrusted,
+    kServerCertificateHasUnknownRoot = NSURLErrorServerCertificateHasUnknownRoot,
+    kServerCertificateNotYetValid = NSURLErrorServerCertificateNotYetValid,
+    kClientCertificateRejected = NSURLErrorClientCertificateRejected,
+    kClientCertificateRequired = NSURLErrorClientCertificateRequired,
+    kCannotLoadFromNetwork = NSURLErrorCannotLoadFromNetwork,
     // Download and file I/O errors
-    kCannotCreateFile                  = NSURLErrorCannotCreateFile,
-    kCannotOpenFile                    = NSURLErrorCannotOpenFile,
-    kCannotCloseFile                   = NSURLErrorCannotCloseFile,
-    kCannotWriteToFile                 = NSURLErrorCannotWriteToFile,
-    kCannotRemoveFile                  = NSURLErrorCannotRemoveFile,
-    kCannotMoveFile                    = NSURLErrorCannotMoveFile,
-    kDownloadDecodingFailedMidStream   = NSURLErrorDownloadDecodingFailedMidStream,
-    kDownloadDecodingFailedToComplete  = NSURLErrorDownloadDecodingFailedToComplete,
+    kCannotCreateFile = NSURLErrorCannotCreateFile,
+    kCannotOpenFile = NSURLErrorCannotOpenFile,
+    kCannotCloseFile = NSURLErrorCannotCloseFile,
+    kCannotWriteToFile = NSURLErrorCannotWriteToFile,
+    kCannotRemoveFile = NSURLErrorCannotRemoveFile,
+    kCannotMoveFile = NSURLErrorCannotMoveFile,
+    kDownloadDecodingFailedMidStream = NSURLErrorDownloadDecodingFailedMidStream,
+    kDownloadDecodingFailedToComplete = NSURLErrorDownloadDecodingFailedToComplete,
     
-    kInternationalRoamingOff           = NSURLErrorInternationalRoamingOff,
-    kCallIsActive                      = NSURLErrorCallIsActive,
-    kDataNotAllowed                    = NSURLErrorDataNotAllowed,
-    kRequestBodyStreamExhausted        = NSURLErrorRequestBodyStreamExhausted,
+    kInternationalRoamingOff = NSURLErrorInternationalRoamingOff,
+    kCallIsActive = NSURLErrorCallIsActive,
+    kDataNotAllowed = NSURLErrorDataNotAllowed,
+    kRequestBodyStreamExhausted = NSURLErrorRequestBodyStreamExhausted,
 };
 
 static inline BOOL FwiNetworkStatusIsSuccces(NSInteger statusCode) {
-    return ((200 <= statusCode && statusCode <= 299) || statusCode == 304);
+    return (200 <= statusCode && statusCode <= 299) || statusCode == 304;
 }
 
 #import "FwiNetworkManager.h"

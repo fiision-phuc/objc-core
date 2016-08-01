@@ -1,8 +1,8 @@
 //  Project name: FwiCore
-//  File name   : UIApplication+FwiApplication.h
+//  File name   : UISplitViewController+FwiExtension.h
 //
 //  Author      : Phuc, Tran Huu
-//  Created date: 2/21/16
+//  Created date: 7/30/16
 //  Version     : 1.20
 //  --------------------------------------------------------------
 //  Copyright © 2012, 2016 Fiision Studio.
@@ -39,18 +39,5 @@
 #import <UIKit/UIKit.h>
 
 
-@interface UIApplication (FwiApplication)
-
-/** Define whether the device is iPad or not. */
-+ (BOOL)isPad;
-
-/** Define whether the device is iPhone or not. */
-+ (BOOL)isPhone;
-
-/** Return iOS Version. */
-+ (NSInteger)osVersion;
-
-/** Enable remote notification. */
-+ (void)enableRemoteNotification;
-
+@interface UISplitViewController (FwiExtension)
 @end

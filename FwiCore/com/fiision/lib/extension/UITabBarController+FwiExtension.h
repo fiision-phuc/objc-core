@@ -40,5 +40,4 @@
 
 
 @interface UITabBarController (FwiExtension)
-
 @end

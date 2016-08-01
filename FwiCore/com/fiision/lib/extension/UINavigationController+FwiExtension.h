@@ -40,5 +40,4 @@
 
 
 @interface UINavigationController (FwiExtension)
-
 @end

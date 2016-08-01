@@ -50,6 +50,7 @@
 		BE261ECF1A6677F6008521C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208B6016E9B091004E0F54 /* Foundation.framework */; };
 		BE261ED01A6677FB008521C2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE59FCB41817856A00A4FC6E /* Accelerate.framework */; };
 		BE261ED11A667804008521C2 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BE142F221A6503D300C731EF /* libz.1.2.5.dylib */; };
+		BE2A3DAE1D4CCE4300F69592 /* UISplitViewController+FwiExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2A3DAD1D4CCE4300F69592 /* UISplitViewController+FwiExtension.m */; };
 		BE59FCB51817856A00A4FC6E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE59FCB41817856A00A4FC6E /* Accelerate.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE7DBB7C1AF68B760066E650 /* FwiOperationTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7DBB7B1AF68B760066E650 /* FwiOperationTest.m */; };
 		BEF4C2C01C797A3600D23868 /* FwiNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF4C2B51C797A3600D23868 /* FwiNetworkManager.m */; };
@@ -138,6 +139,8 @@
 		BE261EC51A6667D0008521C2 /* FwiExtensionDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiExtensionDataTest.m; sourceTree = "<group>"; };
 		BE261EC71A6667E4008521C2 /* FwiExtensionNumberTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiExtensionNumberTest.m; sourceTree = "<group>"; };
 		BE261EC91A6667FC008521C2 /* FwiExtensionStringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiExtensionStringTest.m; sourceTree = "<group>"; };
+		BE2A3DAC1D4CCE4300F69592 /* UISplitViewController+FwiExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UISplitViewController+FwiExtension.h"; sourceTree = "<group>"; };
+		BE2A3DAD1D4CCE4300F69592 /* UISplitViewController+FwiExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UISplitViewController+FwiExtension.m"; sourceTree = "<group>"; };
 		BE59FCB41817856A00A4FC6E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BE5BF0DC1A6509C200F99FFA /* FwiCoreTests-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FwiCoreTests-Prefix.pch"; sourceTree = "<group>"; };
 		BE7DBB7B1AF68B760066E650 /* FwiOperationTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiOperationTest.m; sourceTree = "<group>"; };
@@ -307,6 +310,8 @@
 				BEF4C2DC1C79814100D23868 /* UIImage+FwiExtension.m */,
 				BEF4C2DD1C79814100D23868 /* UINavigationController+FwiExtension.h */,
 				BEF4C2DE1C79814100D23868 /* UINavigationController+FwiExtension.m */,
+				BE2A3DAC1D4CCE4300F69592 /* UISplitViewController+FwiExtension.h */,
+				BE2A3DAD1D4CCE4300F69592 /* UISplitViewController+FwiExtension.m */,
 				BEF4C2DF1C79814100D23868 /* UITabBarController+FwiExtension.h */,
 				BEF4C2E01C79814100D23868 /* UITabBarController+FwiExtension.m */,
 				BEF4C2E11C79814100D23868 /* UIView+FwiExtension.h */,
@@ -582,6 +587,7 @@
 				BEF4C2C21C797A3600D23868 /* FwiDataParam.m in Sources */,
 				BEF4C2E81C79814100D23868 /* NSURL+FwiExtension.m in Sources */,
 				BE1D81591BB0F2870036D2A7 /* NSString+FwiHex.m in Sources */,
+				BE2A3DAE1D4CCE4300F69592 /* UISplitViewController+FwiExtension.m in Sources */,
 				BEF4C2EF1C79814100D23868 /* UIView+FwiExtension.m in Sources */,
 				BE1D81571BB0F2870036D2A7 /* NSData+FwiHex.m in Sources */,
 				BEF4C2E51C79814100D23868 /* NSDictionary+FwiExtension.m in Sources */,
