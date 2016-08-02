@@ -6,8 +6,10 @@
 
 
 - (__autoreleasing NSString *)currencyWithISO3:(NSString *)currencyISO3 decimalSeparator:(NSString *)decimalSeparator groupingSeparator:(NSString *)groupingSeparator usingSymbol:(BOOL)usingSymbol {
-	/* Condition validation */
-    if (!self) return nil;
+    /* Condition validation */
+    if (!self) {
+        return nil;
+    }
     
     // Initialize currency format object
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en"];
@@ -36,6 +38,7 @@
     __autoreleasing NSString *result = [currencyFormat stringFromNumber:self];
     FwiRelease(currencyFormat);
     FwiRelease(locale);
+    
     return result;
 }
 

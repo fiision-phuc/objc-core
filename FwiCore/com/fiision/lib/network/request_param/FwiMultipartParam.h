@@ -39,7 +39,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface FwiMultipartParam : NSObject<NSCoding> {
+@interface FwiMultipartParam : NSObject<NSCoding>{
 }
 
 @property (nonatomic, readonly) NSString *name;

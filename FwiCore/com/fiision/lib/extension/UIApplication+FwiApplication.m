@@ -13,10 +13,10 @@
 }
 
 + (NSInteger)osVersion {
-    __autoreleasing NSString *systemVersion = [[UIDevice currentDevice] systemVersion];
+    __autoreleasing NSString *systemVersion = [UIDevice currentDevice].systemVersion;
     __autoreleasing NSArray *tokens = [systemVersion componentsSeparatedByString:@"."];
     
-    return [[[UIDevice currentDevice] systemVersion] integerValue];
+    return [UIDevice currentDevice].systemVersion.integerValue;
 }
 
 + (void)enableRemoteNotification {

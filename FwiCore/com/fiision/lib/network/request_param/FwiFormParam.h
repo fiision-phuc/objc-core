@@ -39,7 +39,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface FwiFormParam : NSObject <NSCoding> {
+@interface FwiFormParam : NSObject<NSCoding>{
 }
 
 @property (nonatomic, strong) NSString *key;

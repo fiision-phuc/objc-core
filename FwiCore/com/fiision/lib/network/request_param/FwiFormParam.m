@@ -14,18 +14,19 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.key   = nil;
+        self.key = nil;
         self.value = nil;
     }
+    
     return self;
 }
 
 
 #pragma mark - Cleanup memory
 - (void)dealloc {
-    self.key   = nil;
+    self.key = nil;
     self.value = nil;
-
+    
 #if !__has_feature(objc_arc)
     [super dealloc];
 #endif
@@ -34,23 +35,29 @@
 
 #pragma mark - Class's override methods
 - (BOOL)isEqual:(id)object {
-	if (object && [object isKindOfClass:[FwiFormParam class]]) {
-        FwiFormParam *other = (FwiFormParam *)object;
-        return ([_key isEqualToString:other.key] && [_value isEqualToString:other.value]);
-	}
-	return NO;
+    if (object && [object isKindOfClass:[FwiFormParam class]]) {
+        FwiFormParam *other = (FwiFormParam *) object;
+        
+        return [_key isEqualToString:other.key] && [_value isEqualToString:other.value];
+    }
+    
+    return NO;
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"%@=%@", _key, [_value encodeHTML]];
+    return [NSString stringWithFormat:@"%@=%@", _key, _value.encodeHTML];
 }
 
 
 #pragma mark - Class's public methods
 - (NSComparisonResult)compare:(FwiFormParam *)parameter {
     /* Condition validation */
-    if (!parameter) return NSOrderedDescending;
-    else return [_key compare:parameter.key];
+    if (!parameter) {
+        return NSOrderedDescending;
+    }
+    else {
+        return [_key compare:parameter.key];
+    }
 }
 
 
@@ -58,13 +65,16 @@
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     self = [self init];
     if (self && aDecoder) {
-        _key   = FwiRetain([aDecoder decodeObjectForKey:@"_key"]);
+        _key = FwiRetain([aDecoder decodeObjectForKey:@"_key"]);
         _value = FwiRetain([aDecoder decodeObjectForKey:@"_value"]);
     }
+    
     return self;
 }
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    if (!aCoder) return;
+    if (!aCoder) {
+        return;
+    }
     [aCoder encodeObject:_key forKey:@"_key"];
     [aCoder encodeObject:_value forKey:@"_value"];
 }
@@ -79,8 +89,12 @@
 #pragma mark - Class's static constructors
 + (__autoreleasing FwiFormParam *)paramWithKey:(NSString *)key andValue:(NSString *)value {
     /* Condition validation */
-    if (!key || key.length == 0) return nil;
-    else return FwiAutoRelease([[FwiFormParam alloc] initWithKey:key andValue:(value ? value : @"")]);
+    if (!key || key.length == 0) {
+        return nil;
+    }
+    else {
+        return FwiAutoRelease([[FwiFormParam alloc] initWithKey:key andValue:(value ? value : @"")]);
+    }
 }
 
 
@@ -91,6 +105,7 @@
         self.key = key;
         self.value = value;
     }
+    
     return self;
 }
 

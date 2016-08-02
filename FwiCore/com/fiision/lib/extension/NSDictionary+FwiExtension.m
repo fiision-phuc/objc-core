@@ -6,15 +6,23 @@
 
 + (__autoreleasing NSDictionary *)loadPlist:(NSString *)plistname {
     /* Condition validation */
-    if (!plistname || plistname.length == 0) return nil;
+    if (!plistname || plistname.length == 0) {
+        return nil;
+    }
+    
     return [NSDictionary loadPlist:plistname bundle:[NSBundle mainBundle]];
 }
 + (__autoreleasing NSDictionary *)loadPlist:(NSString *)plistname bundle:(NSBundle *)bundle {
     /* Condition validation */
-    if (!plistname || plistname.length == 0) return nil;
-    if (!bundle) bundle = [NSBundle mainBundle];
+    if (!plistname || plistname.length == 0) {
+        return nil;
+    }
+    if (!bundle) {
+        bundle = [NSBundle mainBundle];
+    }
     
     __autoreleasing NSString *path = [bundle pathForResource:plistname ofType:@"plist"];
+    
     return FwiAutoRelease([[NSDictionary alloc] initWithContentsOfFile:path]);
 }
 
@@ -27,7 +35,9 @@
 
 - (instancetype)objectWithPath:(NSString *)path {
     /* Condition validation */
-    if (!self || self.count == 0) return nil;
+    if (!self || self.count == 0) {
+        return nil;
+    }
     
     __autoreleasing NSArray *tokens = [path componentsSeparatedByString:@"/"];
     __weak id o = self;
@@ -38,38 +48,47 @@
         // Lookup object
         if ([o isKindOfClass:[NSArray class]]) {
             NSInteger index = path.integerValue;
-            if (index < 0 || index >= ((NSArray *)o).count) {
+            if (index < 0 || index >= ((NSArray *) o).count) {
                 o = nil;
             }
             else {
-                o = ((NSArray *)o)[index];
+                o = ((NSArray *) o)[index];
             }
         }
         else if ([o isKindOfClass:[NSDictionary class]]) {
-			o = ((NSDictionary *)o)[path];
+            o = ((NSDictionary *) o)[path];
         }
-		else {
+        else {
             o = nil;
-		}
+        }
         
         // Break
-        if (o == nil) break;
+        if (o == nil) {
+            break;
+        }
     }
-	return o;
+    
+    return o;
 }
 
 - (__autoreleasing NSDictionary *)toDictionary {
     /* Condition validation */
-    if (!self) return nil;
+    if (!self) {
+        return nil;
+    }
     
     __autoreleasing NSDictionary *dict = [NSDictionary dictionaryWithDictionary:self];
+    
     return dict;
 }
 - (__autoreleasing NSMutableDictionary *)toMutableDictionary {
     /* Condition validation */
-    if (!self) return nil;
+    if (!self) {
+        return nil;
+    }
     
     __autoreleasing NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:self];
+    
     return dict;
 }
 

@@ -36,7 +36,6 @@
 		BE208BF816E9B8A0004E0F54 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BF716E9B8A0004E0F54 /* UIKit.framework */; };
 		BE208BFA16E9B8AC004E0F54 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BF916E9B8AC004E0F54 /* CoreGraphics.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BE208BFC16E9B8B4004E0F54 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE208BFB16E9B8B4004E0F54 /* QuartzCore.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		BE2606D81CB0D12B005FAC9E /* FwiCacheFolderTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2606D71CB0D12B005FAC9E /* FwiCacheFolderTest.m */; };
 		BE261EBE1A666789008521C2 /* FwiBase64DataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE261EBD1A666789008521C2 /* FwiBase64DataTest.m */; };
 		BE261EC01A66679C008521C2 /* FwiBase64StringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE261EBF1A66679C008521C2 /* FwiBase64StringTest.m */; };
 		BE261EC21A6667AD008521C2 /* FwiHexDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = BE261EC11A6667AD008521C2 /* FwiHexDataTest.m */; };
@@ -131,7 +130,6 @@
 		BE208BF716E9B8A0004E0F54 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BE208BF916E9B8AC004E0F54 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		BE208BFB16E9B8B4004E0F54 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		BE2606D71CB0D12B005FAC9E /* FwiCacheFolderTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiCacheFolderTest.m; sourceTree = "<group>"; };
 		BE261EBD1A666789008521C2 /* FwiBase64DataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiBase64DataTest.m; sourceTree = "<group>"; };
 		BE261EBF1A66679C008521C2 /* FwiBase64StringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiBase64StringTest.m; sourceTree = "<group>"; };
 		BE261EC11A6667AD008521C2 /* FwiHexDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FwiHexDataTest.m; sourceTree = "<group>"; };
@@ -241,7 +239,6 @@
 				BE261EC71A6667E4008521C2 /* FwiExtensionNumberTest.m */,
 				BE261EC91A6667FC008521C2 /* FwiExtensionStringTest.m */,
 				BE7DBB7B1AF68B760066E650 /* FwiOperationTest.m */,
-				BE2606D71CB0D12B005FAC9E /* FwiCacheFolderTest.m */,
 			);
 			path = FwiCoreTests;
 			sourceTree = "<group>";
@@ -553,7 +550,6 @@
 			files = (
 				BE261EC21A6667AD008521C2 /* FwiHexDataTest.m in Sources */,
 				BE261ECA1A6667FC008521C2 /* FwiExtensionStringTest.m in Sources */,
-				BE2606D81CB0D12B005FAC9E /* FwiCacheFolderTest.m in Sources */,
 				BE261EC81A6667E4008521C2 /* FwiExtensionNumberTest.m in Sources */,
 				BE261EC61A6667D0008521C2 /* FwiExtensionDataTest.m in Sources */,
 				BE7DBB7C1AF68B760066E650 /* FwiOperationTest.m in Sources */,

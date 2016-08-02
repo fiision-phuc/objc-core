@@ -42,7 +42,7 @@
 @interface NSData (FwiHex)
 
 /** Validate Hex. */
-@property (NS_NONATOMIC_IOSONLY, getter=isHex, readonly) BOOL hex;
+@property (NS_NONATOMIC_IOSONLY, getter = isHex, readonly) BOOL hex;
 
 /** Decode Hex. */
 @property (NS_NONATOMIC_IOSONLY, readonly, strong) NSData *decodeHexData;

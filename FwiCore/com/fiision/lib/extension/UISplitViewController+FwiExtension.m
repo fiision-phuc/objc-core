@@ -9,7 +9,10 @@
     
     if (controllers.count > 0) {
         if ([UIApplication isPhone]) {
-            return [[controllers firstObject] prefersStatusBarHidden];
+            return [controllers.firstObject prefersStatusBarHidden];
+        }
+        else if ([UIApplication isPad]) {
+            return [controllers.lastObject prefersStatusBarHidden];
         }
     }
     
@@ -20,7 +23,10 @@
     
     if (controllers.count > 0) {
         if ([UIApplication isPhone]) {
-            return [[controllers firstObject] preferredStatusBarStyle];
+            return [controllers.firstObject preferredStatusBarStyle];
+        }
+        else if ([UIApplication isPad]) {
+            return [controllers.lastObject preferredStatusBarStyle];
         }
     }
     
@@ -30,10 +36,8 @@
 - (BOOL)shouldAutorotate {
     __autoreleasing NSArray *controllers = self.viewControllers;
     
-    if (controllers.count > 0) {
-        if ([UIApplication isPhone]) {
-            return [[controllers firstObject] shouldAutorotate];
-        }
+    if (controllers.count > 0 && [UIApplication isPhone]) {
+        return [controllers.firstObject shouldAutorotate];
     }
     
     return [super shouldAutorotate];
@@ -41,10 +45,8 @@
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
     __autoreleasing NSArray *controllers = self.viewControllers;
     
-    if (controllers.count > 0) {
-        if ([UIApplication isPhone]) {
-            return [[controllers firstObject] supportedInterfaceOrientations];
-        }
+    if (controllers.count > 0 && [UIApplication isPhone]) {
+        return [controllers.firstObject supportedInterfaceOrientations];
     }
     
     return [super supportedInterfaceOrientations];

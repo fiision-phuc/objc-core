@@ -5,10 +5,10 @@
 
 
 - (void)applyBackgroundImage:(NSString *)imageName withEdgeInsets:(UIEdgeInsets)edgeInsets {
-    __autoreleasing UIImage *imageDefault     = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_Default", imageName]] resizableImageWithCapInsets:edgeInsets];
+    __autoreleasing UIImage *imageDefault = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_Default", imageName]] resizableImageWithCapInsets:edgeInsets];
     __autoreleasing UIImage *imageHighlighted = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_Highlighted", imageName]] resizableImageWithCapInsets:edgeInsets];
-    __autoreleasing UIImage *imageSelected    = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_Selected", imageName]] resizableImageWithCapInsets:edgeInsets];
-    __autoreleasing UIImage *imageDisabled    = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_Disabled", imageName]] resizableImageWithCapInsets:edgeInsets];
+    __autoreleasing UIImage *imageSelected = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_Selected", imageName]] resizableImageWithCapInsets:edgeInsets];
+    __autoreleasing UIImage *imageDisabled = [[UIImage imageNamed:[NSString stringWithFormat:@"%@_Disabled", imageName]] resizableImageWithCapInsets:edgeInsets];
     
     [self setBackgroundImage:imageDefault forState:UIControlStateNormal];
     [self setBackgroundImage:imageHighlighted forState:UIControlStateHighlighted];
@@ -17,10 +17,10 @@
 }
 
 - (void)applyImage:(NSString *)imageName {
-    __autoreleasing UIImage *imageDefault     = [UIImage imageNamed:[NSString stringWithFormat:@"%@_Default", imageName]];
+    __autoreleasing UIImage *imageDefault = [UIImage imageNamed:[NSString stringWithFormat:@"%@_Default", imageName]];
     __autoreleasing UIImage *imageHighlighted = [UIImage imageNamed:[NSString stringWithFormat:@"%@_Highlighted", imageName]];
-    __autoreleasing UIImage *imageSelected    = [UIImage imageNamed:[NSString stringWithFormat:@"%@_Selected", imageName]];
-    __autoreleasing UIImage *imageDisabled    = [UIImage imageNamed:[NSString stringWithFormat:@"%@_Disabled", imageName]];
+    __autoreleasing UIImage *imageSelected = [UIImage imageNamed:[NSString stringWithFormat:@"%@_Selected", imageName]];
+    __autoreleasing UIImage *imageDisabled = [UIImage imageNamed:[NSString stringWithFormat:@"%@_Disabled", imageName]];
     
     [self setImage:imageDefault forState:UIControlStateNormal];
     [self setImage:imageHighlighted forState:UIControlStateHighlighted];
