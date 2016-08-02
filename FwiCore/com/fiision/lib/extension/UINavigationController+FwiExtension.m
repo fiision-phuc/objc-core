@@ -5,31 +5,33 @@
 
 
 - (BOOL)prefersStatusBarHidden {
-    if (self.topViewController) {
-        return [self.topViewController prefersStatusBarHidden];
+    if (self.visibleViewController) {
+        return [self.visibleViewController prefersStatusBarHidden];
     }
     
     return [super prefersStatusBarHidden];
 }
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    if (self.topViewController) {
-        return [self.topViewController preferredStatusBarStyle];
+    if (self.visibleViewController) {
+        return [self.visibleViewController preferredStatusBarStyle];
     }
     
     return [super preferredStatusBarStyle];
 }
 
 - (BOOL)shouldAutorotate {
-    return self.visibleViewController.shouldAutorotate;
+    if (self.visibleViewController) {
+        return [self.visibleViewController shouldAutorotate];
+    }
+    
+    return [super shouldAutorotate];
 }
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return self.visibleViewController.supportedInterfaceOrientations;
-}
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-    [self.visibleViewController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-}
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self.visibleViewController didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    if (self.visibleViewController) {
+        return [self.visibleViewController supportedInterfaceOrientations];
+    }
+    
+    return [super supportedInterfaceOrientations];
 }
 
 
