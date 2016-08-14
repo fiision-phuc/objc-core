@@ -50,13 +50,13 @@
 #endif
 
 #if __has_feature(objc_arc)
-#define FwiRetain(o)                o
-#define FwiRelease(o)               if (o) {o = nil; }
-#define FwiAutoRelease(o)           o
+    #define FwiRetain(o)                o
+    #define FwiRelease(o)               if (o) {o = nil; }
+    #define FwiAutoRelease(o)           o
 #else
-#define FwiRetain(o)                [o retain]
-#define FwiRelease(o)               if (o) {[o release]; o = nil; }
-#define FwiAutoRelease(o)           [o autorelease]
+    #define FwiRetain(o)                [o retain]
+    #define FwiRelease(o)               if (o) {[o release]; o = nil; }
+    #define FwiAutoRelease(o)           [o autorelease]
 #endif
 
 #define FwiReleaseCF(o)                 if (o) {CFRelease(o); o = nil; }
@@ -64,9 +64,9 @@
 
 // Logger
 #ifdef DEBUG
-#define DLog(...)                   NSLog(@"\n%s %@\n\n", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
+    #define DLog(...)                   NSLog(@"\n%s %@\n\n", __PRETTY_FUNCTION__, [NSString stringWithFormat:__VA_ARGS__])
 #else
-#define DLog(...)                   do {} while (0)
+    #define DLog(...)                   do {} while (0)
 #endif
 
 
